@@ -37,6 +37,17 @@
 
   <a class="skip-link" href="#main">Aller au contenu</a>
 
+  <!-- Barre de progression (petits écrans) et marque-page (grands écrans) -->
+  <div class="progress" aria-hidden="true"></div>
+  <nav class="bookmark" aria-label="Sections de la page">
+    <ul>
+      <li><a href="#top" data-section="top"><span>Accueil</span></a></li>
+      <li><a href="#projets" data-section="projets"><span>Projets</span></a></li>
+      <li><a href="#profil" data-section="profil"><span>Profil</span></a></li>
+      <li><a href="#contact" data-section="contact"><span>Contact</span></a></li>
+    </ul>
+  </nav>
+
   <div class="wrap">
 
     <!-- ===== EN-TÊTE DU SITE ===== -->
@@ -72,8 +83,7 @@
         <div class="hero-foot">
           <p class="statement rise d2">
             Je m'appelle <b>Pauline Foucher</b>. Formée aux arts graphiques puis au
-            développement web, j'apprends en construisant : chaque projet est
-            l'occasion de maîtriser un nouveau langage ou un nouvel outil.
+            développement web, j'apprends en construisant.
           </p>
 
           <dl class="meta rise d3">
@@ -91,7 +101,13 @@
             </div>
             <div>
               <dt class="label">Langages</dt>
-              <dd>PHP · JavaScript · Python</dd>
+              <dd>
+                <ul class="hero-langs">
+                  <li><i class="ico ico-php" aria-hidden="true"></i>PHP</li>
+                  <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
+                  <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
+                </ul>
+              </dd>
             </div>
           </dl>
         </div>
@@ -103,13 +119,13 @@
           <p class="label">Projets phares</p>
           <h2>Trois projets, <span class="serif">trois apprentissages.</span></h2>
           <p class="sec-note">
-            Trois projets personnels, menés sur mon temps libre : Toile a finalement
-            été retenu pour la présentation du titre professionnel.
+            Trois projets perso, dont Toile, présenté pour le titre professionnel.
           </p>
         </div>
 
         <!-- ===== PROJET : TRAVELING ===== -->
-        <article class="project" style="--c: var(--t2)">
+        <article class="project project--wide" style="--c: var(--t2)">
+          <span class="p-num" aria-hidden="true">01</span>
 
           <div class="p-meta">
             <span class="label">Blog</span>
@@ -135,25 +151,22 @@
             </figure>
 
             <div class="p-text">
+              <div class="p-main">
               <h3>Traveling</h3>
               <p class="desc">
-                Un blog qui relie voyage et cinéma : des articles sur les films et leurs
-                lieux de tournage, des fiches films enrichies par TMDB et une carte
-                interactive des lieux à visiter.
+                Un blog qui relie voyage et cinéma, avec fiches films TMDB et carte
+                interactive des lieux de tournage.
               </p>
-              <ul class="highlights">
-                <li>Architecture MVC écrite à la main, sans framework</li>
-                <li>Connexion Google (OAuth 2.0) et newsletter hebdomadaire automatisée</li>
-                <li>Sécurité : CSRF, requêtes préparées, rôles et middlewares</li>
-              </ul>
+              </div>
+              <div class="p-side">
               <ul class="stack" aria-label="Technologies">
-                <li>PHP 8</li>
-                <li>MVC maison</li>
-                <li>MySQL</li>
-                <li>JavaScript</li>
-                <li>Tailwind</li>
-                <li>API TMDB</li>
-                <li>Leaflet</li>
+                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
+                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
+                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
+                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
+                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
+                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
+                <li><i class="ico ico-leaflet" aria-hidden="true"></i>Leaflet</li>
               </ul>
               <div class="p-links">
                 <a class="btn" href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">
@@ -163,17 +176,30 @@
                   Voir le code <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-              <p class="note">
-                Commencé avant Toile, mis de côté le temps de préparer le titre
-                professionnel, puis repris et déployé récemment. Mise à jour
-                automatique à chaque push grâce à GitHub Actions.
-              </p>
+              <details class="more">
+                <summary>En savoir plus</summary>
+                <ul class="highlights">
+                  <li>Architecture MVC écrite à la main, sans framework</li>
+                  <li>Connexion Google (OAuth 2.0) et newsletter hebdomadaire automatisée</li>
+                  <li>Sécurité : CSRF, requêtes préparées, rôles et middlewares</li>
+                </ul>
+                <p class="note">
+                  Commencé avant Toile, mis de côté le temps de préparer le titre
+                  professionnel, puis repris et déployé récemment. Mise à jour
+                  automatique à chaque push grâce à GitHub Actions.
+                </p>
+              </details>
+              </div>
             </div>
           </div>
         </article>
 
+        <!-- Toile et Filmatrix côte à côte -->
+        <div class="duo">
+
         <!-- ===== PROJET : TOILE ===== -->
-        <article class="project" style="--c: var(--t1)">
+        <article class="project project--card" style="--c: var(--t1)">
+          <span class="p-num" aria-hidden="true">02</span>
 
           <div class="p-meta">
             <span class="label">Marketplace</span>
@@ -203,24 +229,18 @@
             <div class="p-text">
               <h3>Toile</h3>
               <p class="desc">
-                Une marketplace qui met en relation des artistes et des clients pour
-                commander des œuvres sur mesure. Commencée avec Symfony pour apprendre
-                le framework, puis reconstruite en PHP natif pour en maîtriser chaque rouage.
+                Une marketplace où des artistes vendent des œuvres sur mesure.
+                Commencée avec Symfony, reconstruite en PHP natif.
               </p>
-              <ul class="highlights">
-                <li>Paiements Stripe, reversement aux artistes et factures PDF</li>
-                <li>Boutiques d'artistes, commandes avec messagerie, abonnements</li>
-                <li>Sécurité : CSRF, anti-brute-force, en-têtes HTTP, tests PHPUnit</li>
-              </ul>
               <ul class="stack" aria-label="Technologies">
-                <li>PHP 8</li>
-                <li>MVC maison</li>
-                <li>MySQL</li>
-                <li>Stripe</li>
-                <li>JavaScript</li>
-                <li>Tailwind</li>
-                <li>PHPUnit</li>
-                <li>GitHub Actions</li>
+                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
+                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
+                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
+                <li><i class="ico ico-stripe" aria-hidden="true"></i>Stripe</li>
+                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
+                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
+                <li><i class="ico ico-test" aria-hidden="true"></i>PHPUnit</li>
+                <li><i class="ico ico-githubactions" aria-hidden="true"></i>GitHub Actions</li>
               </ul>
               <div class="p-links">
                 <a class="btn" href="https://toile.free.nf/" target="_blank" rel="noopener">
@@ -233,19 +253,29 @@
                   Version Symfony <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-              <p class="note">Déployé automatiquement à chaque mise à jour grâce à GitHub Actions.</p>
+              <details class="more">
+                <summary>En savoir plus</summary>
+                  <ul class="highlights">
+                    <li>Paiements Stripe, reversement aux artistes et factures PDF</li>
+                    <li>Boutiques d'artistes, commandes avec messagerie, abonnements</li>
+                    <li>Sécurité : CSRF, anti-brute-force, en-têtes HTTP, tests PHPUnit</li>
+                  </ul>
+                  <p class="note">Déployé automatiquement à chaque mise à jour grâce à GitHub Actions.</p>
+              </details>
             </div>
 
           </div>
         </article>
 
         <!-- ===== PROJET : FILMATRIX ===== -->
-        <article class="project" style="--c: var(--t3)">
+        <article class="project project--card" style="--c: var(--t3)">
+          <span class="p-num" aria-hidden="true">03</span>
 
           <div class="p-meta">
             <span class="label">Jeux en ligne</span>
             <span class="label">Pour apprendre Python</span>
             <span class="label">Août – sept. 2026</span>
+            <span class="kind kind--wip">En développement</span>
           </div>
 
           <div class="p-body">
@@ -268,23 +298,17 @@
             <div class="p-text">
               <h3>Filmatrix</h3>
               <p class="desc">
-                Une plateforme de jeux sur le cinéma, créée pour apprendre Python :
-                12 modes de jeu (quiz, blind test, devinette d'affiche…), des duels
-                entre amis en temps réel, et une progression avec niveaux, badges et classement.
+                Une plateforme de jeux sur le cinéma : 12 modes de jeu, duels en
+                temps réel et progression avec badges.
               </p>
-              <ul class="highlights">
-                <li>Duels et messagerie en temps réel avec WebSockets</li>
-                <li>Panneau d'administration avec recherche TMDB, iTunes et YouTube</li>
-                <li>ORM, migrations, tests pytest et mise en production</li>
-              </ul>
               <ul class="stack" aria-label="Technologies">
-                <li>Python</li>
-                <li>Flask</li>
-                <li>Socket.IO</li>
-                <li>PostgreSQL</li>
-                <li>Tailwind</li>
-                <li>API TMDB</li>
-                <li>pytest</li>
+                <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
+                <li><i class="ico ico-flask" aria-hidden="true"></i>Flask</li>
+                <li><i class="ico ico-socketdotio" aria-hidden="true"></i>Socket.IO</li>
+                <li><i class="ico ico-postgresql" aria-hidden="true"></i>PostgreSQL</li>
+                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
+                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
+                <li><i class="ico ico-pytest" aria-hidden="true"></i>pytest</li>
               </ul>
               <div class="p-links">
                 <a class="btn" href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">
@@ -294,10 +318,20 @@
                   Voir le code <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-              <p class="note">Hébergé sur une offre gratuite : le premier chargement peut prendre une trentaine de secondes.</p>
+              <details class="more">
+                <summary>En savoir plus</summary>
+                  <ul class="highlights">
+                    <li>Duels et messagerie en temps réel avec WebSockets</li>
+                    <li>Panneau d'administration avec recherche TMDB, iTunes et YouTube</li>
+                    <li>ORM, migrations, tests pytest et mise en production</li>
+                  </ul>
+                  <p class="note">Projet toujours en développement. Hébergé sur une offre gratuite : le premier chargement peut prendre une trentaine de secondes.</p>
+              </details>
             </div>
           </div>
         </article>
+
+        </div>
       </section>
 
       <!-- ===== PROJETS DE FORMATION ===== -->
@@ -319,11 +353,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Fansite</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Site fan dédié au cinéma, avec fiches de films classiques et navigation par rubriques. Mon tout premier projet, point de départ de cet apprentissage.</span>
                 <div class="other-foot">
-                  <span class="other-tech">HTML · CSS</span>
+                  <span class="other-tech"><span class="tech" title="HTML"><i class="ico ico-html5" aria-hidden="true"></i><span class="vh">HTML</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
                   <span class="other-date">Sept. 2025</span>
                 </div>
               </div>
@@ -340,11 +373,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Livre d'or</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Livre d'or avec inscription, connexion et publication de commentaires.</span>
                 <div class="other-foot">
-                  <span class="other-tech">PHP · MySQL</span>
+                  <span class="other-tech"><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span><span class="tech" title="MySQL"><i class="ico ico-mysql" aria-hidden="true"></i><span class="vh">MySQL</span></span></span>
                   <span class="other-date">Nov. 2025</span>
                 </div>
               </div>
@@ -361,11 +393,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Memory</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Jeu de memory sur le thème Vikings, avec comptage des coups, chronométrage et classement.</span>
                 <div class="other-foot">
-                  <span class="other-tech">PHP · CSS</span>
+                  <span class="other-tech"><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
                   <span class="other-date">Nov. 2025</span>
                 </div>
               </div>
@@ -382,11 +413,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Memory JS</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Le même jeu de memory repris en JavaScript, thème South Park, avec comptes et classement.</span>
                 <div class="other-foot">
-                  <span class="other-tech">JavaScript · CSS</span>
+                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
                   <span class="other-date">Janv. 2026</span>
                 </div>
               </div>
@@ -403,11 +433,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Cinetech</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Catalogue de films et de séries alimenté par l'API TMDB.</span>
                 <div class="other-foot">
-                  <span class="other-tech">JavaScript · API</span>
+                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="API"><i class="ico ico-api" aria-hidden="true"></i><span class="vh">API</span></span></span>
                   <span class="other-date">Janv. – mai 2026</span>
                 </div>
               </div>
@@ -424,11 +453,10 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">Réservation de salles</span>
-                  <span class="kind">Formation</span>
                 </div>
                 <span class="other-desc">Application de réservation de salles avec planning et comptes utilisateurs.</span>
                 <div class="other-foot">
-                  <span class="other-tech">JavaScript · PHP</span>
+                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span></span>
                   <span class="other-date">Févr. 2026</span>
                 </div>
               </div>
@@ -445,11 +473,11 @@
               <div class="other-info">
                 <div class="other-head">
                   <span class="other-name">marsAI</span>
-                  <span class="kind">Formation · Équipe</span>
+                  <span class="kind">Équipe</span>
                 </div>
                 <span class="other-desc">Projet réalisé en équipe, du partage des tâches à la mise en commun du code.</span>
                 <div class="other-foot">
-                  <span class="other-tech">TypeScript</span>
+                  <span class="other-tech"><span class="tech" title="TypeScript"><i class="ico ico-typescript" aria-hidden="true"></i><span class="vh">TypeScript</span></span></span>
                   <span class="other-date">Mars – mai 2026</span>
                 </div>
               </div>
@@ -470,7 +498,7 @@
                 </div>
                 <span class="other-desc">Site vitrine pour une entreprise de plomberie, d'électricité et de climatisation.</span>
                 <div class="other-foot">
-                  <span class="other-tech">HTML · CSS</span>
+                  <span class="other-tech"><span class="tech" title="HTML"><i class="ico ico-html5" aria-hidden="true"></i><span class="vh">HTML</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
                   <span class="other-date">Juin 2026</span>
                 </div>
               </div>
@@ -492,26 +520,20 @@
         <div class="about">
           <div class="about-copy">
             <p class="about-lead">
-              Avant le code, il y a eu le dessin, la peinture et la communication visuelle.
-              Ma formation en arts graphiques m'accompagne encore aujourd'hui :
-              typographie, composition, et l'attention portée à chaque détail.
+              Avant le code, il y a eu le dessin, la peinture et la communication
+              visuelle : typographie, composition, souci du détail.
             </p>
             <p>
-              Après plusieurs années auprès des enfants et des familles, j'ai choisi de me
-              reconvertir dans le développement web. J'ai présenté le titre de Développeuse
-              Web et Web Mobile, et je suis ouverte à un poste, une alternance ou une
-              formation pour continuer à progresser au sein d'une équipe.
-            </p>
-            <p>
-              J'aime comprendre comment les choses fonctionnent. C'est pour ça que j'ai
-              reconstruit Toile sans framework, et que j'ai appris Python en créant Filmatrix.
+              Après plusieurs années auprès des enfants et des familles, je me suis
+              reconvertie dans le développement web. Je cherche un poste, une
+              alternance ou une formation.
             </p>
           </div>
 
           <aside class="about-side">
             <div>
               <h3 class="label">Atouts</h3>
-              <ul class="plain">
+              <ul class="plain chips">
                 <li>Créative</li>
                 <li>Autonome</li>
                 <li>Patiente</li>
@@ -521,9 +543,9 @@
             </div>
             <div>
               <h3 class="label">Langues</h3>
-              <ul class="plain">
-                <li>Français, langue maternelle</li>
-                <li>Anglais, intermédiaire</li>
+              <ul class="plain langs">
+                <li>Français <span class="dots" role="img" aria-label="Langue maternelle"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li>Anglais <span class="dots" role="img" aria-label="Niveau intermédiaire"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li>
               </ul>
             </div>
           </aside>
@@ -534,47 +556,49 @@
           <div class="skill-group">
             <h3 class="label">Langages</h3>
             <ul class="plain">
-              <li>PHP</li>
-              <li>JavaScript</li>
-              <li>Python</li>
-              <li>HTML &amp; CSS</li>
-              <li>SQL</li>
-              <li>TypeScript <span class="lvl">bases</span></li>
+              <li><span class="tile"><i class="ico ico-php" aria-hidden="true"></i></span><span class="tech-name">PHP</span></li>
+              <li><span class="tile"><i class="ico ico-javascript" aria-hidden="true"></i></span><span class="tech-name">JavaScript</span></li>
+              <li><span class="tile"><i class="ico ico-python" aria-hidden="true"></i></span><span class="tech-name">Python</span></li>
+              <li><span class="tile"><i class="ico ico-html5" aria-hidden="true"></i><i class="ico ico-css3" aria-hidden="true"></i></span><span class="tech-name">HTML &amp; CSS</span></li>
+              <li><span class="tile"><i class="ico ico-database" aria-hidden="true"></i></span><span class="tech-name">SQL</span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-typescript" aria-hidden="true"></i></span><span class="tech-name">TypeScript<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="label">Back-end</h3>
             <ul class="plain">
-              <li>Architecture MVC</li>
-              <li>Flask</li>
-              <li>API REST</li>
-              <li>Stripe</li>
-              <li>Symfony <span class="lvl">bases</span></li>
-              <li>Node.js <span class="lvl">bases</span></li>
+              <li><span class="tile"><i class="ico ico-layers" aria-hidden="true"></i></span><span class="tech-name">Architecture MVC</span></li>
+              <li><span class="tile"><i class="ico ico-flask" aria-hidden="true"></i></span><span class="tech-name">Flask</span></li>
+              <li><span class="tile"><i class="ico ico-api" aria-hidden="true"></i></span><span class="tech-name">API REST</span></li>
+              <li><span class="tile"><i class="ico ico-stripe" aria-hidden="true"></i></span><span class="tech-name">Stripe</span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-symfony" aria-hidden="true"></i></span><span class="tech-name">Symfony<span class="vh"> (bases)</span></span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-nodedotjs" aria-hidden="true"></i></span><span class="tech-name">Node.js<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="label">Front-end</h3>
             <ul class="plain">
-              <li>Intégration de maquettes</li>
-              <li>Responsive design</li>
-              <li>Tailwind CSS</li>
-              <li>Accessibilité</li>
-              <li>React <span class="lvl">bases</span></li>
+              <li><span class="tile"><i class="ico ico-layout" aria-hidden="true"></i></span><span class="tech-name">Intégration de maquettes</span></li>
+              <li><span class="tile"><i class="ico ico-responsive" aria-hidden="true"></i></span><span class="tech-name">Responsive design</span></li>
+              <li><span class="tile"><i class="ico ico-tailwindcss" aria-hidden="true"></i></span><span class="tech-name">Tailwind CSS</span></li>
+              <li><span class="tile"><i class="ico ico-a11y" aria-hidden="true"></i></span><span class="tech-name">Accessibilité</span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-react" aria-hidden="true"></i></span><span class="tech-name">React<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="label">Données et outils</h3>
             <ul class="plain">
-              <li>MySQL, PostgreSQL</li>
-              <li>Git, GitHub</li>
-              <li>GitHub Actions</li>
-              <li>PHPUnit, pytest</li>
-              <li>Docker <span class="lvl">bases</span></li>
-              <li>NoSQL <span class="lvl">bases</span></li>
+              <li><span class="tile"><i class="ico ico-mysql" aria-hidden="true"></i><i class="ico ico-postgresql" aria-hidden="true"></i></span><span class="tech-name">MySQL, PostgreSQL</span></li>
+              <li><span class="tile"><i class="ico ico-git" aria-hidden="true"></i><i class="ico ico-github" aria-hidden="true"></i></span><span class="tech-name">Git, GitHub</span></li>
+              <li><span class="tile"><i class="ico ico-githubactions" aria-hidden="true"></i></span><span class="tech-name">GitHub Actions</span></li>
+              <li><span class="tile"><i class="ico ico-test" aria-hidden="true"></i><i class="ico ico-pytest" aria-hidden="true"></i></span><span class="tech-name">PHPUnit, pytest</span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-docker" aria-hidden="true"></i></span><span class="tech-name">Docker<span class="vh"> (bases)</span></span></li>
+              <li class="is-basic"><span class="tile"><i class="ico ico-mongodb" aria-hidden="true"></i></span><span class="tech-name">NoSQL<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
         </div>
+
+        <p class="skills-legend"><i></i>Notions de base</p>
 
         <!-- Parcours -->
         <ol class="timeline">
