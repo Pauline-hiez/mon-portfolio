@@ -16,21 +16,17 @@
   <meta property="og:image" content="https://pauline-hiez.github.io/mon-portfolio/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Polices : titres (Fraunces), écriture manuscrite (Caveat), texte (Karla), étiquettes (Courier Prime) -->
+  <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 
-  <!-- Applique le thème choisi avant l'affichage (évite un flash) et signale que le JavaScript est actif -->
+  <!-- Applique le thème choisi avant l'affichage (évite un flash) -->
   <script>
-    document.documentElement.classList.add('js');
-    (function () {
-      let theme = null;
-      try { theme = localStorage.getItem('theme'); } catch (e) {}
-      // Deux thèmes : sombre (par défaut) et clair. Les anciens choix sont convertis.
-      const light = ['light', 'teal', 'prune', 'bleu', 'sauge'];
-      document.documentElement.dataset.theme = light.includes(theme) ? 'light' : 'dark';
-    })();
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+    } catch (e) {}
   </script>
 
   <!-- Styles et script -->
@@ -41,7 +37,7 @@
 
   <a class="skip-link" href="#main">Aller au contenu</a>
 
-  <!-- Barre de progression (petits écrans) et onglets de cahier (grands écrans) -->
+  <!-- Barre de progression (petits écrans) et marque-page (grands écrans) -->
   <div class="progress" aria-hidden="true"></div>
   <nav class="bookmark" aria-label="Sections de la page">
     <ul>
@@ -64,7 +60,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Activer le mode clair">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Activer le mode sombre">
         <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>
         </svg>
@@ -79,86 +75,70 @@
 
       <!-- ===== INTRODUCTION ===== -->
       <section class="hero" id="top">
-        <div class="hero-text">
-          <svg class="doodle star" viewBox="0 0 40 40" aria-hidden="true">
-            <path pathLength="1" d="M20 4 V36 M5 12 L35 28 M35 12 L5 28"/>
-          </svg>
+        <h1 class="rise">
+          Développeuse web,<br>
+          avec un <span class="serif">regard de designer.</span>
+        </h1>
 
-          <h1 class="rise">
-            Développeuse web, avec un <em class="mark">regard de designer.</em>
-          </h1>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
-
+        <div class="hero-foot">
           <p class="statement rise d2">
             Je m'appelle <b>Pauline Foucher</b>. Formée aux arts graphiques puis au
             développement web, j'apprends en construisant.
           </p>
 
-          <div class="hero-facts rise d3">
-            <div class="stamp stamp--ok">
-              <span class="stamp-title">Disponible</span>
-              <span>Emploi, alternance ou formation</span>
+          <dl class="meta rise d3">
+            <div>
+              <dt class="label">Disponibilité</dt>
+              <dd class="status">Emploi, alternance ou formation</dd>
             </div>
-
-            <dl class="meta">
-              <div>
-                <dt class="label">Basée à</dt>
-                <dd>Var, France</dd>
-              </div>
-              <div>
-                <dt class="label">Heure locale</dt>
-                <dd id="clock">—</dd>
-              </div>
-              <div>
-                <dt class="label">Langages</dt>
-                <dd>
-                  <ul class="stack" aria-label="Langages">
-                    <li><i class="ico ico-php" aria-hidden="true"></i>PHP</li>
-                    <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                    <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
-                  </ul>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-
-        <!-- Collage décoratif : quelques projets punaisés sur la page -->
-        <div class="collage" aria-hidden="true">
-          <figure class="polaroid pol-1">
-            <span class="tape tape--c"></span>
-            <img src="images/fansite.webp" alt="">
-            <figcaption>Fansite</figcaption>
-          </figure>
-          <figure class="polaroid pol-2">
-            <span class="tape tape--c"></span>
-            <img src="images/memory-js.webp" alt="">
-            <figcaption>Memory JS</figcaption>
-          </figure>
-          <figure class="polaroid pol-3">
-            <span class="tape tape--c"></span>
-            <img src="images/marsai.webp" alt="">
-            <figcaption>marsAI</figcaption>
-          </figure>
+            <div>
+              <dt class="label">Basée à</dt>
+              <dd>Var, France</dd>
+            </div>
+            <div>
+              <dt class="label">Heure locale</dt>
+              <dd id="clock">—</dd>
+            </div>
+            <div>
+              <dt class="label">Langages</dt>
+              <dd>
+                <ul class="hero-langs">
+                  <li><i class="ico ico-php" aria-hidden="true"></i>PHP</li>
+                  <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
+                  <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
 
       <!-- ===== PROJETS PHARES ===== -->
       <section id="projets">
         <div class="sec-head">
-          <p class="kicker">Projets phares</p>
-          <h2>Trois projets, <em>trois apprentissages.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
+          <p class="label">Projets phares</p>
+          <h2>Trois projets, <span class="serif">trois apprentissages.</span></h2>
           <p class="sec-note">
             Trois projets perso, dont Toile, présenté pour le titre professionnel.
           </p>
         </div>
 
         <!-- ===== PROJET : TRAVELING ===== -->
-        <article class="project project--wide reveal" style="--c: var(--t2)">
-          <div class="p-visual">
-            <figure class="frame">
-              <span class="tape tape--l" aria-hidden="true"></span><span class="tape tape--r" aria-hidden="true"></span>
+        <article class="project project--wide" style="--c: var(--t2)">
+          <span class="p-num" aria-hidden="true">01</span>
+
+          <div class="p-meta">
+            <span class="label">Blog</span>
+            <span class="label">Voyage &amp; cinéma</span>
+            <span class="label">Mai – sept. 2026</span>
+          </div>
+
+          <div class="p-body">
+            <figure class="shot">
+              <div class="bar" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <span>traveling</span>
+              </div>
               <div class="screen">
                 <div class="placeholder" aria-hidden="true">
                   <span class="placeholder-name">Traveling</span>
@@ -168,18 +148,18 @@
                        muted loop playsinline preload="metadata"
                        aria-label="Démonstration du blog Traveling"></video>
               </div>
-              <figcaption class="cap"><span>Blog</span><span>Voyage &amp; cinéma</span><span>Mai – sept. 2026</span></figcaption>
             </figure>
-          </div>
 
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">01</span>
-            <h3>Traveling</h3>
-            <p class="desc">
-              Un blog qui relie voyage et cinéma, avec fiches films TMDB et carte
+            <div class="p-text">
+              <div class="p-main">
+              <h3>Traveling</h3>
+              <p class="desc">
+                Un blog qui relie voyage et cinéma, avec fiches films TMDB et carte
                 interactive des lieux de tournage.
-            </p>
-            <ul class="stack" aria-label="Technologies">
+              </p>
+              </div>
+              <div class="p-side">
+              <ul class="stack" aria-label="Technologies">
                 <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
                 <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
                 <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
@@ -188,7 +168,7 @@
                 <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
                 <li><i class="ico ico-leaflet" aria-hidden="true"></i>Leaflet</li>
               </ul>
-            <div class="p-links">
+              <div class="p-links">
                 <a class="btn" href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">
                   Voir le site <span class="ar" aria-hidden="true">↗</span>
                 </a>
@@ -196,10 +176,9 @@
                   Voir le code <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-            <details class="more">
+              <details class="more">
                 <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
+                <ul class="highlights">
                   <li>Architecture MVC écrite à la main, sans framework</li>
                   <li>Connexion Google (OAuth 2.0) et newsletter hebdomadaire automatisée</li>
                   <li>Sécurité : CSRF, requêtes préparées, rôles et middlewares</li>
@@ -209,8 +188,9 @@
                   professionnel, puis repris et déployé récemment. Mise à jour
                   automatique à chaque push grâce à GitHub Actions.
                 </p>
-                </div>
               </details>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -218,10 +198,23 @@
         <div class="duo">
 
         <!-- ===== PROJET : TOILE ===== -->
-        <article class="project project--card reveal" style="--c: var(--t1)">
-          <div class="p-visual">
-            <figure class="frame">
-              
+        <article class="project project--card" style="--c: var(--t1)">
+          <span class="p-num" aria-hidden="true">02</span>
+
+          <div class="p-meta">
+            <span class="label">Marketplace</span>
+            <span class="label">Projet du titre DWWM</span>
+            <span class="label">Juin – juil. 2026</span>
+          </div>
+
+          <div class="p-body">
+
+            <!-- Aperçu vidéo dans une fausse fenêtre de navigateur -->
+            <figure class="shot">
+              <div class="bar" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <span>toile</span>
+              </div>
               <div class="screen">
                 <div class="placeholder" aria-hidden="true">
                   <span class="placeholder-name">Toile</span>
@@ -231,18 +224,15 @@
                        muted loop playsinline preload="metadata"
                        aria-label="Démonstration de la marketplace Toile"></video>
               </div>
-              <figcaption class="cap"><span>Marketplace</span><span>Projet du titre DWWM</span><span>Juin – juil. 2026</span></figcaption>
             </figure>
-          </div>
 
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">02</span>
-            <h3>Toile</h3>
-            <p class="desc">
-              Une marketplace où des artistes vendent des œuvres sur mesure.
+            <div class="p-text">
+              <h3>Toile</h3>
+              <p class="desc">
+                Une marketplace où des artistes vendent des œuvres sur mesure.
                 Commencée avec Symfony, reconstruite en PHP natif.
-            </p>
-            <ul class="stack" aria-label="Technologies">
+              </p>
+              <ul class="stack" aria-label="Technologies">
                 <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
                 <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
                 <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
@@ -252,7 +242,7 @@
                 <li><i class="ico ico-test" aria-hidden="true"></i>PHPUnit</li>
                 <li><i class="ico ico-githubactions" aria-hidden="true"></i>GitHub Actions</li>
               </ul>
-            <div class="p-links">
+              <div class="p-links">
                 <a class="btn" href="https://toile.free.nf/" target="_blank" rel="noopener">
                   Voir le site <span class="ar" aria-hidden="true">↗</span>
                 </a>
@@ -263,26 +253,37 @@
                   Version Symfony <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-            <details class="more">
+              <details class="more">
                 <summary>En savoir plus</summary>
-                <div class="sticky">
                   <ul class="highlights">
                     <li>Paiements Stripe, reversement aux artistes et factures PDF</li>
                     <li>Boutiques d'artistes, commandes avec messagerie, abonnements</li>
                     <li>Sécurité : CSRF, anti-brute-force, en-têtes HTTP, tests PHPUnit</li>
                   </ul>
                   <p class="note">Déployé automatiquement à chaque mise à jour grâce à GitHub Actions.</p>
-                </div>
               </details>
+            </div>
+
           </div>
         </article>
 
         <!-- ===== PROJET : FILMATRIX ===== -->
-        <article class="project project--card reveal" style="--c: var(--t3)">
-          <div class="p-visual">
-            <figure class="frame">
-              
-            <span class="stamp stamp--wip">En développement</span>
+        <article class="project project--card" style="--c: var(--t3)">
+          <span class="p-num" aria-hidden="true">03</span>
+
+          <div class="p-meta">
+            <span class="label">Jeux en ligne</span>
+            <span class="label">Pour apprendre Python</span>
+            <span class="label">Août – sept. 2026</span>
+            <span class="kind kind--wip">En développement</span>
+          </div>
+
+          <div class="p-body">
+            <figure class="shot">
+              <div class="bar" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <span>filmatrix</span>
+              </div>
               <div class="screen">
                 <div class="placeholder" aria-hidden="true">
                   <span class="placeholder-name">Filmatrix</span>
@@ -292,18 +293,15 @@
                        muted loop playsinline preload="metadata"
                        aria-label="Démonstration des jeux Filmatrix"></video>
               </div>
-              <figcaption class="cap"><span>Jeux en ligne</span><span>Pour apprendre Python</span><span>Août – sept. 2026</span></figcaption>
             </figure>
-          </div>
 
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">03</span>
-            <h3>Filmatrix</h3>
-            <p class="desc">
-              Une plateforme de jeux sur le cinéma : 12 modes de jeu, duels en
+            <div class="p-text">
+              <h3>Filmatrix</h3>
+              <p class="desc">
+                Une plateforme de jeux sur le cinéma : 12 modes de jeu, duels en
                 temps réel et progression avec badges.
-            </p>
-            <ul class="stack" aria-label="Technologies">
+              </p>
+              <ul class="stack" aria-label="Technologies">
                 <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
                 <li><i class="ico ico-flask" aria-hidden="true"></i>Flask</li>
                 <li><i class="ico ico-socketdotio" aria-hidden="true"></i>Socket.IO</li>
@@ -312,7 +310,7 @@
                 <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
                 <li><i class="ico ico-pytest" aria-hidden="true"></i>pytest</li>
               </ul>
-            <div class="p-links">
+              <div class="p-links">
                 <a class="btn" href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">
                   Jouer en ligne <span class="ar" aria-hidden="true">↗</span>
                 </a>
@@ -320,17 +318,16 @@
                   Voir le code <span class="ar" aria-hidden="true">↗</span>
                 </a>
               </div>
-            <details class="more">
+              <details class="more">
                 <summary>En savoir plus</summary>
-                <div class="sticky">
                   <ul class="highlights">
                     <li>Duels et messagerie en temps réel avec WebSockets</li>
                     <li>Panneau d'administration avec recherche TMDB, iTunes et YouTube</li>
                     <li>ORM, migrations, tests pytest et mise en production</li>
                   </ul>
                   <p class="note">Projet toujours en développement. Hébergé sur une offre gratuite : le premier chargement peut prendre une trentaine de secondes.</p>
-                </div>
               </details>
+            </div>
           </div>
         </article>
 
@@ -340,9 +337,8 @@
       <!-- ===== PROJETS DE FORMATION ===== -->
       <section id="formation">
         <div class="sec-head">
-          <p class="kicker">Autres projets</p>
-          <h2>En formation, et <em>pour m'entraîner.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
+          <p class="label">Autres projets</p>
+          <h2>En formation, et <span class="serif">pour m'entraîner.</span></h2>
         </div>
 
         <ul class="others">
@@ -511,15 +507,13 @@
           </li>
 
         </ul>
-      
       </section>
 
       <!-- ===== PROFIL ===== -->
       <section id="profil">
         <div class="sec-head">
-          <p class="kicker">Profil</p>
-          <h2>Du graphisme au code, <em>le même souci du détail.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
+          <p class="label">Profil</p>
+          <h2>Du graphisme au code, <span class="serif">le même souci du détail.</span></h2>
         </div>
 
         <!-- Présentation + infos annexes -->
@@ -538,8 +532,8 @@
 
           <aside class="about-side">
             <div>
-              <h3 class="card-title">Atouts</h3>
-              <ul class="notes">
+              <h3 class="label">Atouts</h3>
+              <ul class="plain chips">
                 <li>Créative</li>
                 <li>Autonome</li>
                 <li>Patiente</li>
@@ -548,19 +542,19 @@
               </ul>
             </div>
             <div>
-              <h3 class="card-title">Langues</h3>
-              <ul class="langs">
+              <h3 class="label">Langues</h3>
+              <ul class="plain langs">
                 <li>Français <span class="dots" role="img" aria-label="Langue maternelle"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li>Anglais <span class="dots" role="img" aria-label="Niveau intermédiaire"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li>Anglais <span class="dots" role="img" aria-label="Niveau intermédiaire"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li>
               </ul>
             </div>
           </aside>
         </div>
 
-        <!-- Compétences : des fiches de cahier -->
+        <!-- Compétences par catégorie -->
         <div class="skills">
-          <div class="skill-group reveal">
-            <h3 class="card-title">Langages</h3>
+          <div class="skill-group">
+            <h3 class="label">Langages</h3>
             <ul class="plain">
               <li><span class="tile"><i class="ico ico-php" aria-hidden="true"></i></span><span class="tech-name">PHP</span></li>
               <li><span class="tile"><i class="ico ico-javascript" aria-hidden="true"></i></span><span class="tech-name">JavaScript</span></li>
@@ -570,8 +564,8 @@
               <li class="is-basic"><span class="tile"><i class="ico ico-typescript" aria-hidden="true"></i></span><span class="tech-name">TypeScript<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Back-end</h3>
+          <div class="skill-group">
+            <h3 class="label">Back-end</h3>
             <ul class="plain">
               <li><span class="tile"><i class="ico ico-layers" aria-hidden="true"></i></span><span class="tech-name">Architecture MVC</span></li>
               <li><span class="tile"><i class="ico ico-flask" aria-hidden="true"></i></span><span class="tech-name">Flask</span></li>
@@ -581,8 +575,8 @@
               <li class="is-basic"><span class="tile"><i class="ico ico-nodedotjs" aria-hidden="true"></i></span><span class="tech-name">Node.js<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Front-end</h3>
+          <div class="skill-group">
+            <h3 class="label">Front-end</h3>
             <ul class="plain">
               <li><span class="tile"><i class="ico ico-layout" aria-hidden="true"></i></span><span class="tech-name">Intégration de maquettes</span></li>
               <li><span class="tile"><i class="ico ico-responsive" aria-hidden="true"></i></span><span class="tech-name">Responsive design</span></li>
@@ -591,8 +585,8 @@
               <li class="is-basic"><span class="tile"><i class="ico ico-react" aria-hidden="true"></i></span><span class="tech-name">React<span class="vh"> (bases)</span></span></li>
             </ul>
           </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Données et outils</h3>
+          <div class="skill-group">
+            <h3 class="label">Données et outils</h3>
             <ul class="plain">
               <li><span class="tile"><i class="ico ico-mysql" aria-hidden="true"></i><i class="ico ico-postgresql" aria-hidden="true"></i></span><span class="tech-name">MySQL, PostgreSQL</span></li>
               <li><span class="tile"><i class="ico ico-git" aria-hidden="true"></i><i class="ico ico-github" aria-hidden="true"></i></span><span class="tech-name">Git, GitHub</span></li>
@@ -604,54 +598,46 @@
           </div>
         </div>
 
-        
         <p class="skills-legend"><i></i>Notions de base</p>
 
         <!-- Parcours -->
-        <div class="path">
-          <h3 class="card-title">Parcours</h3>
-          <ol class="timeline">
-            <li class="reveal">
-              <span class="when"><time datetime="2026">2026</time></span>
-              <span class="what">
-                Titre professionnel Développeur Web et Web Mobile
-                <span class="kind">Résultat en attente</span>
-              </span>
-              <span class="where">Projet présenté : Toile</span>
-            </li>
-            <li class="reveal">
-              <span class="when"><time datetime="2015">2015</time> – <time datetime="2022">2022</time></span>
-              <span class="what">Métiers de l'enfance et de l'accompagnement</span>
-              <span class="where">ATSEM, aide maternelle à Nouméa, aide à domicile</span>
-            </li>
-            <li class="reveal">
-              <span class="when"><time datetime="2011">2011</time> – <time datetime="2013">2013</time></span>
-              <span class="what">Bac pro communication graphique et visuelle</span>
-              <span class="where">En apprentissage · CFA de Marseille, AD+ communication</span>
-            </li>
-            <li class="reveal">
-              <span class="when">Avant 2011</span>
-              <span class="what">Arts graphiques et arts appliqués</span>
-              <span class="where">Saint-Luc, Tournai (Belgique)</span>
-            </li>
-          </ol>
-        </div>
+        <ol class="timeline">
+          <li>
+            <span class="when"><time datetime="2026">2026</time></span>
+            <span class="what">
+              Titre professionnel Développeur Web et Web Mobile
+              <span class="kind">Résultat en attente</span>
+            </span>
+            <span class="where">Projet présenté : Toile</span>
+          </li>
+          <li>
+            <span class="when"><time datetime="2015">2015</time> – <time datetime="2022">2022</time></span>
+            <span class="what">Métiers de l'enfance et de l'accompagnement</span>
+            <span class="where">ATSEM, aide maternelle à Nouméa, aide à domicile</span>
+          </li>
+          <li>
+            <span class="when"><time datetime="2011">2011</time> – <time datetime="2013">2013</time></span>
+            <span class="what">Bac pro communication graphique et visuelle</span>
+            <span class="where">En apprentissage · CFA de Marseille, AD+ communication</span>
+          </li>
+          <li>
+            <span class="when">Avant 2011</span>
+            <span class="what">Arts graphiques et arts appliqués</span>
+            <span class="where">Saint-Luc, Tournai (Belgique)</span>
+          </li>
+        </ol>
       </section>
 
       <!-- ===== CONTACT ===== -->
       <section class="contact" id="contact">
-        <p class="kicker">Contact</p>
+        <p class="label">Contact</p>
 
         <h2 class="contact-title">
           Une opportunité, un projet&nbsp;?
-          <em>Parlons-en.</em>
+          <span class="serif">Parlons-en.</span>
         </h2>
-        <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
 
         <div class="mail-row">
-          <svg class="doodle arrow-doodle" viewBox="0 0 120 70" aria-hidden="true">
-            <path pathLength="1" d="M6 8 C 30 62, 78 66, 108 30 M108 30 L 92 32 M108 30 L 106 48"/>
-          </svg>
           <a class="mail" id="email" href="mailto:hiezpauline@gmail.com">hiezpauline@gmail.com</a>
           <button type="button" class="copy" id="copy-btn">Copier l'adresse</button>
           <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>

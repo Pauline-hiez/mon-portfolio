@@ -130,13 +130,14 @@ copyBtn.addEventListener('click', async () => {
     copyWithSelection();
 });
 
-// Bouton mode clair / sombre (sombre par défaut)
+// Bouton mode clair / sombre
 const root = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Le thème réellement affiché
+// Le thème réellement affiché : choix du visiteur, sinon réglage du système
 function currentTheme() {
-    return root.dataset.theme === 'light' ? 'light' : 'dark';
+    return root.dataset.theme || (systemDark.matches ? 'dark' : 'light');
 }
 
 // Met le bouton à jour : icône et texte pour les lecteurs d'écran
@@ -160,6 +161,9 @@ themeToggle.addEventListener('click', () => {
     }
     updateToggle();
 });
+
+// Si le visiteur change le réglage de son système pendant sa visite
+systemDark.addEventListener('change', updateToggle);
 
 updateToggle(); // état correct dès le chargement
 
@@ -220,22 +224,3 @@ window.addEventListener('scroll', () => {
 
 // Navigation au clavier : la navbar doit rester visible quand elle a le focus
 siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('is-hidden'));
-
-// Apparitions au scroll : les blocs .reveal et les dessins .doodle se montrent en entrant à l'écran
-const revealItems = document.querySelectorAll('.reveal, .doodle');
-
-if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
-
-    revealItems.forEach((item) => revealObserver.observe(item));
-} else {
-    // Navigateur trop ancien : on montre tout directement
-    revealItems.forEach((item) => item.classList.add('in'));
-}
