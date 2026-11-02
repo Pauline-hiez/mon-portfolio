@@ -1,56 +1,31 @@
 /* =========================================
-   PORTFOLIO · CARNET D'ARTISTE
-   Papier à petits points, spirale, scotch, polaroïds,
-   post-it et annotations manuscrites.
-   Sommaire :
-   1. Variables        7. Introduction
-   2. Bases            8. Sections
-   3. Utilitaires      9. Projets phares
-   4. En-tête         10. Autres projets
-   5. Onglets         11. Profil
-   6. Pied de page    12. Contact
-   13. Logos des technologies
-   14. Apparitions au scroll
-   15. Animations réduites
-   ========================================= */
-
-/* =========================================
    1. VARIABLES ET THÈMES
    Deux thèmes : sombre (par défaut) et clair, choisis avec le bouton
    lune / soleil de l'en-tête (attribut data-theme sur <html>).
-   Palette : teal, crème et pêche.
+   Palette : abricot, turquoise, noir.
    ========================================= */
 :root {
     /* Polices */
-    --display: "Fraunces", Georgia, "Times New Roman", serif;
-    --hand: "Caveat", "Segoe Script", "Bradley Hand", cursive;
-    --sans: "Karla", "Helvetica Neue", Arial, sans-serif;
-    --type: "Courier Prime", "Courier New", monospace;
+    --font-titre: "Melodrama", Georgia, serif;
+    --font-texte: "Satoshi", system-ui, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
 
-    /* --- Thème sombre (par défaut) : bleu-pétrole, crème et pêche --- */
+    /* --- Thème sombre (par défaut) --- */
     color-scheme: dark;
 
     /* Papier et encre */
-    --paper: #102124;
-    /* fond de page (bleu-pétrole très foncé) */
-    --paper-2: #183034;
-    /* feuilles, cartes */
-    --ink: #F7ECDF;
-    /* texte principal (crème) */
-    --ink-2: #D3CBBF;
-    --ink-3: #9FB0AB;
-    --line: #29413F;
-    /* traits de crayon */
+    --paper: #0D1716;           /* fond de page */
+    --paper-2: #142321;         /* cartes, blocs */
+    --ink: #F3DCC6;             /* texte principal */
+    --ink-2: #D9BFA7;
+    --ink-3: #9DB2AE;
+    --line: #22403D;            /* filets, bordures */
 
-    /* Couleurs de crayons et de feutres */
-    --accent: #F1CBB5;
-    /* pêche : liens, traits, boutons */
-    --clay: #F0AE90;
-    /* pêche soutenu : titres manuscrits, numéros, tampons */
-    --blue: #7FB3AA;
-    /* traits secondaires (lignes de fiche, astérisque) */
-    --ok: #8FD1AC;
-    /* tampon « disponible » */
+    /* Accents */
+    --accent: #ECC19C;          /* abricot : liens, boutons */
+    --clay: #ECC19C;            /* abricot : titres mis en valeur, numéros */
+    --blue: #1E847F;            /* turquoise : traits et détails, jamais pour du texte */
+    --ok: #4FB3AC;              /* tampon « disponible » */
 
     /* Pastels : scotch, post-it, onglets */
     --yellow: #EED9B0;
@@ -58,36 +33,31 @@
     --pink: #EBBFAE;
     --sky: #BBD6D2;
     --orange: #F1CBB5;
-    --hl: color-mix(in srgb, var(--blue) 38%, transparent);
-    /* surligneur */
-    --note-ink: #1B3532;
-    /* texte sur post-it, scotch et onglets */
+    --hl: color-mix(in srgb, var(--blue) 38%, transparent);   /* surligneur */
+    --note-ink: #1B3532;        /* texte sur post-it, scotch et onglets */
 
     /* Teintes des trois projets (scotch, fonds) */
-    --t1: #A08660;
-    /* Toile */
-    --t2: #3F7C78;
-    /* Traveling */
-    --t3: #B0725E;
-    /* Filmatrix */
+    --t1: #A08660;              /* Toile */
+    --t2: #3F7C78;              /* Traveling */
+    --t3: #B0725E;              /* Filmatrix */
 
     --shadow: 0 1px 1px rgba(0, 0, 0, 0.4),
         0 14px 24px -12px rgba(0, 0, 0, 0.7);
 }
 
-/* --- Thème clair : teal & pêche --- */
+/* --- Thème clair --- */
 :root[data-theme="light"] {
     color-scheme: light;
-    --paper: #F7ECDF;
-    --paper-2: #FFFDF9;
-    --ink: #1B3532;
-    --ink-2: #3F5A56;
-    --ink-3: #56706C;
-    --line: #E5D5C4;
-    --accent: #356D65;
-    --clay: #A35A40;
-    --blue: #5F8F88;
-    --ok: #2E7D5B;
+    --paper: #FBF1E7;
+    --paper-2: #FFFAF4;
+    --ink: #10201F;
+    --ink-2: #2F4644;
+    --ink-3: #4E6461;
+    --line: #EBD6C2;
+    --accent: #176964;
+    --clay: #A0612F;
+    --blue: #1E847F;
+    --ok: #176964;
     --yellow: #EED9B0;
     --green: #B5D0C7;
     --pink: #EBBFAE;
@@ -100,6 +70,31 @@
     --t3: #EDB9A3;
     --shadow: 0 1px 1px rgba(27, 53, 50, 0.12),
         0 14px 24px -12px rgba(27, 53, 50, 0.4);
+}
+
+/* Polices (fontshare, local) */
+@font-face {
+    font-family: "Melodrama";
+    src: url("../fonts/Melodrama-Variable.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("../fonts/Satoshi-Variable.woff2") format("woff2");
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("../fonts/Satoshi-VariableItalic.woff2") format("woff2");
+    font-weight: 300 900;
+    font-style: italic;
+    font-display: swap;
 }
 
 /* =========================================
@@ -126,11 +121,17 @@ body {
             transparent 1.5px);
     background-size: 26px 26px;
     color: var(--ink);
-    font-family: var(--sans);
+    font-family: var(--font-texte);
     font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.3s, color 0.3s;
+}
+
+h1,
+h2 {
+    font-family: var(--font-titre);
+    font-weight: 500;
 }
 
 /* Grain de papier, par-dessus toute la page */
@@ -148,6 +149,8 @@ body::before {
 @media (min-width: 1200px) {
     body {
         padding-left: 104px;
+        /* le contenu est décalé de la moitié de (104px - marge droite max 64px) */
+        --shift: 20px;
     }
 
     body::after {
@@ -219,7 +222,7 @@ video {
    ========================================= */
 /* Petite étiquette « machine à écrire » */
 .label {
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -230,7 +233,7 @@ video {
 .kicker {
     display: inline-block;
     margin: 0 0 8px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: clamp(28px, 3vw, 36px);
     font-weight: 700;
     line-height: 1;
@@ -317,7 +320,7 @@ video {
     border-radius: 8px;
     box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--stamp, var(--clay));
     color: var(--stamp, var(--clay));
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -357,7 +360,7 @@ video {
     content: "";
     position: absolute;
     z-index: -1;
-    inset: 0 calc(50% - 50vw);
+    inset: 0 calc(50% - 50vw + var(--shift, 0px)) 0 calc(50% - 50vw - var(--shift, 0px));
     border-bottom: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent);
     background: color-mix(in srgb, var(--paper) 86%, transparent);
     -webkit-backdrop-filter: blur(10px);
@@ -370,7 +373,7 @@ video {
 
 .brand {
     margin-right: auto;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 32px;
     font-weight: 700;
     line-height: 1;
@@ -506,9 +509,9 @@ video {
         padding: 14px 0;
         border-radius: 12px 0 0 12px;
         background: var(--tab);
-        box-shadow: -3px 3px 8px rgba(31, 42, 55, 0.28);
+        box-shadow: -3px 3px 8px rgba(27, 53, 50, 0.28);
         color: var(--note-ink);
-        font-family: var(--hand);
+        font-family: var(--font-texte);
         font-size: 21px;
         font-weight: 700;
         line-height: 1;
@@ -574,10 +577,9 @@ video {
 
 h1 {
     margin: 0;
-    font-family: var(--display);
+    font-family: var(--font-titre);
     font-weight: 600;
     font-size: clamp(42px, 6.2vw, 88px);
-    font-variation-settings: "opsz" 144;
     line-height: 1.03;
     letter-spacing: -0.025em;
     text-wrap: balance;
@@ -663,7 +665,7 @@ h1 {
 .polaroid figcaption {
     position: absolute;
     inset: auto 10px 8px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 22px;
     font-weight: 700;
     line-height: 1.1;
@@ -749,10 +751,9 @@ section+section {
 h2 {
     margin: 0;
     max-width: 16em;
-    font-family: var(--display);
+    font-family: var(--font-titre);
     font-weight: 600;
     font-size: clamp(34px, 4.8vw, 62px);
-    font-variation-settings: "opsz" 144;
     line-height: 1.05;
     letter-spacing: -0.02em;
     text-wrap: balance;
@@ -807,7 +808,7 @@ h2 em {
 }
 
 .placeholder-name {
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: clamp(38px, 5vw, 60px);
     font-weight: 700;
     line-height: 1;
@@ -834,7 +835,7 @@ h2 em {
     flex-wrap: wrap;
     gap: 2px 0;
     padding: 12px 6px 14px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 24px;
     font-weight: 500;
     line-height: 1.2;
@@ -856,7 +857,7 @@ h2 em {
     margin-bottom: 14px;
     border: 2px solid var(--clay);
     border-radius: 58% 42% 55% 45% / 45% 55% 45% 55%;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 32px;
     font-weight: 700;
     line-height: 1;
@@ -866,10 +867,9 @@ h2 em {
 
 .p-info h3 {
     margin: 0 0 14px;
-    font-family: var(--display);
+    font-family: var(--font-titre);
     font-weight: 600;
     font-size: clamp(44px, 5.4vw, 76px);
-    font-variation-settings: "opsz" 144;
     line-height: 0.98;
     letter-spacing: -0.025em;
 }
@@ -899,8 +899,8 @@ h2 em {
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--paper-2);
-    box-shadow: 0 2px 0 rgba(31, 42, 55, 0.14);
-    font-family: var(--type);
+    box-shadow: 0 2px 0 rgba(27, 53, 50, 0.14);
+    font-family: var(--font-mono);
     font-size: 14px;
     font-weight: 700;
     color: var(--ink);
@@ -992,7 +992,7 @@ h2 em {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 26px;
     font-weight: 700;
     color: var(--accent);
@@ -1050,7 +1050,7 @@ h2 em {
 .sticky .note {
     margin: 14px 0 0;
     padding-top: 12px;
-    border-top: 1px dashed rgba(43, 36, 32, 0.4);
+    border-top: 1px dashed rgba(27, 53, 50, 0.4);
     font-size: 14px;
 }
 
@@ -1294,7 +1294,7 @@ h2 em {
     border-radius: 3px;
     background: var(--yellow);
     color: var(--note-ink);
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -1309,7 +1309,7 @@ h2 em {
     align-items: center;
     justify-content: center;
     padding: 0 12px 40px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: clamp(28px, 2.4vw, 38px);
     font-weight: 700;
     line-height: 1.1;
@@ -1361,7 +1361,7 @@ h2 em {
 }
 
 .other-name {
-    font-family: var(--display);
+    font-family: var(--font-texte);
     font-weight: 600;
     font-size: 20px;
     letter-spacing: -0.01em;
@@ -1417,7 +1417,7 @@ h2 em {
 
 .other-date {
     flex-shrink: 0;
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 12px;
     color: rgba(255, 255, 255, 0.8);
     white-space: nowrap;
@@ -1430,7 +1430,7 @@ h2 em {
     padding: 1px 9px;
     border: 1.5px solid var(--clay);
     border-radius: 4px;
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -1499,7 +1499,7 @@ h2 em {
 /* Petits titres manuscrits (fiches, parcours, atouts…) */
 .card-title {
     margin: 0 0 14px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 32px;
     font-weight: 700;
     line-height: 1;
@@ -1520,9 +1520,8 @@ h2 em {
 }
 
 .about-copy .about-lead {
-    font-family: var(--display);
+    font-family: var(--font-texte);
     font-size: clamp(24px, 2.7vw, 34px);
-    font-variation-settings: "opsz" 72;
     line-height: 1.3;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -1549,7 +1548,7 @@ h2 em {
     background: var(--n);
     box-shadow: var(--shadow);
     color: var(--note-ink);
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 25px;
     font-weight: 700;
     line-height: 1.1;
@@ -1602,7 +1601,7 @@ h2 em {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 27px;
     font-weight: 700;
 }
@@ -1695,7 +1694,7 @@ h2 em {
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--paper-2);
-    box-shadow: 0 2px 0 rgba(31, 42, 55, 0.14);
+    box-shadow: 0 2px 0 rgba(27, 53, 50, 0.14);
     font-size: 17px;
     transition: transform 0.25s;
 }
@@ -1729,7 +1728,7 @@ h2 em {
     align-items: center;
     gap: 10px;
     margin: 26px 0 0;
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -1781,11 +1780,11 @@ h2 em {
     border: 3px solid var(--paper);
     border-radius: 50%;
     background: var(--clay);
-    box-shadow: 0 2px 4px rgba(31, 42, 55, 0.4);
+    box-shadow: 0 2px 4px rgba(27, 53, 50, 0.4);
 }
 
 .when {
-    font-family: var(--hand);
+    font-family: var(--font-texte);
     font-size: 34px;
     font-weight: 700;
     line-height: 1.1;
@@ -1797,7 +1796,7 @@ h2 em {
     flex-wrap: wrap;
     align-items: center;
     gap: 6px 12px;
-    font-family: var(--display);
+    font-family: var(--font-texte);
     font-size: clamp(20px, 2vw, 25px);
     font-weight: 600;
     line-height: 1.25;
@@ -1882,7 +1881,7 @@ h2 em {
 }
 
 .mail {
-    font-family: var(--display);
+    font-family: var(--font-texte);
     font-style: italic;
     font-size: clamp(24px, 3.6vw, 46px);
     letter-spacing: -0.01em;
@@ -1902,7 +1901,7 @@ h2 em {
     border-radius: 8px;
     background: transparent;
     color: var(--ink);
-    font-family: var(--type);
+    font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -1941,7 +1940,7 @@ h2 em {
 }
 
 .socials .arrow {
-    font-family: var(--display);
+    font-family: var(--font-texte);
     font-size: 26px;
     font-style: italic;
     font-weight: 400;
