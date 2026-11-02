@@ -1,19 +1,3 @@
-// Horloge : affiche l'heure de Paris
-const clock = document.getElementById('clock');
-
-const timeFormat = new Intl.DateTimeFormat('fr-FR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Paris'
-});
-
-function updateClock() {
-    clock.textContent = timeFormat.format(new Date()) + ' (Paris)';
-}
-
-updateClock();                      // Affichage immédiat
-setInterval(updateClock, 30000);    // Toutes les 30 secondes
-
 // Vidéos des projets
 const videos = document.querySelectorAll('.demo');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

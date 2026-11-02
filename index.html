@@ -16,10 +16,6 @@
   <meta property="og:image" content="https://pauline-hiez.github.io/mon-portfolio/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Polices : titres (Fraunces), écriture manuscrite (Caveat), texte (Karla), étiquettes (Courier Prime) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap">
 
   <!-- Applique le thème choisi avant l'affichage (évite un flash) et signale que le JavaScript est actif -->
   <script>
@@ -41,29 +37,24 @@
 
   <a class="skip-link" href="#main">Aller au contenu</a>
 
-  <!-- Barre de progression (petits écrans) et onglets de cahier (grands écrans) -->
-  <div class="progress" aria-hidden="true"></div>
-  <nav class="bookmark" aria-label="Sections de la page">
-    <ul>
-      <li><a href="#top" data-section="top"><span>Accueil</span></a></li>
-      <li><a href="#projets" data-section="projets"><span>Projets</span></a></li>
-      <li><a href="#profil" data-section="profil"><span>Profil</span></a></li>
-      <li><a href="#contact" data-section="contact"><span>Contact</span></a></li>
-    </ul>
-  </nav>
-
   <div class="wrap">
 
     <!-- ===== EN-TÊTE DU SITE ===== -->
     <header class="site-header">
-      <a class="brand" href="#top">Pauline Foucher</a>
-      <nav aria-label="Navigation principale">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span class="brand-name">Pauline Foucher</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navigation principale">
         <ul>
           <li><a href="#projets">Projets</a></li>
-          <li><a href="#profil">Profil</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a class="btn-outline" href="#contact">Me contacter <span aria-hidden="true">→</span></a></li>
         </ul>
       </nav>
+
       <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Activer le mode clair">
         <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>
@@ -77,264 +68,160 @@
 
     <main id="main">
 
-      <!-- ===== INTRODUCTION ===== -->
+      <!-- Introduction -->
       <section class="hero" id="top">
         <div class="hero-text">
-          <svg class="doodle star" viewBox="0 0 40 40" aria-hidden="true">
-            <path pathLength="1" d="M20 4 V36 M5 12 L35 28 M35 12 L5 28"/>
-          </svg>
-
-          <h1 class="rise">
-            Développeuse web, avec un <em class="mark">regard de designer.</em>
-          </h1>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
-
-          <p class="statement rise d2">
-            Je m'appelle <b>Pauline Foucher</b>. Formée aux arts graphiques puis au
-            développement web, j'apprends en construisant.
+          <p class="kicker">Développeuse web</p>
+          <h1>Je donne vie aux idées, <em>entre design et développement.</em></h1>
+          <p class="hero-lead">
+            Formée aux arts graphiques puis au développement web, je conçois des
+            sites soignés, accessibles et pensés jusque dans les détails.
           </p>
-
-          <div class="hero-facts rise d3">
-            <div class="stamp stamp--ok">
-              <span class="stamp-title">Disponible</span>
-              <span>Emploi, alternance ou formation</span>
-            </div>
-
-            <dl class="meta">
-              <div>
-                <dt class="label">Basée à</dt>
-                <dd>Var, France</dd>
-              </div>
-              <div>
-                <dt class="label">Heure locale</dt>
-                <dd id="clock">—</dd>
-              </div>
-              <div>
-                <dt class="label">Langages</dt>
-                <dd>
-                  <ul class="stack" aria-label="Langages">
-                    <li><i class="ico ico-php" aria-hidden="true"></i>PHP</li>
-                    <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                    <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
-                  </ul>
-                </dd>
-              </div>
-            </dl>
-          </div>
+          <a class="btn-outline" href="#projets">
+            Découvrir mes projets <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <!-- Collage décoratif : quelques projets punaisés sur la page -->
-        <div class="collage" aria-hidden="true">
-          <figure class="polaroid pol-1">
-            <span class="tape tape--c"></span>
-            <img src="images/fansite.webp" alt="">
-            <figcaption>Fansite</figcaption>
-          </figure>
-          <figure class="polaroid pol-2">
-            <span class="tape tape--c"></span>
-            <img src="images/memory-js.webp" alt="">
-            <figcaption>Memory JS</figcaption>
-          </figure>
-          <figure class="polaroid pol-3">
-            <span class="tape tape--c"></span>
-            <img src="images/marsai.webp" alt="">
-            <figcaption>marsAI</figcaption>
-          </figure>
-        </div>
+        <!-- Visuel : emplacement de la lanterne 3D (étape three.js) -->
+        <figure class="hero-visual" aria-hidden="true"></figure>
       </section>
 
-      <!-- ===== PROJETS PHARES ===== -->
-      <section id="projets">
-        <div class="sec-head">
-          <p class="kicker">Projets phares</p>
-          <h2>Trois projets, <em>trois apprentissages.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
-          <p class="sec-note">
-            Trois projets perso, dont Toile, présenté pour le titre professionnel.
+      <!-- Mon univers (à propos) -->
+      <section class="about" id="a-propos">
+        <!-- Visuel : à choisir (portrait, rendu 3D…) -->
+        <figure class="about-visual">
+          <img src="images/epouvantail.webp" alt="L'appel, scène 3D réalisée dans Blender" loading="lazy">
+        </figure>
+
+        <div class="about-text">
+          <p class="kicker">Mon univers</p>
+          <h2>Créer, c'est <em>raconter</em> une histoire.</h2>
+          <p>
+            Avant le code, il y a eu le dessin, la peinture et la communication
+            visuelle. Aujourd'hui, je mets ce regard au service du web : des
+            interfaces claires, accessibles et soignées.
           </p>
+          <ul class="tags" aria-label="Domaines">
+            <li>Développement web</li>
+            <li>Design UI</li>
+            <li>Arts graphiques</li>
+          </ul>
         </div>
 
-        <!-- ===== PROJET : TRAVELING ===== -->
-        <article class="project project--wide reveal" style="--c: var(--t2)">
-          <div class="p-visual">
-            <figure class="frame">
-              <span class="tape tape--l" aria-hidden="true"></span><span class="tape tape--r" aria-hidden="true"></span>
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Traveling</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/traveling.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration du blog Traveling"></video>
-              </div>
-              <figcaption class="cap"><span>Blog</span><span>Voyage &amp; cinéma</span><span>Mai – sept. 2026</span></figcaption>
-            </figure>
-          </div>
+        <ul class="pillars">
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>
+            </svg>
+            <h3>Développer</h3>
+            <p>Des sites performants et accessibles</p>
+          </li>
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="8" cy="10" r="1"/>
+              <circle cx="12" cy="7.5" r="1"/>
+              <circle cx="16" cy="10" r="1"/>
+            </svg>
+            <h3>Concevoir</h3>
+            <p>Des interfaces soignées et intuitives</p>
+          </li>
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3c.6 4.6 3.4 7.4 9 9-5.6 1.6-8.4 4.4-9 9-.6-4.6-3.4-7.4-9-9 5.6-1.6 8.4-4.4 9-9z"/>
+            </svg>
+            <h3>Explorer</h3>
+            <p>La 3D, de nouveaux outils, de nouveaux univers</p>
+          </li>
+        </ul>
+      </section>
 
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">01</span>
-            <h3>Traveling</h3>
-            <p class="desc">
-              Un blog qui relie voyage et cinéma, avec fiches films TMDB et carte
-                interactive des lieux de tournage.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
-                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
-                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
-                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
-                <li><i class="ico ico-leaflet" aria-hidden="true"></i>Leaflet</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">
-                  Voir le site <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/traveling" target="_blank" rel="noopener">
-                  Voir le code <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                  <li>Architecture MVC écrite à la main, sans framework</li>
-                  <li>Connexion Google (OAuth 2.0) et newsletter hebdomadaire automatisée</li>
-                  <li>Sécurité : CSRF, requêtes préparées, rôles et middlewares</li>
-                </ul>
-                <p class="note">
-                  Commencé avant Toile, mis de côté le temps de préparer le titre
-                  professionnel, puis repris et déployé récemment. Mise à jour
-                  automatique à chaque push grâce à GitHub Actions.
-                </p>
-                </div>
-              </details>
-          </div>
-        </article>
-
-        <!-- Toile et Filmatrix côte à côte -->
-        <div class="duo">
-
-        <!-- ===== PROJET : TOILE ===== -->
-        <article class="project project--card reveal" style="--c: var(--t1)">
-          <div class="p-visual">
-            <figure class="frame">
-              
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Toile</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/toile.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration de la marketplace Toile"></video>
-              </div>
-              <figcaption class="cap"><span>Marketplace</span><span>Projet du titre DWWM</span><span>Juin – juil. 2026</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">02</span>
-            <h3>Toile</h3>
-            <p class="desc">
-              Une marketplace où des artistes vendent des œuvres sur mesure.
-                Commencée avec Symfony, reconstruite en PHP natif.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
-                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
-                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
-                <li><i class="ico ico-stripe" aria-hidden="true"></i>Stripe</li>
-                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-test" aria-hidden="true"></i>PHPUnit</li>
-                <li><i class="ico ico-githubactions" aria-hidden="true"></i>GitHub Actions</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://toile.free.nf/" target="_blank" rel="noopener">
-                  Voir le site <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/toile" target="_blank" rel="noopener">
-                  Code PHP natif <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/toile-symfony" target="_blank" rel="noopener">
-                  Version Symfony <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                    <li>Paiements Stripe, reversement aux artistes et factures PDF</li>
-                    <li>Boutiques d'artistes, commandes avec messagerie, abonnements</li>
-                    <li>Sécurité : CSRF, anti-brute-force, en-têtes HTTP, tests PHPUnit</li>
-                  </ul>
-                  <p class="note">Déployé automatiquement à chaque mise à jour grâce à GitHub Actions.</p>
-                </div>
-              </details>
-          </div>
-        </article>
-
-        <!-- ===== PROJET : FILMATRIX ===== -->
-        <article class="project project--card reveal" style="--c: var(--t3)">
-          <div class="p-visual">
-            <figure class="frame">
-              
-            <span class="stamp stamp--wip">En développement</span>
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Filmatrix</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/filmatrix.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration des jeux Filmatrix"></video>
-              </div>
-              <figcaption class="cap"><span>Jeux en ligne</span><span>Pour apprendre Python</span><span>Août – sept. 2026</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">03</span>
-            <h3>Filmatrix</h3>
-            <p class="desc">
-              Une plateforme de jeux sur le cinéma : 12 modes de jeu, duels en
-                temps réel et progression avec badges.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
-                <li><i class="ico ico-flask" aria-hidden="true"></i>Flask</li>
-                <li><i class="ico ico-socketdotio" aria-hidden="true"></i>Socket.IO</li>
-                <li><i class="ico ico-postgresql" aria-hidden="true"></i>PostgreSQL</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
-                <li><i class="ico ico-pytest" aria-hidden="true"></i>pytest</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">
-                  Jouer en ligne <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/filmatrix" target="_blank" rel="noopener">
-                  Voir le code <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                    <li>Duels et messagerie en temps réel avec WebSockets</li>
-                    <li>Panneau d'administration avec recherche TMDB, iTunes et YouTube</li>
-                    <li>ORM, migrations, tests pytest et mise en production</li>
-                  </ul>
-                  <p class="note">Projet toujours en développement. Hébergé sur une offre gratuite : le premier chargement peut prendre une trentaine de secondes.</p>
-                </div>
-              </details>
-          </div>
-        </article>
-
+      <!-- Projets -->
+      <section class="projects" id="projets">
+        <div class="projects-intro">
+          <p class="kicker">Mes projets</p>
+          <h2>Quelques <em>réalisations.</em></h2>
+          <p>
+            Trois projets personnels, de la maquette à la mise en ligne, dont
+            Toile, présenté pour le titre professionnel.
+          </p>
+          <a class="btn-outline" href="#formation">
+            Voir tous mes projets <span aria-hidden="true">→</span>
+          </a>
         </div>
+
+        <ul class="project-list">
+          <!-- Toile -->
+          <li class="project-card">
+            <div class="screen">
+              <span class="badge">Projet du titre DWWM</span>
+              <video class="demo" src="videos/toile.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration de la marketplace Toile"></video>
+            </div>
+            <div class="project-body">
+              <h3>Toile</h3>
+              <p>Marketplace d'œuvres d'art sur mesure</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>PHP</li>
+                <li>MVC</li>
+                <li>MySQL</li>
+                <li>Stripe</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://toile.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/toile" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Traveling -->
+          <li class="project-card">
+            <div class="screen">
+              <video class="demo" src="videos/traveling.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration du blog Traveling"></video>
+            </div>
+            <div class="project-body">
+              <h3>Traveling</h3>
+              <p>Blog voyage et cinéma</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>PHP</li>
+                <li>MVC</li>
+                <li>Tailwind</li>
+                <li>API TMDB</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/traveling" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Filmatrix -->
+          <li class="project-card">
+            <div class="screen">
+              <span class="badge">En développement</span>
+              <video class="demo" src="videos/filmatrix.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration des jeux Filmatrix"></video>
+            </div>
+            <div class="project-body">
+              <h3>Filmatrix</h3>
+              <p>Mini-jeux sur le cinéma, en temps réel</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>Python</li>
+                <li>Flask</li>
+                <li>Socket.IO</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">Jouer en ligne <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/filmatrix" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <!-- ===== PROJETS DE FORMATION ===== -->
