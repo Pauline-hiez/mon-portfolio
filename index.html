@@ -16,10 +16,6 @@
   <meta property="og:image" content="https://pauline-hiez.github.io/mon-portfolio/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Polices : titres (Fraunces), écriture manuscrite (Caveat), texte (Karla), étiquettes (Courier Prime) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap">
 
   <!-- Applique le thème choisi avant l'affichage (évite un flash) et signale que le JavaScript est actif -->
   <script>
@@ -41,29 +37,24 @@
 
   <a class="skip-link" href="#main">Aller au contenu</a>
 
-  <!-- Barre de progression (petits écrans) et onglets de cahier (grands écrans) -->
-  <div class="progress" aria-hidden="true"></div>
-  <nav class="bookmark" aria-label="Sections de la page">
-    <ul>
-      <li><a href="#top" data-section="top"><span>Accueil</span></a></li>
-      <li><a href="#projets" data-section="projets"><span>Projets</span></a></li>
-      <li><a href="#profil" data-section="profil"><span>Profil</span></a></li>
-      <li><a href="#contact" data-section="contact"><span>Contact</span></a></li>
-    </ul>
-  </nav>
-
   <div class="wrap">
 
     <!-- ===== EN-TÊTE DU SITE ===== -->
     <header class="site-header">
-      <a class="brand" href="#top">Pauline Foucher</a>
-      <nav aria-label="Navigation principale">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span class="brand-name">Pauline Foucher</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navigation principale">
         <ul>
           <li><a href="#projets">Projets</a></li>
-          <li><a href="#profil">Profil</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a class="btn-outline" href="#contact">Me contacter <span aria-hidden="true">→</span></a></li>
         </ul>
       </nav>
+
       <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Activer le mode clair">
         <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>
@@ -77,608 +68,499 @@
 
     <main id="main">
 
-      <!-- ===== INTRODUCTION ===== -->
+      <!-- Introduction -->
       <section class="hero" id="top">
         <div class="hero-text">
-          <svg class="doodle star" viewBox="0 0 40 40" aria-hidden="true">
-            <path pathLength="1" d="M20 4 V36 M5 12 L35 28 M35 12 L5 28"/>
-          </svg>
-
-          <h1 class="rise">
-            Développeuse web, avec un <em class="mark">regard de designer.</em>
-          </h1>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
-
-          <p class="statement rise d2">
-            Je m'appelle <b>Pauline Foucher</b>. Formée aux arts graphiques puis au
-            développement web, j'apprends en construisant.
+          <p class="kicker">Développeuse web</p>
+          <h1>Je donne vie aux idées, <em>entre design et développement.</em></h1>
+          <p class="hero-lead">
+            Formée aux arts graphiques puis au développement web, je conçois des
+            sites soignés, accessibles et pensés jusque dans les détails.
           </p>
+          <a class="btn-outline" href="#projets">
+            Découvrir mes projets <span aria-hidden="true">→</span>
+          </a>
+        </div>
 
-          <div class="hero-facts rise d3">
-            <div class="stamp stamp--ok">
-              <span class="stamp-title">Disponible</span>
-              <span>Emploi, alternance ou formation</span>
+        <!-- Visuel provisoire, en attendant le personnage 3D -->
+        <figure class="hero-visual">
+          <img src="images/lanterne.webp"
+               alt="Lanterne citrouille sculptée, modélisée et éclairée dans Blender"
+               width="1200" height="900" fetchpriority="high">
+        </figure>
+      </section>
+
+      <!-- Mon univers (à propos) -->
+      <section class="about" id="a-propos">
+        <!-- Visuel : à choisir (portrait, rendu 3D…) -->
+        <figure class="about-visual">
+          <img src="images/epouvantail.webp" alt="L'appel, scène 3D réalisée dans Blender" loading="lazy">
+          <button type="button" class="play-btn" id="film-open">
+            <span class="play-pill">
+              <span class="play-icon" aria-hidden="true">▶</span>
+              Voir le court-métrage
+              <span class="play-time">1:05</span>
+            </span>
+          </button>
+        </figure>
+
+        <div class="about-text">
+          <p class="kicker">Mon univers</p>
+          <h2>Créer, c'est <em>raconter</em> une histoire.</h2>
+          <p>
+            Avant le code, il y a eu le dessin, la peinture et la communication
+            visuelle. Aujourd'hui, je mets ce regard au service du web : des
+            interfaces claires, accessibles et soignées.
+          </p>
+          <ul class="tags" aria-label="Domaines">
+            <li>Développement web</li>
+            <li>Design UI</li>
+            <li>Arts graphiques</li>
+          </ul>
+        </div>
+
+        <ul class="pillars">
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>
+            </svg>
+            <h3>Développer</h3>
+            <p>Des sites performants et accessibles</p>
+          </li>
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="8" cy="10" r="1"/>
+              <circle cx="12" cy="7.5" r="1"/>
+              <circle cx="16" cy="10" r="1"/>
+            </svg>
+            <h3>Concevoir</h3>
+            <p>Des interfaces soignées et intuitives</p>
+          </li>
+          <li>
+            <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3c.6 4.6 3.4 7.4 9 9-5.6 1.6-8.4 4.4-9 9-.6-4.6-3.4-7.4-9-9 5.6-1.6 8.4-4.4 9-9z"/>
+            </svg>
+            <h3>Explorer</h3>
+            <p>La 3D, de nouveaux outils, de nouveaux univers</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Projets -->
+      <section class="projects" id="projets">
+        <div class="projects-intro">
+          <p class="kicker">Mes projets</p>
+          <h2>Quelques <em>réalisations.</em></h2>
+          <p>
+            Trois projets personnels, de la maquette à la mise en ligne, dont
+            Toile, présenté pour le titre professionnel.
+          </p>
+          <a class="btn-outline" href="#formation">
+            Voir tous mes projets <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <ul class="project-list">
+          <!-- Toile -->
+          <li class="project-card">
+            <div class="screen">
+              <span class="badge">Projet du titre DWWM</span>
+              <video class="demo" src="videos/toile.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration de la marketplace Toile"></video>
             </div>
+            <div class="project-body">
+              <h3>Toile</h3>
+              <p>Marketplace d'œuvres d'art sur mesure</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>PHP</li>
+                <li>MVC</li>
+                <li>MySQL</li>
+                <li>Stripe</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://toile.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/toile" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </li>
 
-            <dl class="meta">
-              <div>
-                <dt class="label">Basée à</dt>
-                <dd>Var, France</dd>
+          <!-- Traveling -->
+          <li class="project-card">
+            <div class="screen">
+              <video class="demo" src="videos/traveling.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration du blog Traveling"></video>
+            </div>
+            <div class="project-body">
+              <h3>Traveling</h3>
+              <p>Blog voyage et cinéma</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>PHP</li>
+                <li>MVC</li>
+                <li>Tailwind</li>
+                <li>API TMDB</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/traveling" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
               </div>
-              <div>
-                <dt class="label">Heure locale</dt>
-                <dd id="clock">—</dd>
-              </div>
-              <div>
-                <dt class="label">Langages</dt>
-                <dd>
-                  <ul class="stack" aria-label="Langages">
-                    <li><i class="ico ico-php" aria-hidden="true"></i>PHP</li>
-                    <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                    <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
-                  </ul>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
+            </div>
+          </li>
 
-        <!-- Collage décoratif : quelques projets punaisés sur la page -->
-        <div class="collage" aria-hidden="true">
-          <figure class="polaroid pol-1">
-            <span class="tape tape--c"></span>
-            <img src="images/fansite.webp" alt="">
-            <figcaption>Fansite</figcaption>
-          </figure>
-          <figure class="polaroid pol-2">
-            <span class="tape tape--c"></span>
-            <img src="images/memory-js.webp" alt="">
-            <figcaption>Memory JS</figcaption>
-          </figure>
-          <figure class="polaroid pol-3">
-            <span class="tape tape--c"></span>
-            <img src="images/marsai.webp" alt="">
-            <figcaption>marsAI</figcaption>
-          </figure>
-        </div>
+          <!-- Filmatrix -->
+          <li class="project-card">
+            <div class="screen">
+              <span class="badge">En développement</span>
+              <video class="demo" src="videos/filmatrix.mp4"
+                     muted loop playsinline preload="metadata"
+                     aria-label="Démonstration des jeux Filmatrix"></video>
+            </div>
+            <div class="project-body">
+              <h3>Filmatrix</h3>
+              <p>Mini-jeux sur le cinéma, en temps réel</p>
+              <ul class="tags" aria-label="Technologies">
+                <li>Python</li>
+                <li>Flask</li>
+                <li>Socket.IO</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">Jouer en ligne <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/Pauline-hiez/filmatrix" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </section>
 
-      <!-- ===== PROJETS PHARES ===== -->
-      <section id="projets">
-        <div class="sec-head">
-          <p class="kicker">Projets phares</p>
-          <h2>Trois projets, <em>trois apprentissages.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
-          <p class="sec-note">
-            Trois projets perso, dont Toile, présenté pour le titre professionnel.
-          </p>
-        </div>
-
-        <!-- ===== PROJET : TRAVELING ===== -->
-        <article class="project project--wide reveal" style="--c: var(--t2)">
-          <div class="p-visual">
-            <figure class="frame">
-              <span class="tape tape--l" aria-hidden="true"></span><span class="tape tape--r" aria-hidden="true"></span>
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Traveling</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/traveling.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration du blog Traveling"></video>
-              </div>
-              <figcaption class="cap"><span>Blog</span><span>Voyage &amp; cinéma</span><span>Mai – sept. 2026</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">01</span>
-            <h3>Traveling</h3>
-            <p class="desc">
-              Un blog qui relie voyage et cinéma, avec fiches films TMDB et carte
-                interactive des lieux de tournage.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
-                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
-                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
-                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
-                <li><i class="ico ico-leaflet" aria-hidden="true"></i>Leaflet</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">
-                  Voir le site <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/traveling" target="_blank" rel="noopener">
-                  Voir le code <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                  <li>Architecture MVC écrite à la main, sans framework</li>
-                  <li>Connexion Google (OAuth 2.0) et newsletter hebdomadaire automatisée</li>
-                  <li>Sécurité : CSRF, requêtes préparées, rôles et middlewares</li>
-                </ul>
-                <p class="note">
-                  Commencé avant Toile, mis de côté le temps de préparer le titre
-                  professionnel, puis repris et déployé récemment. Mise à jour
-                  automatique à chaque push grâce à GitHub Actions.
-                </p>
-                </div>
-              </details>
-          </div>
-        </article>
-
-        <!-- Toile et Filmatrix côte à côte -->
-        <div class="duo">
-
-        <!-- ===== PROJET : TOILE ===== -->
-        <article class="project project--card reveal" style="--c: var(--t1)">
-          <div class="p-visual">
-            <figure class="frame">
-              
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Toile</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/toile.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration de la marketplace Toile"></video>
-              </div>
-              <figcaption class="cap"><span>Marketplace</span><span>Projet du titre DWWM</span><span>Juin – juil. 2026</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">02</span>
-            <h3>Toile</h3>
-            <p class="desc">
-              Une marketplace où des artistes vendent des œuvres sur mesure.
-                Commencée avec Symfony, reconstruite en PHP natif.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-php" aria-hidden="true"></i>PHP 8</li>
-                <li><i class="ico ico-layers" aria-hidden="true"></i>MVC maison</li>
-                <li><i class="ico ico-mysql" aria-hidden="true"></i>MySQL</li>
-                <li><i class="ico ico-stripe" aria-hidden="true"></i>Stripe</li>
-                <li><i class="ico ico-javascript" aria-hidden="true"></i>JavaScript</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-test" aria-hidden="true"></i>PHPUnit</li>
-                <li><i class="ico ico-githubactions" aria-hidden="true"></i>GitHub Actions</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://toile.free.nf/" target="_blank" rel="noopener">
-                  Voir le site <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/toile" target="_blank" rel="noopener">
-                  Code PHP natif <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/toile-symfony" target="_blank" rel="noopener">
-                  Version Symfony <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                    <li>Paiements Stripe, reversement aux artistes et factures PDF</li>
-                    <li>Boutiques d'artistes, commandes avec messagerie, abonnements</li>
-                    <li>Sécurité : CSRF, anti-brute-force, en-têtes HTTP, tests PHPUnit</li>
-                  </ul>
-                  <p class="note">Déployé automatiquement à chaque mise à jour grâce à GitHub Actions.</p>
-                </div>
-              </details>
-          </div>
-        </article>
-
-        <!-- ===== PROJET : FILMATRIX ===== -->
-        <article class="project project--card reveal" style="--c: var(--t3)">
-          <div class="p-visual">
-            <figure class="frame">
-              
-            <span class="stamp stamp--wip">En développement</span>
-              <div class="screen">
-                <div class="placeholder" aria-hidden="true">
-                  <span class="placeholder-name">Filmatrix</span>
-                  <span class="label">Aperçu vidéo à venir</span>
-                </div>
-                <video class="demo" src="videos/filmatrix.mp4"
-                       muted loop playsinline preload="metadata"
-                       aria-label="Démonstration des jeux Filmatrix"></video>
-              </div>
-              <figcaption class="cap"><span>Jeux en ligne</span><span>Pour apprendre Python</span><span>Août – sept. 2026</span></figcaption>
-            </figure>
-          </div>
-
-          <div class="p-info">
-            <span class="p-num" aria-hidden="true">03</span>
-            <h3>Filmatrix</h3>
-            <p class="desc">
-              Une plateforme de jeux sur le cinéma : 12 modes de jeu, duels en
-                temps réel et progression avec badges.
-            </p>
-            <ul class="stack" aria-label="Technologies">
-                <li><i class="ico ico-python" aria-hidden="true"></i>Python</li>
-                <li><i class="ico ico-flask" aria-hidden="true"></i>Flask</li>
-                <li><i class="ico ico-socketdotio" aria-hidden="true"></i>Socket.IO</li>
-                <li><i class="ico ico-postgresql" aria-hidden="true"></i>PostgreSQL</li>
-                <li><i class="ico ico-tailwindcss" aria-hidden="true"></i>Tailwind</li>
-                <li><i class="ico ico-themoviedatabase" aria-hidden="true"></i>API TMDB</li>
-                <li><i class="ico ico-pytest" aria-hidden="true"></i>pytest</li>
-              </ul>
-            <div class="p-links">
-                <a class="btn" href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">
-                  Jouer en ligne <span class="ar" aria-hidden="true">↗</span>
-                </a>
-                <a class="arrow" href="https://github.com/Pauline-hiez/filmatrix" target="_blank" rel="noopener">
-                  Voir le code <span class="ar" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            <details class="more">
-                <summary>En savoir plus</summary>
-                <div class="sticky">
-                  <ul class="highlights">
-                    <li>Duels et messagerie en temps réel avec WebSockets</li>
-                    <li>Panneau d'administration avec recherche TMDB, iTunes et YouTube</li>
-                    <li>ORM, migrations, tests pytest et mise en production</li>
-                  </ul>
-                  <p class="note">Projet toujours en développement. Hébergé sur une offre gratuite : le premier chargement peut prendre une trentaine de secondes.</p>
-                </div>
-              </details>
-          </div>
-        </article>
-
-        </div>
-      </section>
-
-      <!-- ===== PROJETS DE FORMATION ===== -->
-      <section id="formation">
-        <div class="sec-head">
+      <!-- Autres projets -->
+      <section class="others" id="formation">
+        <div class="others-head">
           <p class="kicker">Autres projets</p>
           <h2>En formation, et <em>pour m'entraîner.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
         </div>
 
-        <ul class="others">
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/fansite" target="_blank" rel="noopener">
+        <ul class="others-list">
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/ahpec" target="_blank" rel="noopener">
               <figure class="other-shot">
-                <span class="other-badge">Premier projet</span>
-                <span class="other-placeholder" aria-hidden="true">Fansite</span>
-                <img class="other-thumb" src="images/fansite.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Fansite</span>
-                </div>
-                <span class="other-desc">Site fan dédié au cinéma, avec fiches de films classiques et navigation par rubriques. Mon tout premier projet, point de départ de cet apprentissage.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="HTML"><i class="ico ico-html5" aria-hidden="true"></i><span class="vh">HTML</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
-                  <span class="other-date">Sept. 2025</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/livre-or" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">Livre d'or</span>
-                <img class="other-thumb" src="images/livreor.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Livre d'or</span>
-                </div>
-                <span class="other-desc">Livre d'or avec inscription, connexion et publication de commentaires.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span><span class="tech" title="MySQL"><i class="ico ico-mysql" aria-hidden="true"></i><span class="vh">MySQL</span></span></span>
-                  <span class="other-date">Nov. 2025</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/memory" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">Memory</span>
-                <img class="other-thumb" src="images/memory-php.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Memory</span>
-                </div>
-                <span class="other-desc">Jeu de memory sur le thème Vikings, avec comptage des coups, chronométrage et classement.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
-                  <span class="other-date">Nov. 2025</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/memory-js" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">Memory JS</span>
-                <img class="other-thumb" src="images/memory-js.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Memory JS</span>
-                </div>
-                <span class="other-desc">Le même jeu de memory repris en JavaScript, thème South Park, avec comptes et classement.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
-                  <span class="other-date">Janv. 2026</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/cinetech" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">Cinetech</span>
-                <img class="other-thumb" src="images/cinetech.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Cinetech</span>
-                </div>
-                <span class="other-desc">Catalogue de films et de séries alimenté par l'API TMDB.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="API"><i class="ico ico-api" aria-hidden="true"></i><span class="vh">API</span></span></span>
-                  <span class="other-date">Janv. – mai 2026</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/reservation-salle" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">Réservation</span>
-                <img class="other-thumb" src="images/reservation-salle.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">Réservation de salles</span>
-                </div>
-                <span class="other-desc">Application de réservation de salles avec planning et comptes utilisateurs.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="JavaScript"><i class="ico ico-javascript" aria-hidden="true"></i><span class="vh">JavaScript</span></span><span class="tech" title="PHP"><i class="ico ico-php" aria-hidden="true"></i><span class="vh">PHP</span></span></span>
-                  <span class="other-date">Févr. 2026</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/marsAI" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">marsAI</span>
-                <img class="other-thumb" src="images/marsai.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">marsAI</span>
-                  <span class="kind">Équipe</span>
-                </div>
-                <span class="other-desc">Projet réalisé en équipe, du partage des tâches à la mise en commun du code.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="TypeScript"><i class="ico ico-typescript" aria-hidden="true"></i><span class="vh">TypeScript</span></span></span>
-                  <span class="other-date">Mars – mai 2026</span>
-                </div>
-              </div>
-              <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="other" href="https://github.com/Pauline-hiez/ahpec" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="other-placeholder" aria-hidden="true">AHPEC</span>
+                <span class="badge">Perso</span>
                 <img class="other-thumb" src="images/ahpec.webp" alt="" loading="lazy">
               </figure>
-              <div class="other-info">
-                <div class="other-head">
-                  <span class="other-name">AHPEC</span>
-                  <span class="kind kind--perso">Perso</span>
-                </div>
-                <span class="other-desc">Site vitrine pour une entreprise de plomberie, d'électricité et de climatisation.</span>
-                <div class="other-foot">
-                  <span class="other-tech"><span class="tech" title="HTML"><i class="ico ico-html5" aria-hidden="true"></i><span class="vh">HTML</span></span><span class="tech" title="CSS"><i class="ico ico-css3" aria-hidden="true"></i><span class="vh">CSS</span></span></span>
-                  <span class="other-date">Juin 2026</span>
-                </div>
+              <div class="other-body">
+                <h3>AHPEC <span aria-hidden="true">↗</span></h3>
+                <p>Site vitrine pour une entreprise de plomberie, d'électricité et de climatisation.</p>
+                <p class="other-meta">HTML · CSS — Juin 2026</p>
               </div>
-              <span class="ar" aria-hidden="true">↗</span>
             </a>
           </li>
 
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/marsAI" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <span class="badge">Équipe</span>
+                <img class="other-thumb" src="images/marsai.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>marsAI <span aria-hidden="true">↗</span></h3>
+                <p>Projet réalisé en équipe, du partage des tâches à la mise en commun du code.</p>
+                <p class="other-meta">TypeScript — Mars – mai 2026</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/cinetech" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <img class="other-thumb" src="images/cinetech.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Cinetech <span aria-hidden="true">↗</span></h3>
+                <p>Catalogue de films et de séries alimenté par l'API TMDB.</p>
+                <p class="other-meta">JavaScript · API — Janv. – mai 2026</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/reservation-salle" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <img class="other-thumb" src="images/reservation-salle.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Réservation de salles <span aria-hidden="true">↗</span></h3>
+                <p>Application de réservation avec planning et comptes utilisateurs.</p>
+                <p class="other-meta">PHP · JavaScript — Févr. 2026</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/memory-js" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <img class="other-thumb" src="images/memory-js.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Memory JS <span aria-hidden="true">↗</span></h3>
+                <p>Jeu de memory en JavaScript, avec comptes et classement.</p>
+                <p class="other-meta">JavaScript · CSS — Janv. 2026</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/memory" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <img class="other-thumb" src="images/memory-php.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Memory <span aria-hidden="true">↗</span></h3>
+                <p>Jeu de memory sur le thème Vikings, avec chronomètre et classement.</p>
+                <p class="other-meta">PHP · CSS — Nov. 2025</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/livre-or" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <img class="other-thumb" src="images/livreor.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Livre d'or <span aria-hidden="true">↗</span></h3>
+                <p>Inscription, connexion et publication de commentaires.</p>
+                <p class="other-meta">PHP · MySQL — Nov. 2025</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="other-card">
+            <a href="https://github.com/Pauline-hiez/fansite" target="_blank" rel="noopener">
+              <figure class="other-shot">
+                <span class="badge">Premier projet</span>
+                <img class="other-thumb" src="images/fansite.webp" alt="" loading="lazy">
+              </figure>
+              <div class="other-body">
+                <h3>Fansite <span aria-hidden="true">↗</span></h3>
+                <p>Site fan dédié au cinéma, point de départ de mon apprentissage.</p>
+                <p class="other-meta">HTML · CSS — Sept. 2025</p>
+              </div>
+            </a>
+          </li>
         </ul>
-      
       </section>
 
-      <!-- ===== PROFIL ===== -->
-      <section id="profil">
-        <div class="sec-head">
-          <p class="kicker">Profil</p>
-          <h2>Du graphisme au code, <em>le même souci du détail.</em></h2>
-          <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
+      <!-- Mon processus -->
+      <section class="process" id="processus">
+        <!-- Visuel : une de mes maquettes ou wireframes -->
+        <figure class="process-visual" aria-hidden="true"></figure>
+
+        <div class="process-text">
+          <p class="kicker">Mon processus</p>
+          <h2>Une idée, <em>un projet.</em></h2>
+          <p>
+            De la première esquisse à la mise en ligne, je mène chaque projet
+            avec méthode : comprendre le besoin, le dessiner, puis le construire.
+          </p>
         </div>
 
-        <!-- Présentation + infos annexes -->
-        <div class="about">
-          <div class="about-copy">
-            <p class="about-lead">
-              Avant le code, il y a eu le dessin, la peinture et la communication
-              visuelle : typographie, composition, souci du détail.
-            </p>
-            <p>
-              Après plusieurs années auprès des enfants et des familles, je me suis
-              reconvertie dans le développement web. Je cherche un poste, une
-              alternance ou une formation.
-            </p>
-          </div>
-
-          <aside class="about-side">
-            <div>
-              <h3 class="card-title">Atouts</h3>
-              <ul class="notes">
-                <li>Créative</li>
-                <li>Autonome</li>
-                <li>Patiente</li>
-                <li>Esprit d'équipe</li>
-                <li>Capacité d'adaptation</li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="card-title">Langues</h3>
-              <ul class="langs">
-                <li>Français <span class="dots" role="img" aria-label="Langue maternelle"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li>Anglais <span class="dots" role="img" aria-label="Niveau intermédiaire"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-
-        <!-- Compétences : des fiches de cahier -->
-        <div class="skills">
-          <div class="skill-group reveal">
-            <h3 class="card-title">Langages</h3>
-            <ul class="plain">
-              <li><span class="tile"><i class="ico ico-php" aria-hidden="true"></i></span><span class="tech-name">PHP</span></li>
-              <li><span class="tile"><i class="ico ico-javascript" aria-hidden="true"></i></span><span class="tech-name">JavaScript</span></li>
-              <li><span class="tile"><i class="ico ico-python" aria-hidden="true"></i></span><span class="tech-name">Python</span></li>
-              <li><span class="tile"><i class="ico ico-html5" aria-hidden="true"></i><i class="ico ico-css3" aria-hidden="true"></i></span><span class="tech-name">HTML &amp; CSS</span></li>
-              <li><span class="tile"><i class="ico ico-database" aria-hidden="true"></i></span><span class="tech-name">SQL</span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-typescript" aria-hidden="true"></i></span><span class="tech-name">TypeScript<span class="vh"> (bases)</span></span></li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Back-end</h3>
-            <ul class="plain">
-              <li><span class="tile"><i class="ico ico-layers" aria-hidden="true"></i></span><span class="tech-name">Architecture MVC</span></li>
-              <li><span class="tile"><i class="ico ico-flask" aria-hidden="true"></i></span><span class="tech-name">Flask</span></li>
-              <li><span class="tile"><i class="ico ico-api" aria-hidden="true"></i></span><span class="tech-name">API REST</span></li>
-              <li><span class="tile"><i class="ico ico-stripe" aria-hidden="true"></i></span><span class="tech-name">Stripe</span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-symfony" aria-hidden="true"></i></span><span class="tech-name">Symfony<span class="vh"> (bases)</span></span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-nodedotjs" aria-hidden="true"></i></span><span class="tech-name">Node.js<span class="vh"> (bases)</span></span></li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Front-end</h3>
-            <ul class="plain">
-              <li><span class="tile"><i class="ico ico-layout" aria-hidden="true"></i></span><span class="tech-name">Intégration de maquettes</span></li>
-              <li><span class="tile"><i class="ico ico-responsive" aria-hidden="true"></i></span><span class="tech-name">Responsive design</span></li>
-              <li><span class="tile"><i class="ico ico-tailwindcss" aria-hidden="true"></i></span><span class="tech-name">Tailwind CSS</span></li>
-              <li><span class="tile"><i class="ico ico-a11y" aria-hidden="true"></i></span><span class="tech-name">Accessibilité</span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-react" aria-hidden="true"></i></span><span class="tech-name">React<span class="vh"> (bases)</span></span></li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="card-title">Données et outils</h3>
-            <ul class="plain">
-              <li><span class="tile"><i class="ico ico-mysql" aria-hidden="true"></i><i class="ico ico-postgresql" aria-hidden="true"></i></span><span class="tech-name">MySQL, PostgreSQL</span></li>
-              <li><span class="tile"><i class="ico ico-git" aria-hidden="true"></i><i class="ico ico-github" aria-hidden="true"></i></span><span class="tech-name">Git, GitHub</span></li>
-              <li><span class="tile"><i class="ico ico-githubactions" aria-hidden="true"></i></span><span class="tech-name">GitHub Actions</span></li>
-              <li><span class="tile"><i class="ico ico-test" aria-hidden="true"></i><i class="ico ico-pytest" aria-hidden="true"></i></span><span class="tech-name">PHPUnit, pytest</span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-docker" aria-hidden="true"></i></span><span class="tech-name">Docker<span class="vh"> (bases)</span></span></li>
-              <li class="is-basic"><span class="tile"><i class="ico ico-mongodb" aria-hidden="true"></i></span><span class="tech-name">NoSQL<span class="vh"> (bases)</span></span></li>
-            </ul>
-          </div>
-        </div>
-
-        
-        <p class="skills-legend"><i></i>Notions de base</p>
-
-        <!-- Parcours -->
-        <div class="path">
-          <h3 class="card-title">Parcours</h3>
-          <ol class="timeline">
-            <li class="reveal">
-              <span class="when"><time datetime="2026">2026</time></span>
-              <span class="what">
-                Titre professionnel Développeur Web et Web Mobile
-                <span class="kind">Résultat en attente</span>
-              </span>
-              <span class="where">Projet présenté : Toile</span>
-            </li>
-            <li class="reveal">
-              <span class="when"><time datetime="2015">2015</time> – <time datetime="2022">2022</time></span>
-              <span class="what">Métiers de l'enfance et de l'accompagnement</span>
-              <span class="where">ATSEM, aide maternelle à Nouméa, aide à domicile</span>
-            </li>
-            <li class="reveal">
-              <span class="when"><time datetime="2011">2011</time> – <time datetime="2013">2013</time></span>
-              <span class="what">Bac pro communication graphique et visuelle</span>
-              <span class="where">En apprentissage · CFA de Marseille, AD+ communication</span>
-            </li>
-            <li class="reveal">
-              <span class="when">Avant 2011</span>
-              <span class="what">Arts graphiques et arts appliqués</span>
-              <span class="where">Saint-Luc, Tournai (Belgique)</span>
-            </li>
-          </ol>
-        </div>
+        <ol class="steps">
+          <li>
+            <h3>Analyser</h3>
+            <p>Cahier des charges, user stories</p>
+          </li>
+          <li>
+            <h3>Concevoir</h3>
+            <p>Maquettes, modèle de données</p>
+          </li>
+          <li>
+            <h3>Développer</h3>
+            <p>Code versionné, tests, mise en ligne</p>
+          </li>
+        </ol>
       </section>
 
-      <!-- ===== CONTACT ===== -->
+      <!-- Compétences -->
+      <section class="skills" id="competences">
+        <div class="skills-head">
+          <p class="kicker">Compétences</p>
+          <h2>Ma boîte <em>à outils.</em></h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Langages</h3>
+            <ul class="tags">
+              <li>PHP</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+              <li>HTML &amp; CSS</li>
+              <li>SQL</li>
+              <li class="is-basic">TypeScript<span class="vh"> (bases)</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Back-end</h3>
+            <ul class="tags">
+              <li>Architecture MVC</li>
+              <li>Flask</li>
+              <li>API REST</li>
+              <li>Stripe</li>
+              <li class="is-basic">Symfony<span class="vh"> (bases)</span></li>
+              <li class="is-basic">Node.js<span class="vh"> (bases)</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Front-end</h3>
+            <ul class="tags">
+              <li>Intégration de maquettes</li>
+              <li>Responsive design</li>
+              <li>Tailwind CSS</li>
+              <li>Accessibilité</li>
+              <li class="is-basic">React<span class="vh"> (bases)</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Données et outils</h3>
+            <ul class="tags">
+              <li>MySQL</li>
+              <li>PostgreSQL</li>
+              <li>Git &amp; GitHub</li>
+              <li>GitHub Actions</li>
+              <li>PHPUnit</li>
+              <li>pytest</li>
+              <li class="is-basic">Docker<span class="vh"> (bases)</span></li>
+              <li class="is-basic">NoSQL<span class="vh"> (bases)</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Design et 3D</h3>
+            <ul class="tags">
+              <li>Figma</li>
+              <li>Maquettage UI</li>
+              <li>Charte graphique</li>
+              <li>Blender</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="skills-legend"><span aria-hidden="true"></span>Notions de base</p>
+      </section>
+
+      <!-- Parcours -->
+      <section class="path" id="parcours">
+        <div class="path-intro">
+          <p class="kicker">Parcours</p>
+          <h2>Du graphisme <em>au code.</em></h2>
+          <p>
+            Après plusieurs années auprès des enfants et des familles, je me suis
+            reconvertie dans le développement web. Je cherche aujourd'hui un poste,
+            une alternance ou une formation.
+          </p>
+
+          <h3>Atouts</h3>
+          <ul class="tags">
+            <li>Créative</li>
+            <li>Autonome</li>
+            <li>Patiente</li>
+            <li>Esprit d'équipe</li>
+            <li>Capacité d'adaptation</li>
+          </ul>
+
+          <h3>Langues</h3>
+          <ul class="langs">
+            <li>Français <span>Langue maternelle</span></li>
+            <li>Anglais <span>Intermédiaire</span></li>
+          </ul>
+        </div>
+
+        <ol class="timeline">
+          <li>
+            <time class="when" datetime="2026">2025 – 2026</time>
+            <h3>Titre professionnel Développeur Web et Web Mobile</h3>
+            <p>La Plateforme, Toulon · Formation de 14 mois · Obtenu en octobre 2026</p>
+          </li>
+          <li>
+            <time class="when" datetime="2015">2015 – 2022</time>
+            <h3>Métiers de l'enfance et de l'accompagnement</h3>
+            <p>ATSEM, aide maternelle à Nouméa, aide à domicile</p>
+          </li>
+          <li>
+            <time class="when" datetime="2011">2011 – 2013</time>
+            <h3>Bac pro Communication graphique et visuelle</h3>
+            <p>En alternance · CFA de Marseille, AD+ Communication</p>
+          </li>
+          <li>
+            <span class="when">Avant 2011</span>
+            <h3>Arts graphiques et arts appliqués</h3>
+            <p>Saint-Luc, Tournai (Belgique)</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Contact -->
       <section class="contact" id="contact">
         <p class="kicker">Contact</p>
-
-        <h2 class="contact-title">
-          Une opportunité, un projet&nbsp;?
-          <em>Parlons-en.</em>
-        </h2>
-        <svg class="doodle squiggle" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9 C 30 2, 50 15, 80 8 S 130 2, 160 9 S 220 15, 250 7 S 285 4, 297 8"/></svg>
+        <h2>Une opportunité, un projet&nbsp;? <em>Parlons-en.</em></h2>
+        <p class="contact-lead">
+          Je cherche un poste, une alternance ou une formation.
+          Écrivez-moi, je serai ravie d'en discuter.
+        </p>
 
         <div class="mail-row">
-          <svg class="doodle arrow-doodle" viewBox="0 0 120 70" aria-hidden="true">
-            <path pathLength="1" d="M6 8 C 30 62, 78 66, 108 30 M108 30 L 92 32 M108 30 L 106 48"/>
-          </svg>
           <a class="mail" id="email" href="mailto:hiezpauline@gmail.com">hiezpauline@gmail.com</a>
-          <button type="button" class="copy" id="copy-btn">Copier l'adresse</button>
-          <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+          <button type="button" class="btn-outline" id="copy-btn">Copier l'adresse</button>
+          <span class="vh" id="copy-status" role="status" aria-live="polite"></span>
         </div>
-
-        <ul class="socials">
-          <li>
-            <a class="arrow" href="https://github.com/Pauline-hiez" target="_blank" rel="noopener">
-              GitHub <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="arrow" href="https://www.linkedin.com/in/pauline-hiez-a993b643b/" target="_blank" rel="noopener">
-              LinkedIn <span class="ar" aria-hidden="true">↗</span>
-            </a>
-          </li>
-        </ul>
       </section>
 
     </main>
 
+    <!-- Pied de page -->
     <footer class="site-footer">
-      <span class="label">© 2026 Pauline Foucher</span>
-      <a class="label" href="#top">Haut de page ↑</a>
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span class="brand-name">Pauline Foucher</span>
+      </a>
+
+      <nav aria-label="Liens de bas de page">
+        <ul class="footer-links">
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+        </ul>
+      </nav>
+
+      <ul class="socials">
+        <li><a href="https://github.com/Pauline-hiez" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.linkedin.com/in/pauline-hiez-a993b643b/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+      </ul>
+
+      <p class="copyright">© 2026 Pauline Foucher</p>
     </footer>
 
   </div>
+
+  <!-- Fenêtre du court-métrage -->
+  <dialog class="film-dialog" id="film-dialog" aria-labelledby="film-title">
+    <div class="film-head">
+      <h2 id="film-title">L'appel</h2>
+      <button type="button" class="film-close" id="film-close" aria-label="Fermer la vidéo">×</button>
+    </div>
+    <video class="film-video" id="film-video" src="videos/lappel.mp4"
+           poster="videos/lappel-poster.webp"
+           controls preload="none" playsinline></video>
+    <p class="film-caption">
+      Court-métrage 3D réalisé dans Blender · 1 min 05 ·
+      <a href="https://www.youtube.com/watch?v=dZjXC21wqis" target="_blank" rel="noopener">Voir aussi sur YouTube <span aria-hidden="true">↗</span></a>
+    </p>
+  </dialog>
 
 </body>
 </html>

@@ -1,110 +1,78 @@
-/* =========================================
-   PORTFOLIO · CARNET D'ARTISTE
-   Papier à petits points, spirale, scotch, polaroïds,
-   post-it et annotations manuscrites.
-   Sommaire :
-   1. Variables        7. Introduction
-   2. Bases            8. Sections
-   3. Utilitaires      9. Projets phares
-   4. En-tête         10. Autres projets
-   5. Onglets         11. Profil
-   6. Pied de page    12. Contact
-   13. Logos des technologies
-   14. Apparitions au scroll
-   15. Animations réduites
-   ========================================= */
-
-/* =========================================
-   1. VARIABLES ET THÈMES
-   Deux thèmes : sombre (par défaut) et clair, choisis avec le bouton
-   lune / soleil de l'en-tête (attribut data-theme sur <html>).
-   Palette : teal, crème et pêche.
-   ========================================= */
+/* 1. Variables et thèmes : gris-noir, or et crème */
 :root {
     /* Polices */
-    --display: "Fraunces", Georgia, "Times New Roman", serif;
-    --hand: "Caveat", "Segoe Script", "Bradley Hand", cursive;
-    --sans: "Karla", "Helvetica Neue", Arial, sans-serif;
-    --type: "Courier Prime", "Courier New", monospace;
+    --font-titre: "Melodrama", Georgia, serif;
+    --font-texte: "Satoshi", system-ui, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
 
-    /* --- Thème sombre (par défaut) : bleu-pétrole, crème et pêche --- */
+    /* Thème sombre (par défaut) */
     color-scheme: dark;
 
-    /* Papier et encre */
-    --paper: #102124;
-    /* fond de page (bleu-pétrole très foncé) */
-    --paper-2: #183034;
-    /* feuilles, cartes */
-    --ink: #F7ECDF;
-    /* texte principal (crème) */
-    --ink-2: #D3CBBF;
-    --ink-3: #9FB0AB;
-    --line: #29413F;
-    /* traits de crayon */
-
-    /* Couleurs de crayons et de feutres */
-    --accent: #F1CBB5;
-    /* pêche : liens, traits, boutons */
-    --clay: #F0AE90;
-    /* pêche soutenu : titres manuscrits, numéros, tampons */
-    --blue: #7FB3AA;
-    /* traits secondaires (lignes de fiche, astérisque) */
-    --ok: #8FD1AC;
-    /* tampon « disponible » */
-
-    /* Pastels : scotch, post-it, onglets */
-    --yellow: #EED9B0;
-    --green: #B5D0C7;
-    --pink: #EBBFAE;
-    --sky: #BBD6D2;
-    --orange: #F1CBB5;
-    --hl: color-mix(in srgb, var(--blue) 38%, transparent);
-    /* surligneur */
-    --note-ink: #1B3532;
-    /* texte sur post-it, scotch et onglets */
-
-    /* Teintes des trois projets (scotch, fonds) */
-    --t1: #A08660;
-    /* Toile */
-    --t2: #3F7C78;
-    /* Traveling */
-    --t3: #B0725E;
-    /* Filmatrix */
-
+    /* Fond de page */
+    --paper: #141414;
+    /* Cartes, blocs */
+    --paper-2: #1C1B1A;
+    /* Titres, texte important (crème) */
+    --ink: #ECD8CE;
+    /* Texte courant (gris chaud) */
+    --ink-2: #B8B2AA;
+    /* Textes secondaires, légendes */
+    --ink-3: #8C847C;
+    /* Filets, bordures */
+    --line: #2E2A26;
+    /* Or clair : liens, boutons, icônes */
+    --accent: #C9A27E;
+    /* Or bronze : mots en italique */
+    --gold: #B48A64;
+    /* Surligneur, sélection */
+    --hl: color-mix(in srgb, var(--accent) 25%, transparent);
+    /* Ombre des cartes */
     --shadow: 0 1px 1px rgba(0, 0, 0, 0.4),
         0 14px 24px -12px rgba(0, 0, 0, 0.7);
 }
 
-/* --- Thème clair : teal & pêche --- */
+/* Thème clair : crème, encre et bronze */
 :root[data-theme="light"] {
     color-scheme: light;
-    --paper: #F7ECDF;
-    --paper-2: #FFFDF9;
-    --ink: #1B3532;
-    --ink-2: #3F5A56;
-    --ink-3: #56706C;
-    --line: #E5D5C4;
-    --accent: #356D65;
-    --clay: #A35A40;
-    --blue: #5F8F88;
-    --ok: #2E7D5B;
-    --yellow: #EED9B0;
-    --green: #B5D0C7;
-    --pink: #EBBFAE;
-    --sky: #BBD6D2;
-    --orange: #F1CBB5;
-    --hl: color-mix(in srgb, var(--orange) 80%, transparent);
-    --note-ink: #1B3532;
-    --t1: #E9CFA6;
-    --t2: #9CC3BB;
-    --t3: #EDB9A3;
-    --shadow: 0 1px 1px rgba(27, 53, 50, 0.12),
-        0 14px 24px -12px rgba(27, 53, 50, 0.4);
+    --paper: #F4EDE4;
+    --paper-2: #FBF7F1;
+    --ink: #1A1816;
+    --ink-2: #4A443E;
+    --ink-3: #6B635B;
+    --line: #E2D7CA;
+    --accent: #8A5F3A;
+    --gold: #8A5F3A;
+    --hl: color-mix(in srgb, var(--accent) 20%, transparent);
+    --shadow: 0 1px 1px rgba(26, 24, 22, 0.12),
+        0 14px 24px -12px rgba(26, 24, 22, 0.35);
 }
 
-/* =========================================
-   2. RESET ET BASES
-   ========================================= */
+/* Polices (Fontshare, hébergées en local) */
+@font-face {
+    font-family: "Melodrama";
+    src: url("../fonts/Melodrama-Variable.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("../fonts/Satoshi-Variable.woff2") format("woff2");
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("../fonts/Satoshi-VariableItalic.woff2") format("woff2");
+    font-weight: 300 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* 2. Reset et bases (mobile first) */
 *,
 *::before,
 *::after {
@@ -118,56 +86,29 @@ html {
 
 body {
     margin: 0;
-    overflow-x: clip;
     padding-inline: clamp(16px, 5vw, 64px);
-    /* papier à petits points */
+    overflow-x: clip;
     background-color: var(--paper);
-    background-image: radial-gradient(color-mix(in srgb, var(--ink) 18%, transparent) 1px,
-            transparent 1.5px);
-    background-size: 26px 26px;
-    color: var(--ink);
-    font-family: var(--sans);
+    color: var(--ink-2);
+    font-family: var(--font-texte);
     font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Grain de papier, par-dessus toute la page */
-body::before {
-    content: "";
-    position: fixed;
-    z-index: 900;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+/* Grands titres en Melodrama */
+h1,
+h2 {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-titre);
+    font-weight: 500;
+    line-height: 1.05;
+    text-wrap: balance;
 }
 
-/* Spirale et marge de cahier, sur le bord gauche (grands écrans) */
-@media (min-width: 1200px) {
-    body {
-        padding-left: 104px;
-    }
-
-    body::after {
-        content: "";
-        position: fixed;
-        z-index: 800;
-        inset: 0 auto 0 0;
-        width: 72px;
-        pointer-events: none;
-        background:
-            /* trait rouge de la marge */
-            linear-gradient(90deg, transparent 68px, color-mix(in srgb, var(--clay) 45%, transparent) 68px 69px, transparent 69px) no-repeat,
-            /* trous de la spirale */
-            radial-gradient(circle at 24px 15px,
-                color-mix(in srgb, var(--ink) 30%, transparent) 0 6px,
-                color-mix(in srgb, var(--ink) 12%, transparent) 6.5px 8px,
-                transparent 8.5px) 0 0 / 72px 34px repeat-y;
-    }
-}
-
+/* Conteneur centré */
 .wrap {
     max-width: 1140px;
     margin: 0 auto;
@@ -184,6 +125,7 @@ video {
     max-width: 100%;
 }
 
+/* Contour visible au clavier */
 :focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
@@ -214,30 +156,6 @@ video {
     transform: translateY(0);
 }
 
-/* =========================================
-   3. UTILITAIRES
-   ========================================= */
-/* Petite étiquette « machine à écrire » */
-.label {
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-}
-
-/* Titre manuscrit au-dessus d'une section */
-.kicker {
-    display: inline-block;
-    margin: 0 0 8px;
-    font-family: var(--hand);
-    font-size: clamp(28px, 3vw, 36px);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--clay);
-    transform: rotate(-2deg);
-}
-
 /* Texte lu par les lecteurs d'écran, mais invisible */
 .vh {
     position: absolute;
@@ -248,181 +166,125 @@ video {
     white-space: nowrap;
 }
 
-/* Surligneur */
-.mark {
-    font-style: italic;
-    background: linear-gradient(transparent 58%, var(--hl) 58% 92%, transparent 92%);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    padding-inline: 0.08em;
-}
-
-/* Dessins « au feutre » (SVG décoratifs) */
-.doodle {
-    display: block;
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    overflow: visible;
-}
-
-.doodle path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0;
-}
-
-.squiggle {
-    width: clamp(120px, 20vw, 220px);
-    height: 12px;
-    margin-top: 6px;
-}
-
-/* Bande de scotch (extrémités déchirées) */
-.tape {
-    position: absolute;
-    z-index: 3;
-    top: -14px;
-    width: 96px;
-    height: 30px;
-    background: color-mix(in srgb, var(--c, var(--yellow)) 65%, transparent);
-    clip-path: polygon(0 0, 4% 12%, 0 25%, 4% 38%, 0 50%, 4% 62%, 0 75%, 4% 88%, 0 100%,
-            100% 100%, 96% 88%, 100% 75%, 96% 62%, 100% 50%, 96% 38%, 100% 25%, 96% 12%, 100% 0);
-}
-
-.tape--l {
-    left: 7%;
-    transform: rotate(-5deg);
-}
-
-.tape--r {
-    right: 7%;
-    transform: rotate(4deg);
-}
-
-.tape--c {
-    left: 50%;
-    margin-left: -48px;
-    transform: rotate(-2deg);
-}
-
-/* Tampon */
-.stamp {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 8px 16px;
-    border: 2px solid var(--stamp, var(--clay));
-    border-radius: 8px;
-    box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--stamp, var(--clay));
-    color: var(--stamp, var(--clay));
-    font-family: var(--type);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1.3;
-    text-transform: uppercase;
-    transform: rotate(-4deg);
-}
-
-.stamp--ok {
-    --stamp: var(--ok);
-}
-
-.stamp-title {
-    font-size: 18px;
-    letter-spacing: 0.16em;
-}
-
-/* =========================================
-   4. EN-TÊTE DU SITE
-   ========================================= */
+/* 3. En-tête du site */
 .site-header {
-    /* reste collé en haut de l'écran ; se cache quand on descend (voir script.js) */
     position: sticky;
     z-index: 40;
     top: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
-    padding-block: 16px;
+    align-items: center;
+    gap: 12px 20px;
+    padding-block: 14px;
     transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Fond de papier translucide, d'un bord à l'autre, avec une ligne à découper */
+/* Fond translucide, d'un bord à l'autre de l'écran */
 .site-header::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset: 0 calc(50% - 50vw);
-    border-bottom: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent);
-    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
+/* Caché quand on descend (voir script.js) */
 .site-header.is-hidden {
     transform: translateY(-100%);
 }
 
+/* Logo : </> + nom */
 .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-right: auto;
-    font-family: var(--hand);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1;
-    transform: rotate(-1.5deg);
+    color: var(--ink);
 }
 
-.site-header ul {
+.brand-mark {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.brand-name {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Navigation : sur mobile, elle passe sous le logo, sur toute la largeur */
+.site-nav {
+    order: 3;
+    width: 100%;
+}
+
+.site-nav ul {
     display: flex;
-    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 22px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.site-header ul a {
-    font-size: 17px;
-    font-weight: 500;
+.site-nav a:not(.btn-outline) {
+    font-size: 15px;
     color: var(--ink-2);
-    text-decoration: underline wavy transparent;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 6px;
-    transition: color 0.2s, text-decoration-color 0.2s;
+    transition: color 0.2s;
 }
 
-.site-header ul a:hover {
+.site-nav a:not(.btn-outline):hover {
     color: var(--ink);
-    text-decoration-color: var(--accent);
 }
 
-/* --- Bouton mode clair / sombre : un petit tampon rond --- */
+/* Bouton à contour arrondi (réutilisé dans toute la page) */
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: var(--paper);
+}
+
+/* Bouton mode clair / sombre */
 .theme-toggle {
     display: grid;
     place-items: center;
     width: 40px;
     height: 40px;
     padding: 0;
-    border: 2px solid var(--ink);
-    border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
+    border: 1px solid var(--line);
+    border-radius: 50%;
     background: transparent;
-    color: var(--ink);
+    color: var(--ink-2);
     cursor: pointer;
-    transition: transform 0.3s, background 0.2s;
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .theme-toggle:hover {
-    background: var(--hl);
-    transform: rotate(15deg);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .theme-toggle svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
@@ -430,7 +292,7 @@ video {
     stroke-linejoin: round;
 }
 
-/* En mode clair, on propose la lune ; en mode sombre, le soleil */
+/* En mode sombre, on propose le soleil ; en mode clair, la lune */
 .theme-toggle .icon-sun,
 .theme-toggle[data-current="dark"] .icon-moon {
     display: none;
@@ -440,378 +302,374 @@ video {
     display: block;
 }
 
-/* =========================================
-   5. ONGLETS DE CAHIER ET PROGRESSION
-   ========================================= */
-
-/* Petits écrans : simple trait de progression en haut de la page */
-.progress {
-    position: fixed;
-    z-index: 950;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-}
-
-.bookmark {
-    display: none;
-}
-
-/* Grands écrans : des onglets colorés sur le bord droit, comme des intercalaires */
-@media (min-width: 1360px) {
-    .progress {
-        display: none;
+/* Grands écrans : tout sur une ligne */
+@media (min-width: 900px) {
+    .site-header {
+        flex-wrap: nowrap;
+        gap: 32px;
+        padding-block: 20px;
     }
 
-    .bookmark {
-        position: fixed;
-        z-index: 850;
-        top: 50%;
-        right: 0;
-        display: block;
-        transform: translateY(-50%);
+    .brand {
+        margin-right: 0;
     }
 
-    .bookmark ul {
-        display: grid;
-        gap: 10px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    .site-nav {
+        order: 0;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: 32px;
+        width: auto;
     }
 
-    .bookmark li:nth-child(1) {
-        --tab: var(--yellow);
+    /* Filet fin entre le logo et les liens, comme sur la maquette */
+    .site-nav::before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line);
     }
 
-    .bookmark li:nth-child(2) {
-        --tab: var(--pink);
-    }
-
-    .bookmark li:nth-child(3) {
-        --tab: var(--green);
-    }
-
-    .bookmark li:nth-child(4) {
-        --tab: var(--sky);
-    }
-
-    .bookmark a {
-        display: block;
-        width: 40px;
-        padding: 14px 0;
-        border-radius: 12px 0 0 12px;
-        background: var(--tab);
-        box-shadow: -3px 3px 8px rgba(31, 42, 55, 0.28);
-        color: var(--note-ink);
-        font-family: var(--hand);
-        font-size: 21px;
-        font-weight: 700;
-        line-height: 1;
-        text-align: center;
-        writing-mode: vertical-rl;
-        /* l'onglet dépasse de la « page » : il sort à moitié au survol */
-        transform: translateX(12px);
-        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .bookmark a:hover,
-    .bookmark a:focus-visible {
-        transform: translateX(0);
-    }
-
-    /* Section en cours : l'onglet ressort en entier, plus large */
-    .bookmark a[aria-current] {
-        width: 48px;
-        transform: translateX(0);
+    .site-nav ul {
+        flex-wrap: nowrap;
+        gap: 28px;
     }
 }
 
-/* =========================================
-   6. PIED DE PAGE
-   ========================================= */
-.site-footer {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-block: 24px 40px;
-    border-top: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent);
-}
-
-.site-footer a:hover {
+/* 4. Étiquette au-dessus des titres (réutilisée dans toutes les sections) */
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 18px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--accent);
 }
 
-/* =========================================
-   7. INTRODUCTION (HERO)
-   ========================================= */
+/* Petit filet après le texte, comme sur la maquette */
+.kicker::after {
+    content: "";
+    width: 48px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+/* Mots mis en valeur dans les titres : en or, sans faux italique */
+h1 em,
+h2 em {
+    font-style: normal;
+    color: var(--gold);
+}
+
+/* 5. Introduction (hero) */
 .hero {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(32px, 5vw, 72px);
-    align-items: center;
-    padding-block: clamp(48px, 7vw, 96px) clamp(64px, 9vw, 120px);
+    gap: 40px;
+    padding-block: clamp(40px, 8vw, 112px);
 }
 
-.hero-text {
-    position: relative;
+.hero h1 {
+    font-size: clamp(44px, 8vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
 }
 
-.star {
-    position: absolute;
-    top: -34px;
-    right: 6%;
-    width: 44px;
-    height: 44px;
-    stroke: var(--blue);
-    transform: rotate(12deg);
+.hero-lead {
+    max-width: 32em;
+    margin: 24px 0 32px;
+    font-size: clamp(17px, 1.6vw, 19px);
 }
 
-h1 {
+/* Emplacement de la lanterne : un halo doré en attendant la 3D */
+.hero-visual {
     margin: 0;
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: clamp(42px, 6.2vw, 88px);
-    font-variation-settings: "opsz" 144;
-    line-height: 1.03;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
-}
-
-.hero .squiggle {
-    margin: 18px 0 30px;
-}
-
-.statement {
-    max-width: 34em;
-    margin: 0 0 32px;
-    font-size: clamp(18px, 1.8vw, 21px);
-    line-height: 1.55;
-    color: var(--ink-2);
-}
-
-.statement b {
-    font-weight: 700;
-    color: var(--ink);
-}
-
-.hero-facts {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 24px 36px;
-}
-
-.meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 16px 32px;
-    margin: 0;
-}
-
-.meta div {
-    display: grid;
-    gap: 2px;
-}
-
-.meta dd {
-    margin: 0;
-    font-size: 17px;
-}
-
-.meta .stack {
-    margin: 4px 0 0;
-}
-
-#clock {
-    font-variant-numeric: tabular-nums;
-}
-
-/* --- Collage de polaroïds --- */
-.collage {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 1 / 1.08;
-    margin-inline: auto;
-}
-
-.polaroid {
-    position: absolute;
-    width: 58%;
-    margin: 0;
-    padding: 10px 10px 42px;
-    background: var(--paper-2);
-    box-shadow: var(--shadow);
-    transform: rotate(var(--r));
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.polaroid img {
-    width: 100%;
     aspect-ratio: 4 / 3;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 55%,
+            color-mix(in srgb, var(--accent) 22%, transparent),
+            transparent 60%);
+}
+
+.hero-visual {
+    overflow: hidden;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
 }
 
-.polaroid figcaption {
+/* Lanterne provisoire : halo qui vacille comme une flamme */
+.hero-visual {
+    position: relative;
+}
+
+.hero-visual::after {
+    content: "";
     position: absolute;
-    inset: auto 10px 8px;
-    font-family: var(--hand);
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
-    color: var(--ink-2);
+    inset: 0;
+    background: radial-gradient(circle at 50% 62%,
+            rgb(255 140 50 / 0.55),
+            transparent 45%);
+    mix-blend-mode: screen;
+    opacity: 0.35;
+    pointer-events: none;
+    animation: flicker 6s ease-in-out infinite;
 }
 
-.pol-1 {
-    --r: -6deg;
-    --c: var(--pink);
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
+/* Variations irrégulières : une vraie flamme n'a pas de rythme régulier */
+@keyframes flicker {
+    0% {
+        opacity: 0.35;
+    }
 
-.pol-2 {
-    --r: 5deg;
-    --c: var(--yellow);
-    top: 16%;
-    right: 0;
-    width: 52%;
-    z-index: 2;
-}
+    8% {
+        opacity: 0.55;
+    }
 
-.pol-3 {
-    --r: -2deg;
-    --c: var(--sky);
-    bottom: 0;
-    left: 2%;
-    width: 54%;
-    z-index: 3;
-}
+    12% {
+        opacity: 0.3;
+    }
 
-.collage:hover .polaroid {
-    transform: rotate(0deg) translateY(-4px);
-}
+    20% {
+        opacity: 0.5;
+    }
 
-/* Apparition en cascade au chargement */
-.rise {
-    animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
+    31% {
+        opacity: 0.4;
+    }
 
-.rise.d2 {
-    animation-delay: 0.12s;
-}
+    38% {
+        opacity: 0.62;
+    }
 
-.rise.d3 {
-    animation-delay: 0.24s;
-}
+    44% {
+        opacity: 0.33;
+    }
 
-@keyframes rise {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
+    57% {
+        opacity: 0.48;
+    }
+
+    63% {
+        opacity: 0.38;
+    }
+
+    72% {
+        opacity: 0.58;
+    }
+
+    80% {
+        opacity: 0.3;
+    }
+
+    91% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 0.35;
     }
 }
 
-@media (max-width: 960px) {
+/* Grands écrans : texte à gauche, visuel à droite */
+@media (min-width: 900px) {
     .hero {
-        grid-template-columns: 1fr;
-    }
-
-    .collage {
-        max-width: 400px;
+        grid-template-columns: 5fr 6fr;
+        align-items: center;
+        gap: clamp(40px, 5vw, 80px);
+        min-height: calc(100vh - 90px);
     }
 }
 
-/* =========================================
-   8. SECTIONS (commun à toutes)
-   ========================================= */
-section {
+/* 6. Mon univers (à propos) */
+.about {
+    display: grid;
+    gap: 40px;
     padding-block: clamp(64px, 9vw, 112px);
 }
 
-section+section {
-    border-top: 2px dashed color-mix(in srgb, var(--ink) 25%, transparent);
-}
-
-.sec-head {
-    margin-bottom: clamp(40px, 6vw, 72px);
-}
-
-h2 {
+/* Cadre de l'image : prêt à recevoir le rendu Blender */
+.about-visual {
+    width: 100%;
+    max-width: 420px;
     margin: 0;
-    max-width: 16em;
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: clamp(34px, 4.8vw, 62px);
-    font-variation-settings: "opsz" 144;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-}
-
-h2 em {
-    color: var(--clay);
-}
-
-.sec-note {
-    max-width: 40em;
-    margin: 18px 0 0;
-    color: var(--ink-2);
-}
-
-/* =========================================
-   9. PROJETS PHARES
-   ========================================= */
-
-/* --- Le cadre photo : vidéo posée sur une feuille, tenue par du scotch --- */
-.frame {
-    position: relative;
-    margin: 0;
-    padding: 12px 12px 0;
-    background: var(--paper-2);
-    box-shadow: var(--shadow);
-    transform: rotate(var(--r, -1deg));
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.project:hover .frame {
-    transform: rotate(0deg);
-}
-
-/* L'écran : placeholder + vidéo superposés */
-.screen {
-    position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: color-mix(in srgb, var(--c) 30%, var(--paper-2));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-2);
 }
 
-.placeholder {
-    position: absolute;
-    inset: 0;
+.about-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+.about-text p {
+    max-width: 34em;
+    margin: 20px 0 24px;
+}
+
+/* Lien texte doré, souligné au survol (réutilisable) */
+.text-link {
+    display: inline-flex;
+    gap: 6px;
+    margin-top: 22px;
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.2s;
+}
+
+.text-link:hover {
+    text-decoration-color: currentColor;
+}
+
+/* Étiquettes en pastilles (réutilisées pour les technos des projets) */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tags li {
+    padding: 5px 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+/* Piliers : icône à gauche, titre et texte à droite */
+.pillars {
+    display: grid;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pillars li {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: 18px;
+}
+
+.pillar-icon {
+    grid-row: span 2;
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pillars h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.pillars p {
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: var(--ink-3);
+}
+
+/* Grands écrans : image, texte et piliers sur trois colonnes */
+@media (min-width: 900px) {
+    .about {
+        grid-template-columns: 4fr 5fr 3fr;
+        align-items: center;
+        gap: clamp(32px, 4vw, 56px);
+    }
+
+    /* Filet vertical avant les piliers, comme sur la maquette */
+    .pillars {
+        padding-left: clamp(24px, 3vw, 40px);
+        border-left: 1px solid var(--line);
+    }
+}
+
+/* 7. Projets */
+.projects {
+    display: grid;
+    gap: 40px;
+    padding-block: clamp(64px, 9vw, 112px);
+}
+
+.projects-intro h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+.projects-intro p {
+    max-width: 28em;
+    margin: 20px 0 28px;
+}
+
+/* Liste des cartes : une colonne sur mobile */
+.project-list {
+    display: grid;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Carte de projet */
+.project-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-2);
+    transition: transform 0.3s, border-color 0.3s;
 }
 
-.placeholder-name {
-    font-family: var(--hand);
-    font-size: clamp(38px, 5vw, 60px);
-    font-weight: 700;
-    line-height: 1;
-    color: color-mix(in srgb, var(--c) 60%, var(--ink));
+.project-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transform: translateY(-4px);
+}
+
+/* Écran : la vidéo, avec un fondu vers la carte en bas */
+.screen {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 40%,
+            color-mix(in srgb, var(--accent) 14%, transparent),
+            transparent 70%);
+}
+
+.screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 60%, var(--paper-2));
+    pointer-events: none;
 }
 
 .demo {
@@ -820,778 +678,433 @@ h2 em {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     opacity: 0;
     transition: opacity 0.6s;
 }
 
+/* Ajouté par script.js quand la vidéo est chargée */
 .screen.is-ready .demo {
     opacity: 1;
 }
 
-/* Légende manuscrite sous la vidéo */
-.cap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px 0;
-    padding: 12px 6px 14px;
-    font-family: var(--hand);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--ink-2);
-}
-
-.cap span+span::before {
-    content: "·";
-    margin-inline: 10px;
-    color: var(--accent);
-}
-
-/* --- Numéro entouré au crayon --- */
-.p-num {
-    display: inline-grid;
-    place-items: center;
-    width: 58px;
-    height: 58px;
-    margin-bottom: 14px;
-    border: 2px solid var(--clay);
-    border-radius: 58% 42% 55% 45% / 45% 55% 45% 55%;
-    font-family: var(--hand);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--clay);
-    transform: rotate(-8deg);
-}
-
-.p-info h3 {
-    margin: 0 0 14px;
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: clamp(44px, 5.4vw, 76px);
-    font-variation-settings: "opsz" 144;
-    line-height: 0.98;
-    letter-spacing: -0.025em;
-}
-
-.desc {
-    max-width: 30em;
-    margin: 0 0 22px;
-    font-size: 19px;
-    color: var(--ink-2);
-}
-
-/* --- Technologies : des autocollants --- */
-.stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 8px;
-    margin: 0 0 26px;
-    padding: 0;
-    list-style: none;
-}
-
-.stack li {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 13px 5px 10px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: var(--paper-2);
-    box-shadow: 0 2px 0 rgba(31, 42, 55, 0.14);
-    font-family: var(--type);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ink);
-    transform: rotate(var(--r, 0deg));
-    transition: transform 0.25s;
-}
-
-.stack li:nth-child(3n+1) {
-    --r: -2deg;
-}
-
-.stack li:nth-child(3n+2) {
-    --r: 1.5deg;
-}
-
-.stack li:nth-child(3n) {
-    --r: -0.6deg;
-}
-
-.stack li:hover {
-    transform: rotate(0deg) scale(1.06);
-}
-
-.stack .ico {
-    width: 16px;
-    height: 16px;
-}
-
-/* --- Liens --- */
-.p-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px 26px;
-}
-
-/* Bouton : forme irrégulière, comme découpé aux ciseaux */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px;
-    background: var(--ink);
-    color: var(--paper);
-    font-size: 17px;
-    font-weight: 700;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.btn:hover {
-    background: var(--accent);
-    transform: rotate(-2deg);
-}
-
-/* Lien souligné au feutre ondulé */
-.arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 17px;
-    font-weight: 700;
-    text-decoration: underline wavy var(--accent);
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 6px;
-    transition: color 0.2s;
-}
-
-.arrow:hover {
-    color: var(--accent);
-}
-
-.ar {
-    display: inline-block;
-    transition: transform 0.25s;
-}
-
-.arrow:hover .ar,
-.btn:hover .ar {
-    transform: translate(2px, -2px);
-}
-
-/* --- « En savoir plus » : un post-it à déplier --- */
-.more {
-    margin-top: 26px;
-}
-
-.more summary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--hand);
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--accent);
-    cursor: pointer;
-    list-style: none;
-}
-
-.more summary::-webkit-details-marker {
-    display: none;
-}
-
-.more summary::before {
-    content: "+";
-    display: grid;
-    place-items: center;
-    width: 26px;
-    height: 26px;
-    border: 2px solid currentColor;
-    border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-    font-size: 22px;
-    line-height: 1;
-    transition: transform 0.3s;
-}
-
-.more[open] summary::before {
-    transform: rotate(45deg);
-}
-
-.sticky {
-    position: relative;
-    max-width: 30em;
-    margin-top: 14px;
-    padding: 18px 20px;
-    background: var(--yellow);
-    box-shadow: var(--shadow);
-    color: var(--note-ink);
-    font-size: 16px;
-    line-height: 1.5;
-    transform: rotate(-1deg);
-}
-
-.sticky .highlights {
-    display: grid;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sticky .highlights li {
-    padding-left: 22px;
-    background: radial-gradient(circle, var(--note-ink) 0 3px, transparent 3.5px) 4px 0.7em / 12px 12px no-repeat;
-}
-
-.sticky .note {
-    margin: 14px 0 0;
-    padding-top: 12px;
-    border-top: 1px dashed rgba(43, 36, 32, 0.4);
-    font-size: 14px;
-}
-
-/* --- Traveling : grande page, texte à gauche et vidéo à droite --- */
-.project--wide {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    grid-template-areas: "info visual";
-    gap: clamp(32px, 5vw, 72px);
-    align-items: center;
-}
-
-.project--wide .p-visual {
-    grid-area: visual;
-}
-
-.project--wide .p-info {
-    grid-area: info;
-}
-
-.project--wide .frame {
-    --r: 1.2deg;
-    padding-top: 14px;
-}
-
-/* --- Toile et Filmatrix : deux feuilles côte à côte --- */
-.duo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px clamp(24px, 4vw, 48px);
-    margin-top: clamp(72px, 9vw, 120px);
-}
-
-.project--card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-    padding: 36px clamp(18px, 2.6vw, 32px) clamp(22px, 2.6vw, 32px);
-    background: var(--paper-2);
-    box-shadow: var(--shadow);
-    transform: rotate(var(--r));
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.duo .project:nth-child(1) {
-    --r: -0.8deg;
-}
-
-.duo .project:nth-child(2) {
-    --r: 0.8deg;
-    margin-top: 40px;
-}
-
-.project--card:hover {
-    transform: rotate(0deg);
-}
-
-/* Le scotch qui tient la feuille */
-.project--card::before {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    top: -14px;
-    left: 50%;
-    width: 110px;
-    height: 30px;
-    margin-left: -55px;
-    background: color-mix(in srgb, var(--c) 70%, transparent);
-    clip-path: polygon(0 0, 4% 12%, 0 25%, 4% 38%, 0 50%, 4% 62%, 0 75%, 4% 88%, 0 100%,
-            100% 100%, 96% 88%, 100% 75%, 96% 62%, 100% 50%, 96% 38%, 100% 25%, 96% 12%, 100% 0);
-    transform: rotate(-3deg);
-}
-
-.project--card .frame {
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    transform: none;
-}
-
-.project--card .screen {
-    border: 1px solid var(--line);
-}
-
-.project--card .cap {
-    padding: 12px 0 0;
-    font-size: 22px;
-}
-
-.project--card .p-num {
-    position: absolute;
-    z-index: 4;
-    top: -26px;
-    right: 26px;
-    background: var(--paper-2);
-    margin: 0;
-}
-
-.project--card .p-info h3 {
-    font-size: clamp(40px, 4.4vw, 56px);
-}
-
-.project--card .desc {
-    max-width: none;
-}
-
-/* Mention « en développement » : tampon posé sur la vidéo */
-.stamp--wip {
-    position: absolute;
-    z-index: 4;
-    top: 14px;
-    left: -6px;
-    background: var(--paper-2);
-    box-shadow: inset 0 0 0 3px var(--paper-2), inset 0 0 0 4px var(--clay);
-    font-size: 13px;
-    transform: rotate(-7deg);
-}
-
-@media (max-width: 960px) {
-    .project--wide {
-        grid-template-columns: 1fr;
-        grid-template-areas: "visual" "info";
-    }
-
-    .duo {
-        grid-template-columns: 1fr;
-    }
-
-    .duo .project:nth-child(2) {
-        margin-top: 0;
-    }
-}
-
-/* =========================================
-   10. AUTRES PROJETS (grille « bento »)
-   Grand écran, 4 colonnes :
-     ┌────────┬───┬───┐
-     │ Fansite│ 2 │ 3 │
-     │ (2x2)  ├───┼───┤
-     │        │ 4 │ 5 │
-     ├───┬────┴───┼───┤
-     │ 6 │ marsAI │ 8 │
-     └───┴────────┴───┘
-   Chaque vignette est un cliché scotché sur la page.
-   ========================================= */
-.others {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: clamp(190px, 19vw, 240px);
-    grid-auto-flow: dense;
-    gap: 26px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.others li {
-    position: relative;
-}
-
-.others li:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.others li:nth-child(7) {
-    grid-column: span 2;
-}
-
-/* Petit scotch en haut de chaque vignette */
-.others li::before {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    top: -11px;
-    left: 50%;
-    width: 76px;
-    height: 24px;
-    margin-left: -38px;
-    background: color-mix(in srgb, var(--tape, var(--yellow)) 70%, transparent);
-    clip-path: polygon(0 0, 5% 15%, 0 30%, 5% 45%, 0 60%, 5% 75%, 0 100%,
-            100% 100%, 95% 75%, 100% 60%, 95% 45%, 100% 30%, 95% 15%, 100% 0);
-    transform: rotate(var(--tr, -3deg));
-    pointer-events: none;
-}
-
-.others li:nth-child(4n+1) {
-    --tape: var(--yellow);
-    --tr: -4deg;
-}
-
-.others li:nth-child(4n+2) {
-    --tape: var(--pink);
-    --tr: 3deg;
-}
-
-.others li:nth-child(4n+3) {
-    --tape: var(--sky);
-    --tr: -2deg;
-}
-
-.others li:nth-child(4n) {
-    --tape: var(--green);
-    --tr: 4deg;
-}
-
-/* La carte : l'image la remplit entièrement, le texte se pose dessus */
-.other {
-    position: relative;
-    display: block;
-    height: 100%;
-    overflow: hidden;
-    border: 7px solid var(--paper-2);
-    border-radius: 3px;
-    background: #16171b;
-    box-shadow: var(--shadow);
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
-}
-
-.other:hover,
-.other:focus-visible {
-    transform: rotate(-1deg) translateY(-4px);
-}
-
-/* Vignette : placeholder + image superposés */
-.other-shot {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    overflow: hidden;
-    background: color-mix(in srgb, var(--accent) 35%, #16171b);
-}
-
-.other-badge {
+/* Badge posé sur la vidéo */
+.badge {
     position: absolute;
     z-index: 2;
     top: 12px;
     left: 12px;
     padding: 4px 10px;
-    border-radius: 3px;
-    background: var(--yellow);
-    color: var(--note-ink);
-    font-family: var(--type);
+    border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--paper) 80%, transparent);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: var(--accent);
+    font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    transform: rotate(-3deg);
 }
 
-.other-placeholder {
-    position: absolute;
-    inset: 0;
+/* Texte de la carte */
+.project-body {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 12px 40px;
-    font-family: var(--hand);
-    font-size: clamp(28px, 2.4vw, 38px);
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.other-thumb {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    opacity: 0;
-    transition: opacity 0.5s, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.other-shot.is-ready .other-thumb {
-    opacity: 1;
-}
-
-.other:hover .other-thumb,
-.other:focus-visible .other-thumb {
-    transform: scale(1.06);
-}
-
-/* Bandeau de texte, en bas, sur un dégradé sombre (blanc dans les deux thèmes) */
-.other-info {
-    position: absolute;
-    z-index: 1;
-    inset: auto 0 0 0;
-    display: flex;
+    flex: 1;
     flex-direction: column;
-    gap: 6px;
-    padding: 56px 14px 12px;
-    background: linear-gradient(to top,
-            rgba(10, 10, 14, 0.9) 0%,
-            rgba(10, 10, 14, 0.75) 45%,
-            transparent 100%);
-    color: #fff;
+    gap: 12px;
+    padding: 18px 20px 22px;
 }
 
-.other-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.other-name {
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-}
-
-/* Description : apparaît au survol (toujours visible sur les grandes cartes et au tactile) */
-.other-desc {
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    font-size: 14px;
-    line-height: 1.45;
-    color: rgba(255, 255, 255, 0.88);
-    transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
-}
-
-.other:hover .other-desc,
-.other:focus-visible .other-desc,
-.others li:nth-child(1) .other-desc,
-.others li:nth-child(7) .other-desc {
-    max-height: 7em;
-    opacity: 1;
-}
-
-@media (hover: none) {
-    .other-desc {
-        max-height: 7em;
-        opacity: 1;
-    }
-}
-
-.other-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-/* Technos : logos seuls, en blanc (le nom reste lisible par les lecteurs d'écran) */
-.other-tech {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 4px 10px;
-}
-
-.other-tech .ico {
-    --ico: #fff;
-    width: 17px;
-    height: 17px;
-}
-
-.other-date {
-    flex-shrink: 0;
-    font-family: var(--type);
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-    white-space: nowrap;
-}
-
-/* Étiquette de type */
-.kind {
-    display: inline-block;
-    flex-shrink: 0;
-    padding: 1px 9px;
-    border: 1.5px solid var(--clay);
-    border-radius: 4px;
-    font-family: var(--type);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: var(--clay);
-    transform: rotate(-2deg);
-}
-
-/* Sur une carte, l'étiquette est claire */
-.other .kind {
-    border-color: rgba(255, 255, 255, 0.7);
-    color: #fff;
-}
-
-/* Flèche : coin haut-droit de la carte */
-.other .ar {
-    position: absolute;
-    z-index: 2;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(10, 10, 14, 0.55);
-    color: #fff;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s, transform 0.2s;
-}
-
-.other:hover .ar,
-.other:focus-visible .ar {
-    background: var(--accent);
-    transform: translate(2px, -2px);
-}
-
-/* Tablette : 2 colonnes */
-@media (max-width: 999px) {
-    .others {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: clamp(200px, 30vw, 260px);
-    }
-}
-
-/* Mobile : 1 colonne, toutes les cartes de même taille */
-@media (max-width: 600px) {
-    .others {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 240px;
-    }
-
-    .others li:nth-child(1),
-    .others li:nth-child(7) {
-        grid-column: auto;
-        grid-row: auto;
-    }
-}
-
-/* =========================================
-   11. PROFIL
-   ========================================= */
-
-/* Petits titres manuscrits (fiches, parcours, atouts…) */
-.card-title {
-    margin: 0 0 14px;
-    font-family: var(--hand);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--clay);
-}
-
-/* --- Présentation --- */
-.about {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: clamp(32px, 6vw, 88px);
-    align-items: start;
-}
-
-.about-copy p {
-    margin: 0 0 20px;
-    color: var(--ink-2);
-}
-
-.about-copy .about-lead {
-    font-family: var(--display);
-    font-size: clamp(24px, 2.7vw, 34px);
-    font-variation-settings: "opsz" 72;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+.project-body h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
     color: var(--ink);
 }
 
-.about-side {
-    display: grid;
-    gap: 40px;
+.project-body>p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-3);
 }
 
-/* Atouts : des post-it */
-.notes {
+/* Tags plus petits dans les cartes */
+.project-card .tags li {
+    padding: 3px 10px;
+    font-size: 12.5px;
+}
+
+/* Liens en bas de la carte */
+.project-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 8px 20px;
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+.project-links a {
+    color: var(--accent);
+    font-size: 14.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.project-links a:hover {
+    color: var(--ink);
+}
+
+/* Tablette : deux cartes par ligne */
+@media (min-width: 600px) {
+    .project-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Grand écran : intro à gauche, trois cartes à droite */
+@media (min-width: 1000px) {
+    .projects {
+        grid-template-columns: 3fr 9fr;
+        align-items: center;
+        gap: clamp(32px, 4vw, 56px);
+    }
+
+    .project-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 8. Mon processus */
+.process {
+    display: grid;
+    gap: 40px;
+    padding-block: clamp(64px, 9vw, 112px);
+}
+
+/* Cadre de l'image : prêt à recevoir une maquette */
+.process-visual {
+    width: 100%;
+    max-width: 480px;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-2);
+}
+
+.process-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.process h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+.process-text p {
+    max-width: 32em;
+    margin: 20px 0 0;
+}
+
+/* Étapes numérotées automatiquement, reliées par un fil */
+.steps {
+    counter-reset: step;
+    position: relative;
+    display: grid;
+    gap: 28px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.notes li {
-    min-width: 96px;
-    padding: 12px 18px 16px;
-    background: var(--n);
-    box-shadow: var(--shadow);
-    color: var(--note-ink);
-    font-family: var(--hand);
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
-    transform: rotate(var(--r));
-    transition: transform 0.25s;
+/* Le fil vertical, au centre des cercles */
+.steps::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 17.5px;
+    width: 1px;
+    background: var(--line);
 }
 
-.notes li:hover {
-    transform: rotate(0deg) scale(1.05);
+.steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 56px;
 }
 
-.notes li:nth-child(1) {
-    --n: var(--yellow);
-    --r: -3deg;
+/* Le cercle avec le numéro */
+.steps li::before {
+    content: counter(step);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 14px;
 }
 
-.notes li:nth-child(2) {
-    --n: var(--pink);
-    --r: 2deg;
+.steps h3 {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
 }
 
-.notes li:nth-child(3) {
-    --n: var(--green);
-    --r: -1.5deg;
+.steps p {
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: var(--ink-3);
 }
 
-.notes li:nth-child(4) {
-    --n: var(--sky);
-    --r: 3deg;
+/* Grands écrans : image, texte et étapes sur trois colonnes */
+@media (min-width: 900px) {
+    .process {
+        grid-template-columns: 4fr 5fr 3fr;
+        align-items: center;
+        gap: clamp(32px, 4vw, 56px);
+    }
+
+    /* Filet vertical avant les étapes, comme pour les piliers */
+    .steps {
+        padding-left: clamp(24px, 3vw, 40px);
+        border-left: 1px solid var(--line);
+    }
+
+    /* Le fil se décale de la même valeur que la marge intérieure */
+    .steps::before {
+        left: calc(clamp(24px, 3vw, 40px) + 17.5px);
+    }
 }
 
-.notes li:nth-child(5) {
-    --n: var(--orange);
-    --r: -2deg;
+/* 9. Autres projets */
+.others {
+    padding-block: clamp(64px, 9vw, 112px);
 }
 
-/* Langues : le niveau se lit en 5 taches de peinture */
+.others-head {
+    margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.others-head h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+/* Grille : une colonne sur mobile */
+.others-list {
+    display: grid;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* La carte entière est un lien */
+.other-card a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-2);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.other-card a:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transform: translateY(-4px);
+}
+
+/* Vignette : halo doré en attendant l'image */
+.other-shot {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 40%,
+            color-mix(in srgb, var(--accent) 14%, transparent),
+            transparent 70%);
+}
+
+.other-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.6s;
+}
+
+/* Ajouté par script.js quand l'image est chargée */
+.other-shot.is-ready .other-thumb {
+    opacity: 1;
+}
+
+/* Léger zoom de l'image au survol */
+.other-card a:hover .other-thumb {
+    transform: scale(1.05);
+}
+
+/* Texte de la carte */
+.other-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 18px 18px;
+}
+
+.other-body h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* La flèche ↗ en or */
+.other-body h3 span {
+    color: var(--accent);
+}
+
+.other-body p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-3);
+}
+
+/* Technos et date, en bas de la carte */
+.other-body .other-meta {
+    margin-top: auto;
+    padding-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+}
+
+/* Tablette : deux colonnes */
+@media (min-width: 600px) {
+    .others-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Grand écran : quatre colonnes */
+@media (min-width: 1000px) {
+    .others-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 10. Compétences */
+.skills {
+    padding-block: clamp(64px, 9vw, 112px);
+}
+
+.skills-head {
+    margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.skills-head h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+/* Grille qui s'adapte toute seule au nombre de colonnes possibles */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 20px;
+}
+
+/* Une catégorie = un bloc */
+.skill-group {
+    padding: 20px 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-2);
+}
+
+.skill-group h3 {
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* Notions de base : pastille en pointillés, texte atténué */
+.tags .is-basic {
+    border-style: dashed;
+    border-color: var(--ink-3);
+    color: var(--ink-2);
+}
+
+/* Légende des pointillés */
+.skills-legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.skills-legend span {
+    width: 30px;
+    height: 16px;
+    border: 1px dashed var(--ink-3);
+    border-radius: 999px;
+}
+
+/* 11. Parcours */
+.path {
+    display: grid;
+    gap: 48px;
+    padding-block: clamp(64px, 9vw, 112px);
+}
+
+.path-intro h2 {
+    font-size: clamp(36px, 5vw, 56px);
+}
+
+.path-intro>p {
+    max-width: 30em;
+    margin: 20px 0 0;
+}
+
+/* Petits titres « Atouts » et « Langues » */
+.path-intro h3 {
+    margin: 32px 0 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+/* Langues : nom à gauche, niveau à droite */
 .langs {
     display: grid;
     gap: 8px;
-    max-width: 280px;
+    max-width: 320px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1599,295 +1112,127 @@ h2 em {
 
 .langs li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    font-family: var(--hand);
-    font-size: 27px;
-    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
 }
 
-.dots {
-    display: inline-flex;
-    gap: 6px;
-}
-
-.dots i {
-    width: 15px;
-    height: 15px;
-    border: 2px solid var(--ink-3);
-    border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-}
-
-.dots i.on {
-    border-color: var(--clay);
-    background: var(--clay);
-}
-
-/* --- Compétences : des fiches à lignes, comme un cahier --- */
-.skills {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 34px 26px;
-    margin-top: clamp(72px, 9vw, 112px);
-}
-
-.skill-group {
-    padding: 18px 18px 22px;
-    background-color: var(--paper-2);
-    /* lignes bleues du papier, alignées sur les rangées de la liste */
-    background-image: repeating-linear-gradient(transparent 0 39px,
-            color-mix(in srgb, var(--blue) 30%, transparent) 39px 40px);
-    background-position: 0 66px;
-    background-repeat: no-repeat;
-    background-size: 100% calc(100% - 66px);
-    box-shadow: var(--shadow);
-    transform: rotate(var(--r, 0deg));
-}
-
-.skill-group:nth-child(1) {
-    --r: -1deg;
-}
-
-.skill-group:nth-child(2) {
-    --r: 0.8deg;
-}
-
-.skill-group:nth-child(3) {
-    --r: -0.6deg;
-}
-
-.skill-group:nth-child(4) {
-    --r: 1deg;
-}
-
-.skill-group .card-title {
-    margin: 0 0 26px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid color-mix(in srgb, var(--clay) 55%, transparent);
-}
-
-.plain {
-    display: grid;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.skill-group li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 1.15;
-}
-
-/* Un autocollant rond devant chaque techno */
-.tile {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    flex-shrink: 0;
-    width: 46px;
-    height: 30px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: var(--paper-2);
-    box-shadow: 0 2px 0 rgba(31, 42, 55, 0.14);
-    font-size: 17px;
-    transition: transform 0.25s;
-}
-
-.skill-group li:hover .tile {
-    transform: rotate(-6deg) scale(1.08);
-}
-
-/* Deux logos dans la même pastille : un peu plus petits */
-.tile:has(.ico + .ico) {
-    font-size: 14px;
-}
-
-.tech-name {
-    min-width: 0;
-}
-
-/* Technos « bases » : autocollant en pointillés, texte atténué */
-.is-basic .tile {
-    border: 1.5px dashed var(--ink-3);
-    background: transparent;
-    box-shadow: none;
-}
-
-.is-basic .tech-name {
-    color: var(--ink-2);
-}
-
-.skills-legend {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 26px 0 0;
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+.langs span {
+    font-size: 15px;
     color: var(--ink-3);
 }
 
-.skills-legend i {
-    width: 30px;
-    height: 18px;
-    border: 1.5px dashed var(--ink-3);
-    border-radius: 999px;
-}
-
-/* --- Parcours : un fil pointillé avec des punaises --- */
-.path {
-    display: grid;
-    grid-template-columns: 1fr 2.2fr;
-    gap: 24px 48px;
-    margin-top: clamp(72px, 9vw, 112px);
-}
-
+/* Frise : un fil vertical et un point par étape */
 .timeline {
-    position: relative;
+    display: grid;
+    gap: 36px;
     margin: 0;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 32px;
+    border-left: 1px solid var(--line);
     list-style: none;
-    border-left: 3px dashed color-mix(in srgb, var(--ink) 35%, transparent);
 }
 
 .timeline li {
     position: relative;
-    display: grid;
-    gap: 2px;
-    padding-bottom: 36px;
 }
 
-.timeline li:last-child {
-    padding-bottom: 0;
-}
-
-/* La punaise */
+/* Le point, posé sur le fil */
 .timeline li::before {
     content: "";
     position: absolute;
-    top: 8px;
-    left: -52px;
-    width: 18px;
-    height: 18px;
-    border: 3px solid var(--paper);
+    top: 6px;
+    left: -38px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--accent);
     border-radius: 50%;
-    background: var(--clay);
-    box-shadow: 0 2px 4px rgba(31, 42, 55, 0.4);
+    background: var(--paper);
+    box-shadow: 0 0 0 4px var(--paper);
+}
+
+/* L'étape la plus récente : point plein */
+.timeline li:first-child::before {
+    background: var(--accent);
 }
 
 .when {
-    font-family: var(--hand);
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--clay);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
 }
 
-.what {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px 12px;
-    font-family: var(--display);
-    font-size: clamp(20px, 2vw, 25px);
-    font-weight: 600;
-    line-height: 1.25;
+.timeline h3 {
+    margin: 4px 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
 }
 
-.where {
-    font-size: 16px;
+.timeline p {
+    margin: 0;
+    font-size: 15px;
     color: var(--ink-3);
 }
 
-/* --- Tablette et mobile --- */
-@media (max-width: 960px) {
-    .about {
-        grid-template-columns: 1fr;
-    }
-
-    .skills {
-        grid-template-columns: 1fr 1fr;
-    }
-
+/* Grand écran : présentation à gauche, frise à droite */
+@media (min-width: 900px) {
     .path {
-        grid-template-columns: 1fr;
+        grid-template-columns: 5fr 7fr;
+        gap: clamp(40px, 6vw, 96px);
+        align-items: start;
     }
 }
 
-@media (max-width: 560px) {
-    .skills {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline {
-        padding-left: 30px;
-    }
-
-    .timeline li::before {
-        left: -42px;
-    }
-}
-
-/* =========================================
-   12. CONTACT
-   ========================================= */
+/* 12. Contact */
 .contact {
-    padding-block: clamp(80px, 11vw, 140px) 72px;
+    margin-block: clamp(64px, 9vw, 112px);
+    padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 56px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 50% 0%,
+            color-mix(in srgb, var(--accent) 14%, transparent),
+            transparent 60%),
+        var(--paper-2);
+    text-align: center;
 }
 
-.contact .kicker {
-    margin-bottom: 14px;
+/* Le filet du kicker passe des deux côtés quand le texte est centré */
+.contact .kicker::before {
+    content: "";
+    width: 48px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
 }
 
-.contact-title {
-    max-width: 12em;
-    font-size: clamp(44px, 8vw, 112px);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
+.contact h2 {
+    font-size: clamp(36px, 6vw, 64px);
 }
 
-.contact .squiggle {
-    width: clamp(160px, 30vw, 320px);
-    margin-top: 16px;
+.contact-lead {
+    max-width: 34em;
+    margin: 20px auto 32px;
 }
 
 .mail-row {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 14px 20px;
-    margin-top: 48px;
-    padding-left: clamp(0px, 9vw, 130px);
-}
-
-/* Flèche dessinée à la main, qui pointe vers l'adresse */
-.arrow-doodle {
-    position: absolute;
-    top: -34px;
-    left: 0;
-    width: clamp(0px, 8vw, 110px);
-    height: auto;
-    stroke: var(--blue);
-    transform: rotate(-8deg);
+    gap: 16px 24px;
 }
 
 .mail {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: clamp(24px, 3.6vw, 46px);
-    letter-spacing: -0.01em;
-    background: linear-gradient(transparent 60%, var(--hl) 60% 92%, transparent 92%);
+    color: var(--ink);
+    font-size: clamp(20px, 3vw, 28px);
     overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    text-underline-offset: 6px;
     transition: color 0.2s;
 }
 
@@ -1895,269 +1240,230 @@ h2 em {
     color: var(--accent);
 }
 
-/* Bouton « copier » : un petit tampon */
-.copy {
-    padding: 8px 16px;
-    border: 2px solid var(--ink);
-    border-radius: 8px;
+/* .btn-outline utilisé sur un <button> : on retire le style par défaut */
+button.btn-outline {
     background: transparent;
-    color: var(--ink);
-    font-family: var(--type);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
-    transform: rotate(-2deg);
-    transition: background 0.2s, transform 0.2s;
 }
 
-.copy:hover {
-    background: var(--hl);
-    transform: rotate(1deg);
+/* Ajouté par script.js après la copie */
+.btn-outline.is-done {
+    background: var(--accent);
+    color: var(--paper);
 }
 
-.copy.is-done {
-    border-color: var(--ok);
-    color: var(--ok);
+/* 13. Pied de page */
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 32px;
+    padding-block: 32px 40px;
+    border-top: 1px solid var(--line);
 }
 
-.copy-status {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
+.footer-links,
 .socials {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px 34px;
-    margin: 40px 0 0;
-    padding: 0 0 0 clamp(0px, 9vw, 130px);
+    gap: 8px 24px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 
-.socials .arrow {
-    font-family: var(--display);
-    font-size: 26px;
-    font-style: italic;
-    font-weight: 400;
+.footer-links a,
+.socials a {
+    font-size: 15px;
+    color: var(--ink-2);
+    transition: color 0.2s;
 }
 
-@media (max-width: 700px) {
+.footer-links a:hover,
+.socials a:hover {
+    color: var(--accent);
+}
 
-    .mail-row,
-    .socials {
-        padding-left: 0;
-    }
+/* Le copyright passe sur sa propre ligne */
+.copyright {
+    width: 100%;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+}
 
-    .arrow-doodle {
-        display: none;
+/* 14. Court-métrage : bouton et fenêtre modale */
+
+/* .text-link utilisé sur un <button> : on retire le style par défaut */
+button.text-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* La fenêtre */
+.film-dialog {
+    width: min(100% - 32px, 1100px);
+    max-height: calc(100vh - 32px);
+    padding: clamp(16px, 3vw, 28px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--paper-2);
+    color: var(--ink-2);
+}
+
+/* Apparition en douceur à l'ouverture */
+.film-dialog[open] {
+    animation: film-in 0.3s ease-out;
+}
+
+@keyframes film-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
     }
 }
 
-/* =========================================
-   13. LOGOS DES TECHNOLOGIES
-   Chaque logo est un fichier SVG utilisé comme masque :
-   la couleur vient de --ico (couleur de la marque, ou
-   la couleur du texte pour les logos noirs).
-   ========================================= */
-.ico {
-    display: inline-block;
+/* Le fond sombre derrière la fenêtre */
+.film-dialog::backdrop {
+    background: rgb(0 0 0 / 0.75);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+/* Titre et bouton fermer */
+.film-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.film-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+}
+
+.film-close {
     flex-shrink: 0;
-    width: 1.1em;
-    height: 1.1em;
-    background: var(--ico, currentColor);
-    -webkit-mask: var(--src) center / contain no-repeat;
-    mask: var(--src) center / contain no-repeat;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-2);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
 }
 
-.ico-php {
-    --src: url(../images/tech/php.svg);
-    --ico: #777BB4;
+.film-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
-.ico-javascript {
-    --src: url(../images/tech/javascript.svg);
-    --ico: #E5C700;
+/* La vidéo */
+.film-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    background: #000;
 }
 
-.ico-python {
-    --src: url(../images/tech/python.svg);
-    --ico: #3776AB;
+.film-caption {
+    margin: 14px 0 0;
+    font-size: 14px;
+    color: var(--ink-3);
 }
 
-.ico-html5 {
-    --src: url(../images/tech/html5.svg);
-    --ico: #E34F26;
+.film-caption a {
+    color: var(--accent);
 }
 
-.ico-css3 {
-    --src: url(../images/tech/css3.svg);
-    --ico: #1572B6;
+/* Bouton lecture posé sur l'image de « Mon univers » */
+.about-visual {
+    position: relative;
 }
 
-.ico-typescript {
-    --src: url(../images/tech/typescript.svg);
-    --ico: #3178C6;
+.about-visual img {
+    transition: transform 0.6s;
 }
 
-.ico-react {
-    --src: url(../images/tech/react.svg);
-    --ico: #149ECA;
+.about-visual:hover img {
+    transform: scale(1.03);
 }
 
-.ico-nodedotjs {
-    --src: url(../images/tech/nodedotjs.svg);
-    --ico: #5FA04E;
+/* Le bouton couvre toute l'image et place la pastille en bas à gauche */
+.play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    border: 0;
+    background: linear-gradient(transparent 55%, rgb(0 0 0 / 0.6));
+    color: #F3E9E1;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-.ico-tailwindcss {
-    --src: url(../images/tech/tailwindcss.svg);
-    --ico: #06B6D4;
+/* La pastille : rond + texte + durée, centrés entre eux */
+.play-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 18px 6px 6px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 999px;
+    background: rgb(20 20 20 / 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s;
 }
 
-.ico-mysql {
-    --src: url(../images/tech/mysql.svg);
-    --ico: #4479A1;
+/* Le rond doré avec le triangle */
+.play-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    padding-left: 2px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #141414;
+    font-size: 13px;
+    transition: transform 0.3s;
 }
 
-.ico-postgresql {
-    --src: url(../images/tech/postgresql.svg);
-    --ico: #4169E1;
+/* La durée, en mono, comme les petites étiquettes du site */
+.play-time {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: color-mix(in srgb, #F3E9E1 65%, transparent);
 }
 
-.ico-mongodb {
-    --src: url(../images/tech/mongodb.svg);
-    --ico: #47A248;
+.play-btn:hover .play-pill,
+.play-btn:focus-visible .play-pill {
+    border-color: var(--accent);
 }
 
-.ico-git {
-    --src: url(../images/tech/git.svg);
-    --ico: #F05032;
+.play-btn:hover .play-icon,
+.play-btn:focus-visible .play-icon {
+    transform: scale(1.1);
 }
 
-.ico-githubactions {
-    --src: url(../images/tech/githubactions.svg);
-    --ico: #2088FF;
-}
-
-.ico-docker {
-    --src: url(../images/tech/docker.svg);
-    --ico: #2496ED;
-}
-
-.ico-stripe {
-    --src: url(../images/tech/stripe.svg);
-    --ico: #635BFF;
-}
-
-.ico-pytest {
-    --src: url(../images/tech/pytest.svg);
-    --ico: #0A9EDC;
-}
-
-.ico-leaflet {
-    --src: url(../images/tech/leaflet.svg);
-    --ico: #199900;
-}
-
-.ico-themoviedatabase {
-    --src: url(../images/tech/themoviedatabase.svg);
-    --ico: #01B4E4;
-}
-
-/* Logos noirs : ils suivent la couleur du texte (clair / sombre) */
-.ico-github {
-    --src: url(../images/tech/github.svg);
-    --ico: var(--ink);
-}
-
-.ico-symfony {
-    --src: url(../images/tech/symfony.svg);
-    --ico: var(--ink);
-}
-
-.ico-flask {
-    --src: url(../images/tech/flask.svg);
-    --ico: var(--ink);
-}
-
-.ico-socketdotio {
-    --src: url(../images/tech/socketdotio.svg);
-    --ico: var(--ink);
-}
-
-/* Icônes génériques (notions sans logo) : couleur d'accent */
-.ico-database {
-    --src: url(../images/tech/database.svg);
-    --ico: var(--accent);
-}
-
-.ico-layers {
-    --src: url(../images/tech/layers.svg);
-    --ico: var(--accent);
-}
-
-.ico-api {
-    --src: url(../images/tech/api.svg);
-    --ico: var(--accent);
-}
-
-.ico-test {
-    --src: url(../images/tech/test.svg);
-    --ico: var(--accent);
-}
-
-.ico-responsive {
-    --src: url(../images/tech/responsive.svg);
-    --ico: var(--accent);
-}
-
-.ico-a11y {
-    --src: url(../images/tech/a11y.svg);
-    --ico: var(--accent);
-}
-
-.ico-layout {
-    --src: url(../images/tech/layout.svg);
-    --ico: var(--accent);
-}
-
-/* =========================================
-   14. APPARITIONS AU SCROLL
-   (uniquement si le JavaScript est actif : sinon tout reste visible)
-   ========================================= */
-.js .reveal {
-    opacity: 0;
-    translate: 0 26px;
-    transition: opacity 0.8s, translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.js .reveal.in {
-    opacity: 1;
-    translate: 0 0;
-}
-
-/* Les dessins au feutre se tracent quand ils arrivent à l'écran */
-.js .doodle path {
-    stroke-dashoffset: 1;
-    transition: stroke-dashoffset 1.1s ease-out 0.2s;
-}
-
-.js .doodle.in path {
-    stroke-dashoffset: 0;
-}
-
-/* =========================================
-   15. ANIMATIONS RÉDUITES
-   Toujours en dernier : cette règle doit
-   l'emporter sur toutes les transitions.
-   ========================================= */
+/* Animations réduites : toujours en dernier, pour l'emporter sur le reste */
 @media (prefers-reduced-motion: reduce) {
 
     *,
