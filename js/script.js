@@ -289,7 +289,7 @@ themeToggle.addEventListener('click', () => {
     root.dataset.theme = nextTheme;
 
     try {
-        localStorage.setItem('theme', nextTheme);
+        localStorage.setItem('theme-v2', nextTheme);
     } catch (e) {
         // stockage indisponible : le choix vaudra jusqu'à la fermeture de la page
     }

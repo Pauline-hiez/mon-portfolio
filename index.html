@@ -22,10 +22,10 @@
     document.documentElement.classList.add('js');
     (function () {
       let theme = null;
-      try { theme = localStorage.getItem('theme'); } catch (e) {}
-      // Deux thèmes : sombre (par défaut) et clair. Les anciens choix sont convertis.
-      const light = ['light', 'teal', 'prune', 'bleu', 'sauge'];
-      document.documentElement.dataset.theme = light.includes(theme) ? 'light' : 'dark';
+      // Clé "theme-v2" : les anciens choix mémorisés (souvent clairs) sont ignorés
+      try { theme = localStorage.getItem('theme-v2'); } catch (e) {}
+      // Deux thèmes : sombre (par défaut) et clair
+      document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
     })();
   </script>
 
