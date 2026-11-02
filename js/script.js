@@ -147,44 +147,6 @@ themeToggle.addEventListener('click', () => {
 
 updateToggle(); // état correct dès le chargement
 
-// Marque-page : met en avant la section visible et fait avancer la barre de progression
-const bookmarkLinks = document.querySelectorAll('.bookmark a');
-const progressBar = document.querySelector('.progress');
-// « Autres projets » fait partie du groupe Projets
-const sectionToMark = { top: 'top', projets: 'projets', formation: 'projets', profil: 'profil', contact: 'contact' };
-
-function markSection(id) {
-    bookmarkLinks.forEach((link) => {
-        if (link.dataset.section === sectionToMark[id]) {
-            link.setAttribute('aria-current', 'true');
-        } else {
-            link.removeAttribute('aria-current');
-        }
-    });
-}
-
-if ('IntersectionObserver' in window) {
-    // Une section est « courante » quand elle traverse la ligne située à 40 % de la hauteur de l'écran
-    const spy = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) markSection(entry.target.id);
-        });
-    }, { rootMargin: '-40% 0px -60% 0px' });
-
-    Object.keys(sectionToMark).forEach((id) => {
-        const section = document.getElementById(id);
-        if (section) spy.observe(section);
-    });
-}
-
-function updateProgress() {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
-}
-
-window.addEventListener('scroll', updateProgress, { passive: true });
-updateProgress();
-
 // Navbar : se cache quand on descend, revient dès qu'on remonte
 const siteHeader = document.querySelector('.site-header');
 let lastScrollY = window.scrollY;
@@ -222,4 +184,31 @@ if ('IntersectionObserver' in window) {
 } else {
     // Navigateur trop ancien : on montre tout directement
     revealItems.forEach((item) => item.classList.add('in'));
+}
+
+// Court-métrage : modale
+const filmDialog = document.getElementById('film-dialog');
+const filmOpen = document.getElementById('film-open');
+const filmClose = document.getElementById('film-close');
+const filmVideo = document.getElementById('film-video');
+
+if (filmDialog && filmOpen && filmClose && filmVideo) {
+    // Ouvre la fenêtre pour lire la vidéo
+    filmOpen.addEventListener('click', () => {
+        filmDialog.showModal();
+        filmVideo.play().catch(() => { }); // Ignore l'erreur si la lecture est refusée
+    });
+
+    // Fermer avec le bouton X
+    filmClose.addEventListener('click', () => filmDialog.close());
+
+    // Fermer en cliquant en dehors de la fenêtre
+    filmDialog.addEventListener('click', (event) => {
+        const box = filmDialog.getBoundingClientRect();
+        const outside = event.clientX < box.left || event.clientX > box.right
+            || event.clientY < box.top || event.clientY > box.bottom;
+        if (outside) filmDialog.close();
+    });
+
+    filmDialog.addEventListener('close', () => filmVideo.pause());
 }
