@@ -1,42 +1,51 @@
-// Vidéos des projets
-const videos = document.querySelectorAll('.demo');
+// Vidéos des projets : lecture au survol (souris) ou avec le bouton (mobile, clavier)
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projectVideos = document.querySelectorAll('.project-card .demo');
 
-// 1. Affiche la vidéo seulement si le fichier existe
-videos.forEach((video) => {
+projectVideos.forEach((video) => {
     const screen = video.closest('.screen');
+    const card = video.closest('.project-card');
+    const button = screen.querySelector('.video-btn');
+    const icon = button.querySelector('.play-icon');
+    const playLabel = button.getAttribute('aria-label');
+    const pauseLabel = playLabel.replace('Lire', 'Mettre en pause');
 
-    function showVideo() {
-        screen.classList.add('is-ready');
-    }
+    // Le bouton suit l'état réel de la vidéo
+    video.addEventListener('play', () => {
+        // Une seule vidéo à la fois : on met les autres en pause
+        projectVideos.forEach((other) => {
+            if (other !== video) other.pause();
+        });
+        icon.textContent = '❚❚';
+        button.setAttribute('aria-label', pauseLabel);
+        screen.classList.add('is-playing');
+    });
 
-    if (video.readyState >= 1) {
-        showVideo();
-    } else {
-        video.addEventListener('loadedmetadata', showVideo);
-    }
+    video.addEventListener('pause', () => {
+        icon.textContent = '▶';
+        button.setAttribute('aria-label', playLabel);
+        screen.classList.remove('is-playing');
+    });
 
-    // Animations réduites : pas de lecture auto, des boutlons de lecture à la place 
-    if (reduceMotion) {
-        video.controls = true;
+    // Bouton : lecture ou pause
+    button.addEventListener('click', () => {
+        if (video.paused) {
+            video.play().catch(() => { }); // Ignore l'erreur si la lecture est refusée
+        } else {
+            video.pause();
+        }
+    });
+
+    // Survol de la carte, seulement avec une vraie souris et sans « animations réduites »
+    if (!reduceMotion) {
+        card.addEventListener('pointerenter', (event) => {
+            if (event.pointerType === 'mouse') video.play().catch(() => { });
+        });
+        card.addEventListener('pointerleave', (event) => {
+            if (event.pointerType === 'mouse') video.pause();
+        });
     }
 });
-
-// 2. Lancer une vidéo quand elle est visible, sinon la mettre en pause
-if (!reduceMotion && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                video.play().catch(() => { }); // Ignire l'erreur si pas de fichier
-            } else {
-                video.pause();
-            }
-        });
-    }, { threshold: 0.4 });
-
-    videos.forEach((video) => observer.observe(video));
-}
 
 // Vignettes des "autres projets" : affichées seulement si l'image existe
 const thumbs = document.querySelectorAll('.other-thumb');
@@ -147,29 +156,6 @@ themeToggle.addEventListener('click', () => {
 
 updateToggle(); // état correct dès le chargement
 
-// Navigation au clavier : la navbar doit rester visible quand elle a le focus
-const siteHeader = document.querySelector('.site-header');
-siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('is-hidden'));
-
-// Apparitions au scroll : les blocs .reveal et les dessins .doodle se montrent en entrant à l'écran
-const revealItems = document.querySelectorAll('.reveal, .doodle');
-
-if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
-
-    revealItems.forEach((item) => revealObserver.observe(item));
-} else {
-    // Navigateur trop ancien : on montre tout directement
-    revealItems.forEach((item) => item.classList.add('in'));
-}
-
 // Court-métrage : modale
 const filmDialog = document.getElementById('film-dialog');
 const filmOpen = document.getElementById('film-open');
@@ -195,4 +181,16 @@ if (filmDialog && filmOpen && filmClose && filmVideo) {
     });
 
     filmDialog.addEventListener('close', () => filmVideo.pause());
+}
+
+// Bouton retour en haut de la page : visible après défilement
+const toTop = document.querySelector('.to-top');
+
+if (toTop) {
+    function updateToTop() {
+        toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight);
+    }
+
+    window.addEventListener('scroll', updateToTop, { passive: true });
+    updateToTop();
 }
