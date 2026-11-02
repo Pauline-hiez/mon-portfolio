@@ -147,24 +147,8 @@ themeToggle.addEventListener('click', () => {
 
 updateToggle(); // état correct dès le chargement
 
-// Navbar : se cache quand on descend, revient dès qu'on remonte
-const siteHeader = document.querySelector('.site-header');
-let lastScrollY = window.scrollY;
-
-window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const goingDown = y > lastScrollY;
-
-    // On ne la cache qu'après avoir dépassé sa hauteur, et on ignore les micro-mouvements
-    if (goingDown && y > 120) {
-        siteHeader.classList.add('is-hidden');
-    } else if (!goingDown && lastScrollY - y > 4) {
-        siteHeader.classList.remove('is-hidden');
-    }
-    lastScrollY = y;
-}, { passive: true });
-
 // Navigation au clavier : la navbar doit rester visible quand elle a le focus
+const siteHeader = document.querySelector('.site-header');
 siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('is-hidden'));
 
 // Apparitions au scroll : les blocs .reveal et les dessins .doodle se montrent en entrant à l'écran
