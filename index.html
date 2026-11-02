@@ -262,66 +262,15 @@
           <h2>Ma boîte <em>à outils.</em></h2>
         </div>
 
-        <div class="skills-grid">
-          <div class="skill-group">
-            <h3>Langages</h3>
-            <ul class="tags">
-              <li>PHP</li>
-              <li>JavaScript</li>
-              <li>Python</li>
-              <li>HTML &amp; CSS</li>
-              <li>SQL</li>
-              <li class="is-basic">TypeScript<span class="vh"> (bases)</span></li>
-            </ul>
-          </div>
+        <div class="skills-grid"></div>
 
+        <!-- Modèle d'une catégorie, rempli par script.js avec data/competences.json -->
+        <template id="skill-template">
           <div class="skill-group">
-            <h3>Back-end</h3>
-            <ul class="tags">
-              <li>Architecture MVC</li>
-              <li>Flask</li>
-              <li>API REST</li>
-              <li>Stripe</li>
-              <li class="is-basic">Symfony<span class="vh"> (bases)</span></li>
-              <li class="is-basic">Node.js<span class="vh"> (bases)</span></li>
-            </ul>
+            <h3></h3>
+            <ul class="tags"></ul>
           </div>
-
-          <div class="skill-group">
-            <h3>Front-end</h3>
-            <ul class="tags">
-              <li>Intégration de maquettes</li>
-              <li>Responsive design</li>
-              <li>Tailwind CSS</li>
-              <li>Accessibilité</li>
-              <li class="is-basic">React<span class="vh"> (bases)</span></li>
-            </ul>
-          </div>
-
-          <div class="skill-group">
-            <h3>Données et outils</h3>
-            <ul class="tags">
-              <li>MySQL</li>
-              <li>PostgreSQL</li>
-              <li>Git &amp; GitHub</li>
-              <li>GitHub Actions</li>
-              <li>PHPUnit</li>
-              <li>pytest</li>
-              <li class="is-basic">Docker<span class="vh"> (bases)</span></li>
-              <li class="is-basic">NoSQL<span class="vh"> (bases)</span></li>
-            </ul>
-          </div>
-
-          <div class="skill-group">
-            <h3>Design et 3D</h3>
-            <ul class="tags">
-              <li>Figma</li>
-              <li>Maquettage UI</li>
-              <li>Charte graphique</li>
-              <li>Blender</li>
-            </ul>
-          </div>
-        </div>
+        </template>
 
         <p class="skills-legend"><span aria-hidden="true"></span>Notions de base</p>
       </section>

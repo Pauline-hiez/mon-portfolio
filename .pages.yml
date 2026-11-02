@@ -82,3 +82,26 @@ content:
         type: select
         options:
           values: [Perso, Équipe, Premier projet]
+  - name: competences
+    label: Compétences
+    type: file
+    path: data/competences.json
+    format: json
+    list: true
+    fields:
+      - name: titre
+        label: Catégorie
+        type: string
+        required: true
+      - name: competences
+        label: Compétences
+        type: object
+        list: true
+        fields:
+          - name: nom
+            label: Nom
+            type: string
+            required: true
+          - name: bases
+            label: Notions de base seulement
+            type: boolean

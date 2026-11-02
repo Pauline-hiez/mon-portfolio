@@ -167,6 +167,45 @@ if (othersList && otherTemplate) {
         .catch((error) => console.error('Autres projets :', error));
 }
 
+// Compétences : catégories construites à partir de data/competences.json (géré avec Pages CMS)
+const skillsGrid = document.querySelector('.skills-grid');
+const skillTemplate = document.getElementById('skill-template');
+
+if (skillsGrid && skillTemplate) {
+    fetch('data/competences.json')
+        .then((response) => {
+            if (!response.ok) throw new Error('Fichier introuvable');
+            return response.json();
+        })
+        .then((groups) => {
+            groups.forEach((group) => {
+                const block = skillTemplate.content.cloneNode(true);
+                const list = block.querySelector('.tags');
+
+                block.querySelector('h3').textContent = group.titre;
+
+                (group.competences || []).forEach((skill) => {
+                    const li = document.createElement('li');
+                    li.textContent = skill.nom;
+
+                    // Notions de base : pointillés + précision pour les lecteurs d'écran
+                    if (skill.bases) {
+                        li.classList.add('is-basic');
+                        const hint = document.createElement('span');
+                        hint.className = 'vh';
+                        hint.textContent = ' (bases)';
+                        li.append(hint);
+                    }
+
+                    list.append(li);
+                });
+
+                skillsGrid.append(block);
+            });
+        })
+        .catch((error) => console.error('Compétences :', error));
+}
+
 // Bouton "Copier l'adresse"
 const copyBtn = document.getElementById('copy-btn');
 const emailLink = document.getElementById('email');

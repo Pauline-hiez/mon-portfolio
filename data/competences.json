@@ -1,0 +1,143 @@
+[
+    {
+        "titre": "Langages",
+        "competences": [
+            {
+                "nom": "PHP",
+                "bases": false
+            },
+            {
+                "nom": "JavaScript",
+                "bases": false
+            },
+            {
+                "nom": "Python",
+                "bases": false
+            },
+            {
+                "nom": "HTML & CSS",
+                "bases": false
+            },
+            {
+                "nom": "SQL",
+                "bases": false
+            },
+            {
+                "nom": "TypeScript",
+                "bases": true
+            }
+        ]
+    },
+    {
+        "titre": "Back-end",
+        "competences": [
+            {
+                "nom": "Architecture MVC",
+                "bases": false
+            },
+            {
+                "nom": "Flask",
+                "bases": false
+            },
+            {
+                "nom": "API REST",
+                "bases": false
+            },
+            {
+                "nom": "Stripe",
+                "bases": false
+            },
+            {
+                "nom": "Symfony",
+                "bases": true
+            },
+            {
+                "nom": "Node.js",
+                "bases": true
+            }
+        ]
+    },
+    {
+        "titre": "Front-end",
+        "competences": [
+            {
+                "nom": "Intégration de maquettes",
+                "bases": false
+            },
+            {
+                "nom": "Responsive design",
+                "bases": false
+            },
+            {
+                "nom": "Tailwind CSS",
+                "bases": false
+            },
+            {
+                "nom": "Accessibilité",
+                "bases": false
+            },
+            {
+                "nom": "React",
+                "bases": true
+            }
+        ]
+    },
+    {
+        "titre": "Données et outils",
+        "competences": [
+            {
+                "nom": "MySQL",
+                "bases": false
+            },
+            {
+                "nom": "PostgreSQL",
+                "bases": false
+            },
+            {
+                "nom": "Git & GitHub",
+                "bases": false
+            },
+            {
+                "nom": "GitHub Actions",
+                "bases": false
+            },
+            {
+                "nom": "PHPUnit",
+                "bases": false
+            },
+            {
+                "nom": "pytest",
+                "bases": false
+            },
+            {
+                "nom": "Docker",
+                "bases": true
+            },
+            {
+                "nom": "NoSQL",
+                "bases": true
+            }
+        ]
+    },
+    {
+        "titre": "Design et 3D",
+        "competences": [
+            {
+                "nom": "Figma",
+                "bases": false
+            },
+            {
+                "nom": "Maquettage UI",
+                "bases": false
+            },
+            {
+                "nom": "Charte graphique",
+                "bases": false
+            },
+            {
+                "nom": "Blender",
+                "bases": false
+            }
+        ]
+    }
+]
