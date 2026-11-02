@@ -161,90 +161,33 @@
           </a>
         </div>
 
-        <ul class="project-list">
-          <!-- Toile -->
-          <li class="project-card">
-            <div class="screen">
-              <span class="badge">Projet du titre DWWM</span>
-              <video class="demo" src="videos/toile.mp4"
-                     poster="videos/toile-poster.webp"
-                     muted loop playsinline preload="none"
-                     aria-label="Démonstration de la marketplace Toile"></video>
-              <button type="button" class="video-btn" aria-label="Lire la démonstration de Toile">
-                <span class="play-icon" aria-hidden="true">▶</span>
-              </button>
-            </div>
-            <div class="project-body">
-              <h3>Toile</h3>
-              <p>Marketplace d'œuvres d'art sur mesure</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>PHP</li>
-                <li>MVC</li>
-                <li>MySQL</li>
-                <li>Stripe</li>
-              </ul>
-              <div class="project-links">
-                <a href="https://toile.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/Pauline-hiez/toile" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </li>
+        <ul class="project-list"></ul>
 
-          <!-- Traveling -->
-          <li class="project-card">
-            <div class="screen">
-              <video class="demo" src="videos/traveling.mp4"
-                     poster="videos/traveling-poster.webp"
-                     muted loop playsinline preload="none"
-                     aria-label="Démonstration du blog Traveling"></video>
-              <button type="button" class="video-btn" aria-label="Lire la démonstration de Traveling">
-                <span class="play-icon" aria-hidden="true">▶</span>
-              </button>
-            </div>
-            <div class="project-body">
-              <h3>Traveling</h3>
-              <p>Blog voyage et cinéma</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>PHP</li>
-                <li>MVC</li>
-                <li>Tailwind</li>
-                <li>API TMDB</li>
-              </ul>
-              <div class="project-links">
-                <a href="https://traveling-blog.free.nf/" target="_blank" rel="noopener">Voir le site <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/Pauline-hiez/traveling" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </li>
+        <noscript>
+          <p>Retrouvez mes projets sur <a href="https://github.com/Pauline-hiez">GitHub</a>.</p>
+        </noscript>
 
-          <!-- Filmatrix -->
+        <!-- Modèle d'une carte, rempli par script.js avec data/projets-phares.json -->
+        <template id="project-template">
           <li class="project-card">
             <div class="screen">
-              <span class="badge">En développement</span>
-              <video class="demo" src="videos/filmatrix.mp4"
-                     poster="videos/filmatrix-poster.webp"
-                     muted loop playsinline preload="none"
-                     aria-label="Démonstration des jeux Filmatrix"></video>
-              <button type="button" class="video-btn" aria-label="Lire la démonstration de Filmatrix">
+              <span class="badge"></span>
+              <video class="demo" muted loop playsinline preload="none"></video>
+              <button type="button" class="video-btn">
                 <span class="play-icon" aria-hidden="true">▶</span>
               </button>
             </div>
             <div class="project-body">
-              <h3>Filmatrix</h3>
-              <p>Mini-jeux sur le cinéma, en temps réel</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>Python</li>
-                <li>Flask</li>
-                <li>Socket.IO</li>
-                <li>PostgreSQL</li>
-              </ul>
+              <h3 class="project-title"></h3>
+              <p class="project-desc"></p>
+              <ul class="tags" aria-label="Technologies"></ul>
               <div class="project-links">
-                <a href="https://filmatrix-0erx.onrender.com/" target="_blank" rel="noopener">Jouer en ligne <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/Pauline-hiez/filmatrix" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
+                <a class="project-site" target="_blank" rel="noopener"><span class="project-site-label"></span> <span aria-hidden="true">↗</span></a>
+                <a class="project-code" target="_blank" rel="noopener">Le code <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </li>
-        </ul>
+        </template>
       </section>
 
       <!-- Autres projets -->

@@ -6,6 +6,47 @@ media:
   output: images
 
 content:
+  - name: projets-phares
+    label: Projets phares
+    type: file
+    path: data/projets-phares.json
+    format: json
+    list: true
+    fields:
+      - name: titre
+        label: Titre
+        type: string
+        required: true
+      - name: description
+        label: Description courte
+        type: string
+        required: true
+      - name: technos
+        label: Technologies (une par ligne)
+        type: string
+        list: true
+      - name: badge
+        label: "Badge (facultatif, ex. : En développement)"
+        type: string
+      - name: video
+        label: "Vidéo (ex. : videos/toile.mp4)"
+        type: string
+      - name: apercu
+        label: "Image d'aperçu de la vidéo (ex. : videos/toile-poster.webp)"
+        type: string
+      - name: demo
+        label: "Description de la vidéo pour les lecteurs d'écran"
+        type: string
+      - name: site
+        label: Lien du site en ligne
+        type: string
+      - name: libelle_site
+        label: "Texte du lien (ex. : Voir le site, Jouer en ligne)"
+        type: string
+      - name: code
+        label: Lien GitHub
+        type: string
+
   - name: autres-projets
     label: Autres projets
     type: file

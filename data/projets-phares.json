@@ -1,0 +1,53 @@
+[
+    {
+        "titre": "Toile",
+        "description": "Marketplace d'œuvres d'art sur mesure",
+        "technos": [
+            "PHP",
+            "MVC",
+            "MySQL",
+            "Stripe"
+        ],
+        "badge": "Projet du titre DWWM",
+        "video": "videos/toile.mp4",
+        "apercu": "videos/toile-poster.webp",
+        "demo": "Démonstration de la marketplace Toile",
+        "site": "https://toile.free.nf/",
+        "libelle_site": "Voir le site",
+        "code": "https://github.com/Pauline-hiez/toile"
+    },
+    {
+        "titre": "Traveling",
+        "description": "Blog voyage et cinéma",
+        "technos": [
+            "PHP",
+            "MVC",
+            "Tailwind",
+            "API TMDB"
+        ],
+        "badge": "",
+        "video": "videos/traveling.mp4",
+        "apercu": "videos/traveling-poster.webp",
+        "demo": "Démonstration du blog Traveling",
+        "site": "https://traveling-blog.free.nf/",
+        "libelle_site": "Voir le site",
+        "code": "https://github.com/Pauline-hiez/traveling"
+    },
+    {
+        "titre": "Filmatrix",
+        "description": "Mini-jeux sur le cinéma, en temps réel",
+        "technos": [
+            "Python",
+            "Flask",
+            "Socket.IO",
+            "PostgreSQL"
+        ],
+        "badge": "En développement",
+        "video": "videos/filmatrix.mp4",
+        "apercu": "videos/filmatrix-poster.webp",
+        "demo": "Démonstration des jeux Filmatrix",
+        "site": "https://filmatrix-0erx.onrender.com/",
+        "libelle_site": "Jouer en ligne",
+        "code": "https://github.com/Pauline-hiez/filmatrix"
+    }
+]

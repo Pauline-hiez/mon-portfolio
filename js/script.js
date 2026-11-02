@@ -1,51 +1,126 @@
-// Vidéos des projets : lecture au survol (souris) ou avec le bouton (mobile, clavier)
+/// Vidéos des projets : lecture au survol (souris) ou avec le bouton (mobile, clavier)
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const projectVideos = document.querySelectorAll('.project-card .demo');
 
-projectVideos.forEach((video) => {
-    const screen = video.closest('.screen');
-    const card = video.closest('.project-card');
-    const button = screen.querySelector('.video-btn');
-    const icon = button.querySelector('.play-icon');
-    const playLabel = button.getAttribute('aria-label');
-    const pauseLabel = playLabel.replace('Lire', 'Mettre en pause');
+// Appelée une fois les cartes construites
+function setupProjectVideos() {
+    const projectVideos = document.querySelectorAll('.project-card .demo');
 
-    // Le bouton suit l'état réel de la vidéo
-    video.addEventListener('play', () => {
-        // Une seule vidéo à la fois : on met les autres en pause
-        projectVideos.forEach((other) => {
-            if (other !== video) other.pause();
+    projectVideos.forEach((video) => {
+        const screen = video.closest('.screen');
+        const card = video.closest('.project-card');
+        const button = screen.querySelector('.video-btn');
+        const icon = button.querySelector('.play-icon');
+        const playLabel = button.getAttribute('aria-label');
+        const pauseLabel = playLabel.replace('Lire', 'Mettre en pause');
+
+        // Le bouton suit l'état réel de la vidéo
+        video.addEventListener('play', () => {
+            // Une seule vidéo à la fois : on met les autres en pause
+            projectVideos.forEach((other) => {
+                if (other !== video) other.pause();
+            });
+            icon.textContent = '❚❚';
+            button.setAttribute('aria-label', pauseLabel);
+            screen.classList.add('is-playing');
         });
-        icon.textContent = '❚❚';
-        button.setAttribute('aria-label', pauseLabel);
-        screen.classList.add('is-playing');
-    });
 
-    video.addEventListener('pause', () => {
-        icon.textContent = '▶';
-        button.setAttribute('aria-label', playLabel);
-        screen.classList.remove('is-playing');
-    });
+        video.addEventListener('pause', () => {
+            icon.textContent = '▶';
+            button.setAttribute('aria-label', playLabel);
+            screen.classList.remove('is-playing');
+        });
 
-    // Bouton : lecture ou pause
-    button.addEventListener('click', () => {
-        if (video.paused) {
-            video.play().catch(() => { }); // Ignore l'erreur si la lecture est refusée
-        } else {
-            video.pause();
+        // Bouton : lecture ou pause
+        button.addEventListener('click', () => {
+            if (video.paused) {
+                video.play().catch(() => { }); // Ignore l'erreur si la lecture est refusée
+            } else {
+                video.pause();
+            }
+        });
+
+        // Survol de la carte, seulement avec une vraie souris et sans « animations réduites »
+        if (!reduceMotion) {
+            card.addEventListener('pointerenter', (event) => {
+                if (event.pointerType === 'mouse') video.play().catch(() => { });
+            });
+            card.addEventListener('pointerleave', (event) => {
+                if (event.pointerType === 'mouse') video.pause();
+            });
         }
     });
+}
 
-    // Survol de la carte, seulement avec une vraie souris et sans « animations réduites »
-    if (!reduceMotion) {
-        card.addEventListener('pointerenter', (event) => {
-            if (event.pointerType === 'mouse') video.play().catch(() => { });
-        });
-        card.addEventListener('pointerleave', (event) => {
-            if (event.pointerType === 'mouse') video.pause();
-        });
-    }
-});
+// Projets phares : cartes construites à partir de data/projets-phares.json (géré avec Pages CMS)
+const projectList = document.querySelector('.project-list');
+const projectTemplate = document.getElementById('project-template');
+
+if (projectList && projectTemplate) {
+    fetch('data/projets-phares.json')
+        .then((response) => {
+            if (!response.ok) throw new Error('Fichier introuvable');
+            return response.json();
+        })
+        .then((projects) => {
+            projects.forEach((project) => {
+                const card = projectTemplate.content.cloneNode(true);
+                const badge = card.querySelector('.badge');
+                const video = card.querySelector('.demo');
+                const button = card.querySelector('.video-btn');
+                const tags = card.querySelector('.tags');
+                const site = card.querySelector('.project-site');
+                const code = card.querySelector('.project-code');
+
+                card.querySelector('.project-title').textContent = project.titre;
+                card.querySelector('.project-desc').textContent = project.description;
+
+                // Badge facultatif
+                if (project.badge) {
+                    badge.textContent = project.badge;
+                } else {
+                    badge.remove();
+                }
+
+                // Vidéo et son bouton (retirés s'il n'y a pas de vidéo)
+                if (project.video) {
+                    video.src = project.video.replace(/^\//, '');
+                    if (project.apercu) video.poster = project.apercu.replace(/^\//, '');
+                    video.setAttribute('aria-label', project.demo || `Démonstration de ${project.titre}`);
+                    button.setAttribute('aria-label', `Lire la démonstration de ${project.titre}`);
+                } else {
+                    video.remove();
+                    button.remove();
+                }
+
+                // Une pastille par technologie
+                (project.technos || []).forEach((techno) => {
+                    const li = document.createElement('li');
+                    li.textContent = techno;
+                    tags.append(li);
+                });
+
+                // Liens facultatifs
+                if (project.site) {
+                    site.href = project.site;
+                    site.querySelector('.project-site-label').textContent = project.libelle_site || 'Voir le site';
+                } else {
+                    site.remove();
+                }
+
+                if (project.code) {
+                    code.href = project.code;
+                } else {
+                    code.remove();
+                }
+
+                projectList.append(card);
+            });
+
+            // Les vidéos existent maintenant : on peut brancher le survol et les boutons
+            setupProjectVideos();
+        })
+        .catch((error) => console.error('Projets phares :', error));
+}
 
 // Autres projets : cartes construites à partir de data/autres-projets.json (géré avec Pages CMS)
 const othersList = document.querySelector('.others-list');
