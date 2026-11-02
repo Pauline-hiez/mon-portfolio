@@ -47,22 +47,50 @@ projectVideos.forEach((video) => {
     }
 });
 
-// Vignettes des "autres projets" : affichées seulement si l'image existe
-const thumbs = document.querySelectorAll('.other-thumb');
+// Autres projets : cartes construites à partir de data/autres-projets.json (géré avec Pages CMS)
+const othersList = document.querySelector('.others-list');
+const otherTemplate = document.getElementById('other-template');
 
-thumbs.forEach((thumb) => {
-    const shot = thumb.closest('.other-shot');
+if (othersList && otherTemplate) {
+    fetch('data/autres-projets.json')
+        .then((response) => {
+            if (!response.ok) throw new Error('Fichier introuvable');
+            return response.json();
+        })
+        .then((projects) => {
+            projects.forEach((project) => {
+                // Copie du modèle, puis remplissage
+                const card = otherTemplate.content.cloneNode(true);
+                const shot = card.querySelector('.other-shot');
+                const thumb = card.querySelector('.other-thumb');
+                const badge = card.querySelector('.badge');
 
-    function showThumb() {
-        shot.classList.add('is-ready');
-    }
+                card.querySelector('a').href = project.lien;
+                card.querySelector('.other-title').prepend(project.titre + ' ');
+                card.querySelector('.other-desc').textContent = project.description;
+                card.querySelector('.other-meta').textContent =
+                    [project.technos, project.date].filter(Boolean).join(' — ');
 
-    if (thumb.complete && thumb.naturalWidth > 0) {
-        showThumb();
-    } else {
-        thumb.addEventListener('load', showThumb);
-    }
-});
+                // Badge facultatif
+                if (project.badge) {
+                    badge.textContent = project.badge;
+                } else {
+                    badge.remove();
+                }
+
+                // Vignette : affichée une fois chargée
+                if (project.image) {
+                    thumb.addEventListener('load', () => shot.classList.add('is-ready'));
+                    thumb.src = project.image.replace(/^\//, ''); // chemin relatif, pour GitHub Pages
+                } else {
+                    thumb.remove();
+                }
+
+                othersList.append(card);
+            });
+        })
+        .catch((error) => console.error('Autres projets :', error));
+}
 
 // Bouton "Copier l'adresse"
 const copyBtn = document.getElementById('copy-btn');

@@ -254,114 +254,28 @@
           <h2>En formation, et <em>pour m'entraîner.</em></h2>
         </div>
 
-        <ul class="others-list">
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/ahpec" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="badge">Perso</span>
-                <img class="other-thumb" src="images/ahpec.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>AHPEC <span aria-hidden="true">↗</span></h3>
-                <p>Site vitrine pour une entreprise de plomberie, d'électricité et de climatisation.</p>
-                <p class="other-meta">HTML · CSS — Juin 2026</p>
-              </div>
-            </a>
-          </li>
+        <ul class="others-list"></ul>
 
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/marsAI" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="badge">Équipe</span>
-                <img class="other-thumb" src="images/marsai.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>marsAI <span aria-hidden="true">↗</span></h3>
-                <p>Projet réalisé en équipe, du partage des tâches à la mise en commun du code.</p>
-                <p class="other-meta">TypeScript — Mars – mai 2026</p>
-              </div>
-            </a>
-          </li>
+        <noscript>
+          <p>Retrouvez tous mes projets sur <a href="https://github.com/Pauline-hiez">GitHub</a>.</p>
+        </noscript>
 
+        <!-- Modèle d'une carte, rempli par script.js avec data/autres-projets.json -->
+        <template id="other-template">
           <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/cinetech" target="_blank" rel="noopener">
+            <a target="_blank" rel="noopener">
               <figure class="other-shot">
-                <img class="other-thumb" src="images/cinetech.webp" alt="" loading="lazy">
+                <span class="badge"></span>
+                <img class="other-thumb" alt="" loading="lazy">
               </figure>
               <div class="other-body">
-                <h3>Cinetech <span aria-hidden="true">↗</span></h3>
-                <p>Catalogue de films et de séries alimenté par l'API TMDB.</p>
-                <p class="other-meta">JavaScript · API — Janv. – mai 2026</p>
+                <h3 class="other-title"><span aria-hidden="true">↗</span></h3>
+                <p class="other-desc"></p>
+                <p class="other-meta"></p>
               </div>
             </a>
           </li>
-
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/reservation-salle" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <img class="other-thumb" src="images/reservation-salle.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>Réservation de salles <span aria-hidden="true">↗</span></h3>
-                <p>Application de réservation avec planning et comptes utilisateurs.</p>
-                <p class="other-meta">PHP · JavaScript — Févr. 2026</p>
-              </div>
-            </a>
-          </li>
-
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/memory-js" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <img class="other-thumb" src="images/memory-js.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>Memory JS <span aria-hidden="true">↗</span></h3>
-                <p>Jeu de memory en JavaScript, avec comptes et classement.</p>
-                <p class="other-meta">JavaScript · CSS — Janv. 2026</p>
-              </div>
-            </a>
-          </li>
-
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/memory" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <img class="other-thumb" src="images/memory-php.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>Memory <span aria-hidden="true">↗</span></h3>
-                <p>Jeu de memory sur le thème Vikings, avec chronomètre et classement.</p>
-                <p class="other-meta">PHP · CSS — Nov. 2025</p>
-              </div>
-            </a>
-          </li>
-
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/livre-or" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <img class="other-thumb" src="images/livreor.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>Livre d'or <span aria-hidden="true">↗</span></h3>
-                <p>Inscription, connexion et publication de commentaires.</p>
-                <p class="other-meta">PHP · MySQL — Nov. 2025</p>
-              </div>
-            </a>
-          </li>
-
-          <li class="other-card">
-            <a href="https://github.com/Pauline-hiez/fansite" target="_blank" rel="noopener">
-              <figure class="other-shot">
-                <span class="badge">Premier projet</span>
-                <img class="other-thumb" src="images/fansite.webp" alt="" loading="lazy">
-              </figure>
-              <div class="other-body">
-                <h3>Fansite <span aria-hidden="true">↗</span></h3>
-                <p>Site fan dédié au cinéma, point de départ de mon apprentissage.</p>
-                <p class="other-meta">HTML · CSS — Sept. 2025</p>
-              </div>
-            </a>
-          </li>
-        </ul>
+        </template>
       </section>
 
       <!-- Mon processus -->

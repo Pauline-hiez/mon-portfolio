@@ -1,0 +1,43 @@
+# Configuration de Pages CMS : les formulaires de l'interface d'administration
+
+# Dossier où sont rangées les images envoyées depuis le CMS
+media:
+  input: images
+  output: images
+
+content:
+  - name: autres-projets
+    label: Autres projets
+    type: file
+    path: data/autres-projets.json
+    format: json
+    list: true
+    fields:
+      - name: titre
+        label: Titre
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+      - name: technos
+        label: "Technologies (ex. : PHP · MySQL)"
+        type: string
+      - name: date
+        label: "Date (ex. : Nov. 2025)"
+        type: string
+      - name: lien
+        label: Lien GitHub
+        type: string
+        required: true
+      - name: image
+        label: "Vignette (WebP, 16/10)"
+        type: image
+        options:
+          extensions: [webp]
+      - name: badge
+        label: Badge (facultatif)
+        type: select
+        options:
+          values: [Perso, Équipe, Premier projet]

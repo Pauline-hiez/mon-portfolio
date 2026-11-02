@@ -1,0 +1,74 @@
+[
+    {
+        "titre": "AHPEC",
+        "description": "Site vitrine pour une entreprise de plomberie, d'électricité et de climatisation.",
+        "technos": "HTML · CSS",
+        "date": "Juin 2026",
+        "lien": "https://github.com/Pauline-hiez/ahpec",
+        "image": "images/ahpec.webp",
+        "badge": "Perso"
+    },
+    {
+        "titre": "marsAI",
+        "description": "Projet réalisé en équipe, du partage des tâches à la mise en commun du code.",
+        "technos": "TypeScript",
+        "date": "Mars – mai 2026",
+        "lien": "https://github.com/Pauline-hiez/marsAI",
+        "image": "images/marsai.webp",
+        "badge": "Équipe"
+    },
+    {
+        "titre": "Cinetech",
+        "description": "Catalogue de films et de séries alimenté par l'API TMDB.",
+        "technos": "JavaScript · API",
+        "date": "Janv. – mai 2026",
+        "lien": "https://github.com/Pauline-hiez/cinetech",
+        "image": "images/cinetech.webp",
+        "badge": ""
+    },
+    {
+        "titre": "Réservation de salles",
+        "description": "Application de réservation avec planning et comptes utilisateurs.",
+        "technos": "PHP · JavaScript",
+        "date": "Févr. 2026",
+        "lien": "https://github.com/Pauline-hiez/reservation-salle",
+        "image": "images/reservation-salle.webp",
+        "badge": ""
+    },
+    {
+        "titre": "Memory JS",
+        "description": "Jeu de memory en JavaScript, avec comptes et classement.",
+        "technos": "JavaScript · CSS",
+        "date": "Janv. 2026",
+        "lien": "https://github.com/Pauline-hiez/memory-js",
+        "image": "images/memory-js.webp",
+        "badge": ""
+    },
+    {
+        "titre": "Memory",
+        "description": "Jeu de memory sur le thème Vikings, avec chronomètre et classement.",
+        "technos": "PHP · CSS",
+        "date": "Nov. 2025",
+        "lien": "https://github.com/Pauline-hiez/memory",
+        "image": "images/memory-php.webp",
+        "badge": ""
+    },
+    {
+        "titre": "Livre d'or",
+        "description": "Inscription, connexion et publication de commentaires.",
+        "technos": "PHP · MySQL",
+        "date": "Nov. 2025",
+        "lien": "https://github.com/Pauline-hiez/livre-or",
+        "image": "images/livreor.webp",
+        "badge": ""
+    },
+    {
+        "titre": "Fansite",
+        "description": "Site fan dédié au cinéma, point de départ de mon apprentissage.",
+        "technos": "HTML · CSS",
+        "date": "Sept. 2025",
+        "lien": "https://github.com/Pauline-hiez/fansite",
+        "image": "images/fansite.webp",
+        "badge": "Premier projet"
+    }
+]
